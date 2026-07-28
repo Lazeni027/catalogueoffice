@@ -3,551 +3,1034 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Nova Academy | Formation Bureautique Complète</title>
-  <!-- Font Awesome 6 (gratuit, pour icônes) -->
+  <title>Nova Academy | Formation Bureautique Pro</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bleu: #0b5e9e;
+      --bleu-fonce: #083c6e;
+      --bleu-clair: #e8f1f9;
+      --blanc: #ffffff;
+      --gris: #f5f7fa;
+      --ombre: 0 20px 40px rgba(0,20,50,0.08);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --word: #2b579a;
+      --excel: #217346;
+      --ppt: #d24726;
     }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      background: linear-gradient(145deg, #f0f7ff 0%, #ffffff 100%);
-      color: #0a2540;
-      line-height: 1.5;
-      scroll-behavior: smooth;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f8fafc;
+      color: #1a2b3c;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(11,94,158,0.4); }
+      50% { box-shadow: 0 0 0 20px rgba(11,94,158,0); }
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    :root {
-      --bleu-primaire: #0b5e9e;
-      --bleu-fonce: #083c6e;
-      --bleu-clair: #eef5fc;
-      --bleu-accents: #1a73e8;
-      --blanc-casse: #ffffff;
-      --gris-doux: #f8fafc;
-      --ombre-legere: 0 12px 28px rgba(0, 32, 64, 0.08);
-      --word-bleu: #2b579a;
-      --excel-vert: #217346;
-      --powerpoint-orange: #d24726;
+    .animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .animate.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    /* header hero */
-    .hero {
-      background: linear-gradient(135deg, #0b5e9e 0%, #08427a 100%);
-      color: white;
-      padding: 2.5rem 0 2.8rem 0;
-      border-bottom-left-radius: 2.2rem;
-      border-bottom-right-radius: 2.2rem;
-      margin-bottom: 2rem;
-      box-shadow: var(--ombre-legere);
-    }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
 
-    .hero-content {
+    /* Navigation */
+    .nav-academy {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0.8rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+    }
+    .nav-inner {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 2rem;
     }
-
-    .hero-text h1 {
-      font-size: 2.5rem;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
       font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-      line-height: 1.2;
+      font-size: 1.4rem;
+      color: #083c6e;
+      text-decoration: none;
+    }
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      padding: 0.4rem 0;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-links a:hover {
+      color: #0b5e9e;
+      border-bottom-color: #0b5e9e;
     }
 
-    .hero-text .badge {
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(4px);
-      display: inline-block;
-      padding: 0.3rem 1rem;
-      border-radius: 60px;
-      font-size: 0.9rem;
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #0a2a44 0%, #0b4a7a 30%, #0b5e9e 60%, #063a64 100%);
+      background-size: 300% 300%;
+      animation: gradientShift 12s ease infinite;
+      color: white;
+      padding: 5rem 0 5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-text { animation: fadeInLeft 1s ease forwards; }
+    .hero-badge {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
       font-weight: 500;
+      letter-spacing: 0.8px;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
       margin-bottom: 1rem;
     }
-
-    .hero-stats {
-      background: rgba(255,255,255,0.12);
-      padding: 1.2rem 1.8rem;
-      border-radius: 32px;
-      text-align: center;
-      backdrop-filter: blur(4px);
+    .hero-text h1 .highlight {
+      background: linear-gradient(120deg, #ffd966 0%, #f0b429 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-
-    .hero-stats p {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin: 0.3rem 0;
-    }
-
-    .hero-stats span {
-      font-size: 0.9rem;
+    .hero-subtitle {
+      font-size: 1.1rem;
       opacity: 0.9;
+      margin-bottom: 2rem;
+      font-weight: 300;
     }
-
-    /* section logo office en avant */
-    .office-showcase {
+    .btn-primary {
       background: white;
-      border-radius: 40px;
-      padding: 1.8rem 1.5rem;
-      margin: 2.2rem 0 2rem 0;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.04);
-      border: 1px solid #dce9f5;
+      color: #0b5e9e;
+      border: none;
+      padding: 1rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      animation: pulse 3s infinite;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.6);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-left: 1rem;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: white;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 28px;
+      padding: 2rem;
+      animation: fadeInRight 1s ease forwards, float 6s ease infinite;
+    }
+    .hero-card .stat-row {
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+    }
+    .hero-card .stat-icon {
+      width: 45px;
+      height: 45px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 14px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 2rem;
-    }
-
-    .office-icons {
-      display: flex;
-      gap: 2.8rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .office-item {
-      text-align: center;
-      transition: transform 0.2s;
-    }
-
-    .office-item i {
-      font-size: 3.8rem;
-      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1));
-    }
-
-    .office-item span {
-      display: block;
-      font-weight: 700;
-      margin-top: 0.4rem;
-      font-size: 1rem;
-    }
-
-    .word-icon { color: var(--word-bleu); }
-    .excel-icon { color: var(--excel-vert); }
-    .powerpoint-icon { color: var(--powerpoint-orange); }
-
-    .showcase-text {
-      font-weight: 600;
       font-size: 1.2rem;
-      color: #083c6e;
+    }
+
+    /* Section logos Office avec vraies images */
+    .office-section {
+      background: white;
+      border-radius: 32px;
+      padding: 2.5rem;
+      margin: -3rem 0 3rem 0;
+      position: relative;
+      z-index: 2;
+      box-shadow: var(--ombre);
+      border: 1px solid #e2e8f0;
+    }
+    .office-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
       text-align: center;
     }
-
-    /* cartes infos */
-    .info-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: space-between;
-      margin: 2rem 0 2rem 0;
+    .office-item {
+      padding: 1.5rem;
+      border-radius: 20px;
+      transition: var(--transition);
+      cursor: default;
     }
-
-    .info-card {
-      background: white;
-      border-radius: 28px;
-      padding: 1.2rem 1.5rem;
-      flex: 1;
-      min-width: 180px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      border: 1px solid #e2edf7;
-      transition: all 0.2s ease;
+    .office-item:hover {
+      background: #f8fafc;
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.06);
     }
-
-    .info-card i {
-      font-size: 2rem;
-      color: var(--bleu-primaire);
-      margin-bottom: 0.6rem;
+    .office-item img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1rem;
+      transition: var(--transition);
+      object-fit: contain;
     }
-
-    .info-card h3 {
-      font-size: 1.5rem;
-      color: #083c6e;
+    .office-item:hover img {
+      transform: scale(1.1) rotate(-2deg);
+    }
+    .office-item h4 {
+      font-weight: 700;
+      color: #1e293b;
       margin-bottom: 0.3rem;
     }
+    .office-item p {
+      font-size: 0.85rem;
+      color: #64748b;
+    }
 
-    .prix {
+    /* Grille infos */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+    .info-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem 1.5rem;
+      border: 1px solid #e8edf3;
+      transition: var(--transition);
+      text-align: center;
+    }
+    .info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+    }
+    .info-card .card-icon {
+      width: 55px;
+      height: 55px;
+      background: #eef5fc;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem auto;
+      font-size: 1.5rem;
+      color: #0b5e9e;
+    }
+    .info-card h3 {
+      font-weight: 700;
+      color: #0f2b44;
+      margin-bottom: 0.3rem;
+      font-size: 1.3rem;
+    }
+    .prix-large {
+      font-size: 2.4rem;
       font-weight: 800;
-      font-size: 1.9rem;
       color: #0b5e9e;
     }
 
-    .btn-inscription {
-      background: #0b5e9e;
-      color: white;
-      border: none;
-      padding: 0.8rem 1.6rem;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.2s;
-      display: inline-flex;
+    /* Horaires */
+    .horaires-section {
+      background: white;
+      border-radius: 28px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid #e8edf3;
+      margin: 3rem 0;
+    }
+    .horaires-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .horaire-card {
+      display: flex;
       align-items: center;
-      gap: 8px;
-      box-shadow: 0 2px 8px rgba(11,94,158,0.3);
-      text-decoration: none;
-    }
-
-    .btn-inscription:hover {
-      background: #064269;
-      transform: scale(1.02);
-    }
-
-    .paiement-info {
-      background: #eef5fc;
+      gap: 1.5rem;
+      padding: 1.8rem;
       border-radius: 20px;
-      padding: 0.5rem 1rem;
-      display: inline-block;
-      margin-top: 0.4rem;
-      font-size: 0.9rem;
-      font-weight: 500;
+      transition: var(--transition);
+    }
+    .horaire-matin {
+      background: linear-gradient(135deg, #fff9ed, #fff3d6);
+      border: 1px solid #f0d78c;
+    }
+    .horaire-soir {
+      background: linear-gradient(135deg, #eef3f8, #dce6f0);
+      border: 1px solid #b0c4d8;
+    }
+    .horaire-icon-wrap {
+      width: 65px;
+      height: 65px;
+      background: white;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+    }
+    .horaire-info h4 {
+      font-weight: 700;
+      color: #0f2b44;
+      margin-bottom: 0.2rem;
+    }
+    .horaire-info .time {
+      font-size: 1.3rem;
+      font-weight: 700;
       color: #083c6e;
     }
 
-    section {
-      margin: 2.8rem 0;
-    }
-
+    /* Programme */
     .section-title {
       font-size: 1.8rem;
       font-weight: 700;
-      border-left: 6px solid #0b5e9e;
-      padding-left: 1rem;
-      margin-bottom: 1.8rem;
       color: #083c6e;
+      margin: 3rem 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
-
-    .objectif-general {
-      background: var(--bleu-clair);
-      padding: 1.6rem 2rem;
-      border-radius: 36px;
-      margin: 1.5rem 0;
-      border: 1px solid #cddff0;
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, #0b5e9e, transparent);
     }
 
     .module {
       background: white;
-      border-radius: 32px;
+      border-radius: 24px;
       margin-bottom: 1.5rem;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
-      border: 1px solid #e6f0fa;
+      border: 1px solid #e8edf3;
       overflow: hidden;
-      transition: all 0.2s;
+      transition: var(--transition);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.02);
     }
-
+    .module:hover {
+      box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+    }
     .module-header {
-      background: #ffffff;
-      padding: 1.2rem 1.8rem;
+      padding: 1.4rem 2rem;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: #0a2540;
+      font-weight: 600;
+      font-size: 1.1rem;
+      background: white;
+      transition: var(--transition);
+      user-select: none;
+      gap: 1rem;
     }
-
-    .module-header i {
-      color: #0b5e9e;
-      font-size: 1.4rem;
-      transition: transform 0.2s;
+    .module-header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
-
+    .module-icon-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
     .module.active .module-header {
-      background: #f9fcff;
-      border-bottom: 1px solid #dde9f5;
+      background: #f9fbfd;
+      border-bottom: 1px solid #e2e8f0;
     }
-
     .module-body {
-      padding: 0 1.8rem;
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease-out;
-      background: #ffffff;
+      transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #fcfdfe;
     }
-
     .module.active .module-body {
-      max-height: 1400px;
-      padding: 1.2rem 1.8rem 1.8rem 1.8rem;
+      max-height: 3000px;
     }
-
-    .seance-item {
-      margin-bottom: 1.2rem;
-      border-left: 3px solid #a0c4e8;
-      padding-left: 1rem;
+    .module-body-inner {
+      padding: 2rem;
     }
-
-    .seance-item h4 {
+    .chevron-icon {
+      transition: transform 0.4s ease;
+      font-size: 1.2rem;
       color: #0b5e9e;
-      margin-bottom: 0.3rem;
+    }
+    .module.active .chevron-icon {
+      transform: rotate(180deg);
     }
 
-    .badge-chap {
-      background: #eef2fc;
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .chapter-card {
+      background: white;
+      border: 1px solid #e8edf3;
+      border-radius: 16px;
+      padding: 1.3rem;
+      transition: var(--transition);
+    }
+    .chapter-card:hover {
+      border-color: #0b5e9e;
+      box-shadow: 0 6px 18px rgba(11,94,158,0.08);
+    }
+    .chapter-badge {
+      background: #eef5fc;
       color: #0b5e9e;
-      border-radius: 30px;
-      padding: 0.2rem 0.8rem;
-      font-size: 0.7rem;
-      font-weight: 600;
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
       display: inline-block;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.8rem;
+    }
+    .chapter-card h5 {
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 0.6rem;
+    }
+    .chapter-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .chapter-card ul li {
+      padding: 0.25rem 0;
+      font-size: 0.9rem;
+      color: #475569;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .chapter-card ul li::before {
+      content: '▸';
+      color: #0b5e9e;
+      font-weight: bold;
     }
 
     .mini-projet {
-      background: #f0f6fe;
-      border-radius: 20px;
-      padding: 0.8rem 1.2rem;
-      margin-top: 0.8rem;
+      background: linear-gradient(135deg, #eef5fc, #e2edf7);
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      margin-top: 1.5rem;
+      border-left: 4px solid #0b5e9e;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .mini-projet img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      border-radius: 8px;
     }
 
+    /* Contact */
+    .contact-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 3rem 0;
+    }
     .contact-card {
       background: white;
-      border-radius: 32px;
+      border-radius: 28px;
       padding: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: space-between;
-      box-shadow: var(--ombre-legere);
-      border: 1px solid #e2edf7;
-      margin: 2rem 0;
+      box-shadow: var(--ombre);
+      border: 1px solid #e8edf3;
     }
-
-    .contact-details {
-      flex: 1;
-    }
-
-    .whatsapp-link {
+    .whatsapp-btn {
       background: #25D366;
       color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 36px;
+      padding: 0.8rem 1.6rem;
+      border-radius: 50px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-weight: 500;
+      gap: 10px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .whatsapp-btn:hover {
+      background: #1da851;
+      transform: scale(1.03);
     }
 
     .footer {
-      background: #083c6e;
-      color: white;
-      text-align: center;
-      padding: 2rem;
-      border-top-left-radius: 2rem;
-      border-top-right-radius: 2rem;
-      margin-top: 3rem;
+      background: linear-gradient(135deg, #0a2540, #0b3d60);
+      color: #ccdbe9;
+      padding: 3rem 2rem;
+      border-radius: 2rem 2rem 0 0;
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    .footer a { color: #a0c4e8; text-decoration: none; }
+
+    /* Image d'arrière-plan académique */
+    .academic-pattern {
+      background-image: url('https://www.transparenttextures.com/patterns/absurdidad.png');
+      opacity: 0.03;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
     }
 
-    @media (max-width: 768px) {
-      .hero-text h1 {
-        font-size: 1.8rem;
-      }
-      .info-grid {
-        flex-direction: column;
-      }
-      .office-icons {
-        gap: 1.8rem;
-      }
+    @media (max-width: 900px) {
+      .hero-content { grid-template-columns: 1fr; }
+      .office-grid { grid-template-columns: 1fr; }
+      .info-grid { grid-template-columns: 1fr 1fr; }
+      .horaires-grid { grid-template-columns: 1fr; }
+      .contact-section { grid-template-columns: 1fr; }
+      .hero-text h1 { font-size: 2.2rem; }
     }
-
-    ul {
-      padding-left: 1.3rem;
-      margin: 0.5rem 0;
-    }
-    li {
-      margin: 0.3rem 0;
+    @media (max-width: 500px) {
+      .info-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
+<div class="academic-pattern"></div>
 
+<!-- Navigation -->
+<nav class="nav-academy">
+  <div class="container nav-inner">
+    <a href="#" class="logo">
+      <img src="https://img.icons8.com/color/48/000000/graduation-cap.png" alt="Nova Academy Logo">
+      Nova Academy
+    </a>
+    <ul class="nav-links">
+      <li><a href="#programme">Programme</a></li>
+      <li><a href="#horaires">Horaires</a></li>
+      <li><a href="#tarifs">Tarifs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
 <header class="hero">
   <div class="container hero-content">
     <div class="hero-text">
-      <div class="badge"><i class="fas fa-graduation-cap"></i> Formation pratique</div>
-      <h1>📘 BUREAUTIQUE PRO <br> Word • Excel • PowerPoint</h1>
-      <p style="margin-top: 0.5rem; opacity:0.9;">Maîtrisez les outils indispensables – documents, rapports, présentations.</p>
-      <button class="btn-inscription" id="heroInscriptionBtn" style="margin-top: 1.2rem;"><i class="fas fa-pen-alt"></i> S’inscrire maintenant</button>
+      <div class="hero-badge"><i class="fas fa-certificate"></i> Formation certifiante · Korhogo</div>
+      <h1>Bureautique <span class="highlight">Professionnelle</span></h1>
+      <p class="hero-subtitle">Microsoft Word · Excel · PowerPoint — Maîtrisez la suite Office de A à Z avec des projets concrets et un accompagnement personnalisé.</p>
+      <div>
+        <button class="btn-primary" id="heroBtn"><i class="fas fa-graduation-cap"></i> Réserver ma place</button>
+        <button class="btn-outline" onclick="document.getElementById('programme').scrollIntoView({behavior:'smooth'})"><i class="fas fa-book"></i> Voir le programme</button>
+      </div>
     </div>
-    <div class="hero-stats">
-      <p><i class="far fa-calendar-check"></i> 1er Août → 22 Août 2026</p>
-      <p><i class="fas fa-users"></i> 4 places par vague</p>
-      <span>⚠️ Session intensive</span>
+    <div class="hero-card">
+      <div class="stat-row"><span class="stat-icon"><i class="far fa-calendar-alt"></i></span> 3 Août – 25 Août 2026</div>
+      <div class="stat-row"><span class="stat-icon"><i class="fas fa-clock"></i></span> Lundi – Vendredi</div>
+      <div class="stat-row"><span class="stat-icon"><i class="fas fa-users"></i></span> 4 places par vague</div>
+      <div class="stat-row"><span class="stat-icon"><i class="fas fa-map-marker-alt"></i></span> Korhogo, Kassirimé</div>
+      <div style="margin-top:1rem; background:#e74c3c; color:white; padding:0.4rem 1rem; border-radius:20px; display:inline-block; font-size:0.8rem; font-weight:700;">Plus que 2 places</div>
     </div>
   </div>
 </header>
 
 <main class="container">
-  <!-- Mise en avant image office (Word, Excel, PowerPoint) avec icônes grandes -->
-  <div class="office-showcase">
-    <div class="office-icons">
+
+  <!-- Images réelles Microsoft Office -->
+  <div class="office-section animate">
+    <div class="office-grid">
       <div class="office-item">
-        <i class="fas fa-file-word word-icon"></i>
-        <span>Microsoft Word</span>
+        <img src="https://img.icons8.com/color/96/000000/microsoft-word-2019.png" alt="Microsoft Word" loading="lazy">
+        <h4>Microsoft Word</h4>
+        <p>Traitement de texte avancé</p>
       </div>
       <div class="office-item">
-        <i class="fas fa-file-excel excel-icon"></i>
-        <span>Microsoft Excel</span>
+        <img src="https://img.icons8.com/color/96/000000/microsoft-excel-2019.png" alt="Microsoft Excel" loading="lazy">
+        <h4>Microsoft Excel</h4>
+        <p>Tableur et analyse de données</p>
       </div>
       <div class="office-item">
-        <i class="fas fa-file-powerpoint powerpoint-icon"></i>
-        <span>Microsoft PowerPoint</span>
+        <img src="https://img.icons8.com/color/96/000000/microsoft-powerpoint-2019.png" alt="Microsoft PowerPoint" loading="lazy">
+        <h4>Microsoft PowerPoint</h4>
+        <p>Présentations professionnelles</p>
       </div>
     </div>
-    <div class="showcase-text">
-      <i class="fas fa-laptop-code"></i> Pack Office complet<br>Word • Excel • PowerPoint
+  </div>
+
+  <!-- Infos clés -->
+  <div class="info-grid animate" id="tarifs">
+    <div class="info-card">
+      <div class="card-icon"><i class="far fa-calendar-alt"></i></div>
+      <h3>3 – 25 Août 2026</h3>
+      <p>Lundi au Vendredi</p>
+    </div>
+    <div class="info-card">
+      <div class="card-icon"><i class="fas fa-tag"></i></div>
+      <span class="prix-large">20 000 F</span>
+      <p style="background:#eef5fc; display:inline-block; padding:0.3rem 1rem; border-radius:20px; margin-top:0.3rem;">2 paiements échelonnés</p>
+    </div>
+    <div class="info-card">
+      <div class="card-icon"><i class="fas fa-user-check"></i></div>
+      <h3>4 places</h3>
+      <p>Groupe réduit</p>
+    </div>
+    <div class="info-card">
+      <div class="card-icon"><i class="fas fa-location-dot"></i></div>
+      <h3>Korhogo</h3>
+      <p>Kassirimé, près Bethlem</p>
     </div>
   </div>
 
-  <!-- infos clés mises à jour -->
-  <div class="info-grid">
-    <div class="info-card"><i class="far fa-calendar-alt"></i><h3>1er - 22 Août 2026</h3><span>3 séances/semaine</span></div>
-    <div class="info-card"><i class="fas fa-tag"></i><span class="prix">20.000 F</span><br><span class="paiement-info"><i class="fas fa-sync-alt"></i> 2 paiements échelonnés</span></div>
-    <div class="info-card"><i class="fas fa-chair"></i><h3>4 places</h3><span>par vague, petit groupe</span></div>
-    <div class="info-card"><i class="fas fa-map-marker-alt"></i><h3>Korhogo</h3><span>Kassirimé, non loin de Bethlem</span></div>
-  </div>
-
-  <div class="objectif-general">
-    <h2><i class="fas fa-bullseye" style="color:#02208e;"></i> OBJECTIF GÉNÉRAL</h2>
-    <p style="font-size:1.05rem;">Permettre aux apprenants de maîtriser les outils bureautiques essentiels <strong>(Word, Excel, PowerPoint)</strong> afin de produire des documents professionnels, académiques et pratiques, utiles pour les études, le travail et l’entreprise.</p>
-  </div>
-
-  <div>
-    <h2 class="section-title"><i class="fas fa-book-open"></i> Programme détaillé</h2>
-
-    <div class="module">
-      <div class="module-header">
-        <span>🖥️ SÉANCE 1 : INITIATION À L’INFORMATIQUE</span>
-        <i class="fas fa-chevron-down"></i>
+  <!-- Horaires -->
+  <div class="horaires-section animate" id="horaires">
+    <h3 style="font-weight:700; color:#0f2b44; font-size:1.3rem;"><i class="far fa-clock"></i> Horaires de formation · Du Lundi au Vendredi</h3>
+    <div class="horaires-grid">
+      <div class="horaire-card horaire-matin">
+        <div class="horaire-icon-wrap">
+          <img src="https://img.icons8.com/emoji/48/000000/sun-emoji.png" alt="Matin" width="40" height="40">
+        </div>
+        <div class="horaire-info">
+          <h4>MATINÉE</h4>
+          <p class="time">8h00 – 11h30</p>
+          <p style="font-size:0.9rem; color:#555;"><i class="fas fa-user-graduate"></i> Étudiants & disponibles</p>
+        </div>
       </div>
-      <div class="module-body">
-        <div class="seance-item">
-          <h4>✅ Objectifs</h4>
-          <ul><li>Comprendre fonctionnement ordinateur</li><li>Différencier matériel/logiciel</li><li>Système d’exploitation & applications</li><li>Gérer fichiers/dossiers</li><li>Utiliser Internet et e-mail</li></ul>
-          <h4>📚 Contenu</h4>
-          <ul><li>Composants de l’ordinateur</li><li>Windows : bureau, menu démarrer</li><li>Création et gestion des dossiers</li><li>Navigation Internet et messagerie</li></ul>
+      <div class="horaire-card horaire-soir">
+        <div class="horaire-icon-wrap">
+          <img src="https://img.icons8.com/emoji/48/000000/crescent-moon-emoji.png" alt="Soir" width="40" height="40">
+        </div>
+        <div class="horaire-info">
+          <h4>SOIR</h4>
+          <p class="time">18h00 – 20h00</p>
+          <p style="font-size:0.9rem; color:#555;"><i class="fas fa-briefcase"></i> Travailleurs & professionnels</p>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="module">
-      <div class="module-header">
-        <span><i class="fas fa-file-word" style="color:#2b579a; margin-right:6px;"></i> MODULE 1 : MICROSOFT WORD (Chap. 1-5)</span>
-        <i class="fas fa-chevron-down"></i>
+  <!-- Programme détaillé -->
+  <h2 class="section-title animate" id="programme"><i class="fas fa-graduation-cap"></i> Programme détaillé</h2>
+
+  <!-- Module Initiation -->
+  <div class="module animate">
+    <div class="module-header">
+      <div class="module-header-left">
+        <img src="https://img.icons8.com/color/48/000000/laptop.png" alt="Initiation" class="module-icon-img" loading="lazy">
+        <div><strong>Séance 1 :</strong> Initiation à l'informatique</div>
       </div>
-      <div class="module-body">
-        <div class="seance-item"><span class="badge-chap">Chapitre 1</span><h4>Bases et structuration</h4><ul><li>Interface Word, créer/enregistrer</li><li>Styles (Titre1, Titre2...)</li><li>Structurer un document long</li></ul></div>
-        <div class="seance-item"><span class="badge-chap">Chapitre 2</span><h4>Mise en forme pro</h4><ul><li>Mise en forme texte/paragraphes</li><li>Marges, orientation, sauts de page</li><li>En-têtes, pieds de page, numérotation</li></ul></div>
-        <div class="seance-item"><span class="badge-chap">Chapitre 3</span><h4>Automatisation</h4><ul><li>Table des matières automatique</li><li>Légendes, table des figures</li><li>Mise à jour automatique</li></ul></div>
-        <div class="seance-item"><span class="badge-chap">Chapitre 4</span><h4>Références</h4><ul><li>Insérer citations</li><li>Bibliographie automatique (APA, ISO)</li></ul></div>
-        <div class="seance-item"><span class="badge-chap">Chapitre 5</span><h4>Finalisation</h4><ul><li>Correction orthographique</li><li>Export PDF, préparation impression</li></ul></div>
-        <div class="mini-projet"><i class="fas fa-file-word"></i> <strong>Mini-projet Word</strong> : Document professionnel complet</div>
+      <i class="fas fa-chevron-down chevron-icon"></i>
+    </div>
+    <div class="module-body">
+      <div class="module-body-inner">
+        <div class="chapter-grid">
+          <div class="chapter-card">
+            <span class="chapter-badge">Objectifs</span>
+            <ul>
+              <li>Comprendre le fonctionnement d'un ordinateur</li>
+              <li>Différencier matériel et logiciel</li>
+              <li>Maîtriser le système d'exploitation Windows</li>
+              <li>Gérer les fichiers et dossiers</li>
+              <li>Utiliser Internet et la messagerie</li>
+            </ul>
+          </div>
+          <div class="chapter-card">
+            <span class="chapter-badge">Contenu pratique</span>
+            <ul>
+              <li>Découverte des composants</li>
+              <li>Bureau, menu Démarrer, fenêtres</li>
+              <li>Explorateur de fichiers</li>
+              <li>Navigation web et emails</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="module">
-      <div class="module-header">
-        <span><i class="fas fa-file-excel" style="color:#217346; margin-right:6px;"></i> MODULE 2 : MICROSOFT EXCEL (Chap. 6-8)</span>
-        <i class="fas fa-chevron-down"></i>
+  <!-- Module Word -->
+  <div class="module animate">
+    <div class="module-header">
+      <div class="module-header-left">
+        <img src="https://img.icons8.com/color/48/000000/microsoft-word-2019.png" alt="Word" class="module-icon-img" loading="lazy">
+        <div><strong>Module 1 :</strong> Microsoft Word (Chapitres 1 à 5)</div>
       </div>
-      <div class="module-body">
-        <div class="seance-item"><span class="badge-chap">Chapitre 6</span><h4>Bases d’Excel</h4><ul><li>Cellules, lignes, colonnes</li><li>Saisir et organiser données</li></ul></div>
-        <div class="seance-item"><span class="badge-chap">Chapitre 7</span><h4>Formules et fonctions</h4><ul><li>SOMME, MOYENNE, MIN, MAX</li><li>Références relatives/absolues</li></ul></div>
-        <div class="seance-item"><span class="badge-chap">Chapitre 8</span><h4>Analyse et graphiques</h4><ul><li>Trier/filtrer données</li><li>Créer graphiques simples</li></ul></div>
-        <div class="mini-projet"><i class="fas fa-chart-line"></i> <strong>Mini-projet Excel</strong> : Tableau de gestion</div>
+      <i class="fas fa-chevron-down chevron-icon"></i>
+    </div>
+    <div class="module-body">
+      <div class="module-body-inner">
+        <div class="chapter-grid">
+          <div class="chapter-card">
+            <span class="chapter-badge">Chapitre 1</span>
+            <h5>Bases et structuration</h5>
+            <ul>
+              <li>Interface Word, créer/enregistrer</li>
+              <li>Styles (Titre 1, Titre 2...)</li>
+              <li>Structurer un document long</li>
+            </ul>
+          </div>
+          <div class="chapter-card">
+            <span class="chapter-badge">Chapitre 2</span>
+            <h5>Mise en forme professionnelle</h5>
+            <ul>
+              <li>Mise en forme texte/paragraphes</li>
+              <li>Marges, orientation, sauts de page</li>
+              <li>En-têtes, pieds de page, numérotation</li>
+            </ul>
+          </div>
+          <div class="chapter-card">
+            <span class="chapter-badge">Chapitre 3</span>
+            <h5>Automatisation du document</h5>
+            <ul>
+              <li>Table des matières automatique</li>
+              <li>Légendes (images, tableaux)</li>
+              <li>Table des figures/tableaux</li>
+              <li>Mise à jour automatique</li>
+            </ul>
+          </div>
+          <div class="chapter-card">
+            <span class="chapter-badge">Chapitre 4</span>
+            <h5>Références et bibliographie</h5>
+            <ul>
+              <li>Insertion de citations</li>
+              <li>Bibliographie automatique</li>
+              <li>Styles APA, ISO, etc.</li>
+            </ul>
+          </div>
+          <div class="chapter-card">
+            <span class="chapter-badge">Chapitre 5</span>
+            <h5>Finalisation et export</h5>
+            <ul>
+              <li>Correction orthographique</li>
+              <li>Export PDF optimisé</li>
+              <li>Préparation pour l'impression</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mini-projet">
+          <img src="https://img.icons8.com/color/48/000000/microsoft-word-2019.png" alt="Word projet" loading="lazy">
+          <div><strong>Mini-projet Word :</strong> Rédaction d'un document professionnel complet avec page de garde, styles, table des matières, légendes et bibliographie automatique.</div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="module">
-      <div class="module-header">
-        <span><i class="fas fa-file-powerpoint" style="color:#d24726; margin-right:6px;"></i> MODULE 3 : POWERPOINT (Chap. 9-10)</span>
-        <i class="fas fa-chevron-down"></i>
+  <!-- Module Excel -->
+  <div class="module animate">
+    <div class="module-header">
+      <div class="module-header-left">
+        <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019.png" alt="Excel" class="module-icon-img" loading="lazy">
+        <div><strong>Module 2 :</strong> Microsoft Excel (Chapitres 6 à 8)</div>
       </div>
-      <div class="module-body">
-        <div class="seance-item"><span class="badge-chap">Chapitre 9</span><h4>Création de présentation</h4><ul><li>Interface, organiser diapositives</li><li>Insérer texte et images</li></ul></div>
-        <div class="seance-item"><span class="badge-chap">Chapitre 10</span><h4>Design et animations</h4><ul><li>Thème professionnel</li><li>Transitions & animations</li></ul></div>
-        <div class="mini-projet"><i class="fas fa-chalkboard"></i> <strong>Mini-projet PowerPoint</strong> : Présentation pro</div>
+      <i class="fas fa-chevron-down chevron-icon"></i>
+    </div>
+    <div class="module-body">
+      <div class="module-body-inner">
+        <div class="chapter-grid">
+          <div class="chapter-card">
+            <span class="chapter-badge">Chapitre 6</span>
+            <h5>Bases d'Excel</h5>
+            <ul>
+              <li>Cellules, lignes, colonnes</li>
+              <li>Saisie et organisation des données</li>
+              <li>Mise en forme des tableaux</li>
+            </ul>
+          </div>
+          <div class="chapter-card">
+            <span class="chapter-badge">Chapitre 7</span>
+            <h5>Formules et fonctions</h5>
+            <ul>
+              <li>Calculs simples et avancés</li>
+              <li>SOMME, MOYENNE, MIN, MAX</li>
+              <li>Références relatives/absolues</li>
+            </ul>
+          </div>
+          <div class="chapter-card">
+            <span class="chapter-badge">Chapitre 8</span>
+            <h5>Analyse et graphiques</h5>
+            <ul>
+              <li>Trier et filtrer les données</li>
+              <li>Créer des graphiques</li>
+              <li>Exploiter les résultats</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mini-projet">
+          <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019.png" alt="Excel projet" loading="lazy">
+          <div><strong>Mini-projet Excel :</strong> Création d'un tableau de gestion (dépenses, suivi de paiements) avec formules et graphiques.</div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="module">
-      <div class="module-header">
-        <span>🎓 PROJET FINAL : SYNTHÈSE GLOBALE</span>
-        <i class="fas fa-chevron-down"></i>
+  <!-- Module PowerPoint -->
+  <div class="module animate">
+    <div class="module-header">
+      <div class="module-header-left">
+        <img src="https://img.icons8.com/color/48/000000/microsoft-powerpoint-2019.png" alt="PowerPoint" class="module-icon-img" loading="lazy">
+        <div><strong>Module 3 :</strong> Microsoft PowerPoint (Chapitres 9 & 10)</div>
       </div>
-      <div class="module-body">
-        <p><strong>Objectif :</strong> Projet intégrant Word, Excel et PowerPoint :</p>
-        <ul>
-          <li>📄 Rapport Word (styles, TDM, biblio)</li>
-          <li>📊 Tableau Excel (graphiques, formules)</li>
-          <li>🎤 Présentation PowerPoint finale</li>
+      <i class="fas fa-chevron-down chevron-icon"></i>
+    </div>
+    <div class="module-body">
+      <div class="module-body-inner">
+        <div class="chapter-grid">
+          <div class="chapter-card">
+            <span class="chapter-badge">Chapitre 9</span>
+            <h5>Création de présentation</h5>
+            <ul>
+              <li>Interface PowerPoint</li>
+              <li>Organiser les diapositives</li>
+              <li>Insérer texte et images</li>
+            </ul>
+          </div>
+          <div class="chapter-card">
+            <span class="chapter-badge">Chapitre 10</span>
+            <h5>Design et animations</h5>
+            <ul>
+              <li>Choisir un thème professionnel</li>
+              <li>Transitions et animations</li>
+              <li>Impact visuel et narration</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mini-projet">
+          <img src="https://img.icons8.com/color/48/000000/microsoft-powerpoint-2019.png" alt="PowerPoint projet" loading="lazy">
+          <div><strong>Mini-projet PowerPoint :</strong> Conception d'une présentation complète et professionnelle avec slides, transitions et animations.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projet final -->
+  <div class="module animate">
+    <div class="module-header">
+      <div class="module-header-left">
+        <img src="https://img.icons8.com/color/48/000000/trophy.png" alt="Projet final" class="module-icon-img" loading="lazy">
+        <div><strong>Projet Final :</strong> Synthèse Globale</div>
+      </div>
+      <i class="fas fa-chevron-down chevron-icon"></i>
+    </div>
+    <div class="module-body">
+      <div class="module-body-inner">
+        <p style="font-size:1.1rem; margin-bottom:1.5rem;"><strong>Objectif :</strong> Réaliser un projet complet intégrant les trois logiciels :</p>
+        <div class="chapter-grid">
+          <div class="chapter-card">
+            <h5><img src="https://img.icons8.com/color/24/000000/microsoft-word-2019.png" alt="Word" style="vertical-align:middle;"> Rapport Word</h5>
+            <p>Document structuré avec styles, table des matières, légendes et bibliographie automatique.</p>
+          </div>
+          <div class="chapter-card">
+            <h5><img src="https://img.icons8.com/color/24/000000/microsoft-excel-2019.png" alt="Excel" style="vertical-align:middle;"> Tableau Excel</h5>
+            <p>Analyse de données avec formules, fonctions et graphiques dynamiques.</p>
+          </div>
+          <div class="chapter-card">
+            <h5><img src="https://img.icons8.com/color/24/000000/microsoft-powerpoint-2019.png" alt="PowerPoint" style="vertical-align:middle;"> Présentation PowerPoint</h5>
+            <p>Présentation professionnelle synthétisant l'ensemble du projet.</p>
+          </div>
+        </div>
+        <p style="margin-top:1rem;"><strong>À l'issue de la formation, vous serez capable de :</strong></p>
+        <ul style="list-style:none; padding:0; margin-top:0.5rem;">
+          <li style="padding:0.3rem 0;">✔ Produire des documents professionnels</li>
+          <li style="padding:0.3rem 0;">✔ Automatiser Word (TDM, bibliographie)</li>
+          <li style="padding:0.3rem 0;">✔ Gérer des données avec Excel</li>
+          <li style="padding:0.3rem 0;">✔ Présenter efficacement avec PowerPoint</li>
         </ul>
       </div>
     </div>
   </div>
 
-  <div class="contact-card">
-    <div class="contact-details">
-      <h3><i class="fas fa-link"></i> Inscription</h3>
-      <p><i class="fas fa-file-alt"></i> Lien officiel : <br> <a href="https://forms.office.com/r/E3GmUc2gsi" target="_blank" style="color:#0b5e9e; font-weight:600;">forms.office.com/r/E3GmUc2gsi</a></p>
-      <button class="btn-inscription" id="inscriptionBtn" style="margin-top: 10px;"><i class="fas fa-check-circle"></i> Remplir le formulaire</button>
+  <!-- Contact -->
+  <div class="contact-section animate" id="contact">
+    <div class="contact-card">
+      <h3 style="margin-bottom:1rem;"><img src="https://img.icons8.com/color/32/000000/form.png" alt="Formulaire" style="vertical-align:middle;"> Inscription</h3>
+      <p style="margin-bottom:1rem;">Remplissez le formulaire officiel pour réserver votre place :</p>
+      <p><a href="https://forms.office.com/r/E3GmUc2gsi" target="_blank" style="color:#0b5e9e; font-weight:600; word-break:break-all;">https://forms.office.com/r/E3GmUc2gsi</a></p>
+      <button class="btn-primary" id="inscriptionBtn" style="margin-top:1.5rem; animation:none;"><i class="fas fa-check-circle"></i> S'inscrire maintenant</button>
     </div>
-    <div class="contact-details">
-      <h3><i class="fas fa-address-card"></i> Contacts & lieu</h3>
-      <p><i class="fas fa-map-pin"></i> 📍 Korhogo, Kassirimé (non loin de Bethlem)</p>
-      <p><i class="fab fa-whatsapp"></i> <strong>0716851525</strong> <br> <a href="https://wa.me/qr/P3GB6WP45P6PK1" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></p>
-      <p><i class="fas fa-envelope"></i> novaacademy27@gmail.com</p>
+    <div class="contact-card">
+      <h3 style="margin-bottom:1rem;"><img src="https://img.icons8.com/color/32/000000/contact-card.png" alt="Contact" style="vertical-align:middle;"> Contacts & Lieu</h3>
+      <p style="margin-bottom:0.8rem;"><i class="fas fa-map-pin"></i> <strong>Korhogo, Kassirimé</strong> (non loin de Bethlem)</p>
+      <p style="margin-bottom:0.8rem;"><i class="fab fa-whatsapp"></i> <strong>0716851525</strong></p>
+      <a href="https://wa.me/qr/P3GB6WP45P6PK1" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Écrire sur WhatsApp</a>
+      <p style="margin-top:1rem;"><i class="fas fa-envelope"></i> novaacademy27@gmail.com</p>
     </div>
   </div>
 
-  <div style="background: #e2edf7; border-radius: 20px; padding: 0.8rem 1.5rem; text-align: center; margin-top: 1rem;">
-    <i class="fas fa-hourglass-half"></i> <strong>4 places disponibles par vague</strong> – Paiement échelonné possible (2 versements)
+  <div style="background:#e2edf7; border-radius:20px; padding:1rem 1.8rem; text-align:center; margin-top:1.5rem;">
+    <i class="fas fa-info-circle"></i> <strong>4 places disponibles par vague</strong> — Paiement échelonné possible en 2 versements.
   </div>
 </main>
 
 <footer class="footer">
-  <p>© 2026 Nova Academy – Formation bureautique à Korhogo. Word, Excel, PowerPoint.</p>
-  <p style="margin-top: 8px;"><i class="fas fa-mobile-alt"></i> 0716851525 | novaacademy27@gmail.com</p>
+  <div>
+    <h4 style="color:white; margin-bottom:0.8rem;">
+      <img src="https://img.icons8.com/color/24/000000/graduation-cap.png" alt="Logo" style="vertical-align:middle;"> Nova Academy
+    </h4>
+    <p>Formation bureautique professionnelle<br>Word · Excel · PowerPoint</p>
+  </div>
+  <div>
+    <h4 style="color:white; margin-bottom:0.8rem;">Liens rapides</h4>
+    <p><a href="#programme">Programme</a></p>
+    <p><a href="#horaires">Horaires</a></p>
+    <p><a href="#contact">Contact</a></p>
+  </div>
+  <div>
+    <h4 style="color:white; margin-bottom:0.8rem;">Contact</h4>
+    <p>0716851525</p>
+    <p>novaacademy27@gmail.com</p>
+    <p>Korhogo, Kassirimé</p>
+  </div>
+  <div style="grid-column:1/-1; text-align:center; margin-top:1rem; font-size:0.85rem;">
+    &copy; 2026 Nova Academy — Tous droits réservés.
+  </div>
 </footer>
 
 <script>
   (function() {
+    // Intersection Observer pour animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
+
+    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+    // Accordéon modules
     const modules = document.querySelectorAll('.module');
-    function closeAll(exceptIdx = -1) {
-      modules.forEach((mod, idx) => { if (exceptIdx !== idx) mod.classList.remove('active'); });
-    }
-    modules.forEach((module, index) => {
-      const header = module.querySelector('.module-header');
-      header.addEventListener('click', (e) => {
-        const isActive = module.classList.contains('active');
-        if (!isActive) { closeAll(index); module.classList.add('active'); }
-        else { module.classList.remove('active'); }
+    modules.forEach(mod => {
+      const header = mod.querySelector('.module-header');
+      header.addEventListener('click', () => {
+        const wasActive = mod.classList.contains('active');
+        modules.forEach(m => m.classList.remove('active'));
+        if (!wasActive) {
+          mod.classList.add('active');
+          setTimeout(() => {
+            mod.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 150);
+        }
       });
     });
-    // Ouvrir module Word par défaut (index 1 après séance 1)
-    if(modules.length >= 2 && !modules[1].classList.contains('active')) {
-      closeAll(1);
+    // Ouvrir Word par défaut
+    if (modules.length >= 2) {
       modules[1].classList.add('active');
     }
 
+    // Boutons inscription
     const link = "https://forms.office.com/r/E3GmUc2gsi";
-    document.querySelectorAll('#heroInscriptionBtn, #inscriptionBtn').forEach(b => {
-      b.addEventListener('click', () => window.open(link, '_blank'));
+    document.querySelectorAll('#heroBtn, #inscriptionBtn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.open(link, '_blank');
+      });
     });
   })();
 </script>
