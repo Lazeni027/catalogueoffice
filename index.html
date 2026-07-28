@@ -1,10 +1,11 @@
+Voici le code HTML mis à jour avec les nouvelles informations que vous avez fournies : date (1er au 22 Août 2026), tarif avec paiement échelonné, lieu (Korhogo, Kassirimé non loin de Bethlem), et une mise en avant visuelle des icônes/logos Word, Excel et PowerPoint.
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Nova Academy | Formation Bureautique Complète</title>
-  <!-- Font Awesome 6 (gratuit, pour icônes pro) -->
+  <!-- Font Awesome 6 (gratuit, pour icônes) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -21,14 +22,12 @@
       scroll-behavior: smooth;
     }
 
-    /* container global responsive */
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* BLEU & BLANC : palette */
     :root {
       --bleu-primaire: #0b5e9e;
       --bleu-fonce: #083c6e;
@@ -37,15 +36,18 @@
       --blanc-casse: #ffffff;
       --gris-doux: #f8fafc;
       --ombre-legere: 0 12px 28px rgba(0, 32, 64, 0.08);
+      --word-bleu: #2b579a;
+      --excel-vert: #217346;
+      --powerpoint-orange: #d24726;
     }
 
     /* header hero */
     .hero {
       background: linear-gradient(135deg, #0b5e9e 0%, #08427a 100%);
       color: white;
-      padding: 3rem 0 3rem 0;
-      border-bottom-left-radius: 2rem;
-      border-bottom-right-radius: 2rem;
+      padding: 2.5rem 0 2.8rem 0;
+      border-bottom-left-radius: 2.2rem;
+      border-bottom-right-radius: 2.2rem;
       margin-bottom: 2rem;
       box-shadow: var(--ombre-legere);
     }
@@ -63,6 +65,7 @@
       font-weight: 800;
       letter-spacing: -0.02em;
       margin-bottom: 0.5rem;
+      line-height: 1.2;
     }
 
     .hero-text .badge {
@@ -78,15 +81,16 @@
 
     .hero-stats {
       background: rgba(255,255,255,0.12);
-      padding: 1rem 1.8rem;
+      padding: 1.2rem 1.8rem;
       border-radius: 32px;
       text-align: center;
       backdrop-filter: blur(4px);
     }
 
     .hero-stats p {
-      font-size: 1.3rem;
-      font-weight: 700;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0.3rem 0;
     }
 
     .hero-stats span {
@@ -94,7 +98,57 @@
       opacity: 0.9;
     }
 
-    /* cartes infos générales */
+    /* section logo office en avant */
+    .office-showcase {
+      background: white;
+      border-radius: 40px;
+      padding: 1.8rem 1.5rem;
+      margin: 2.2rem 0 2rem 0;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+      border: 1px solid #dce9f5;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .office-icons {
+      display: flex;
+      gap: 2.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .office-item {
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .office-item i {
+      font-size: 3.8rem;
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1));
+    }
+
+    .office-item span {
+      display: block;
+      font-weight: 700;
+      margin-top: 0.4rem;
+      font-size: 1rem;
+    }
+
+    .word-icon { color: var(--word-bleu); }
+    .excel-icon { color: var(--excel-vert); }
+    .powerpoint-icon { color: var(--powerpoint-orange); }
+
+    .showcase-text {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #083c6e;
+      text-align: center;
+    }
+
+    /* cartes infos */
     .info-grid {
       display: flex;
       flex-wrap: wrap;
@@ -121,7 +175,7 @@
     }
 
     .info-card h3 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       color: #083c6e;
       margin-bottom: 0.3rem;
     }
@@ -146,6 +200,7 @@
       align-items: center;
       gap: 8px;
       box-shadow: 0 2px 8px rgba(11,94,158,0.3);
+      text-decoration: none;
     }
 
     .btn-inscription:hover {
@@ -153,15 +208,19 @@
       transform: scale(1.02);
     }
 
-    .btn-outline {
-      background: transparent;
-      border: 2px solid #0b5e9e;
-      color: #0b5e9e;
+    .paiement-info {
+      background: #eef5fc;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      display: inline-block;
+      margin-top: 0.4rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #083c6e;
     }
 
-    /* sections générales */
     section {
-      margin: 3rem 0;
+      margin: 2.8rem 0;
     }
 
     .section-title {
@@ -181,7 +240,6 @@
       border: 1px solid #cddff0;
     }
 
-    /* accordéon / carte programme */
     .module {
       background: white;
       border-radius: 32px;
@@ -200,10 +258,8 @@
       justify-content: space-between;
       align-items: center;
       font-weight: 700;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: #0a2540;
-      border-bottom: 1px solid transparent;
-      transition: 0.1s;
     }
 
     .module-header i {
@@ -226,7 +282,7 @@
     }
 
     .module.active .module-body {
-      max-height: 1200px;
+      max-height: 1400px;
       padding: 1.2rem 1.8rem 1.8rem 1.8rem;
     }
 
@@ -259,14 +315,6 @@
       margin-top: 0.8rem;
     }
 
-    hr {
-      margin: 1rem 0;
-      border: 0;
-      height: 1px;
-      background: linear-gradient(to right, #cbdde9, transparent);
-    }
-
-    /* contact et inscription */
     .contact-card {
       background: white;
       border-radius: 32px;
@@ -282,14 +330,6 @@
 
     .contact-details {
       flex: 1;
-    }
-
-    .contact-details p {
-      margin: 0.8rem 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
     }
 
     .whatsapp-link {
@@ -321,32 +361,17 @@
       .info-grid {
         flex-direction: column;
       }
-      .module-header {
-        font-size: 1rem;
-        padding: 1rem;
-      }
-      .container {
-        padding: 0 16px;
-      }
-      .contact-card {
-        flex-direction: column;
+      .office-icons {
+        gap: 1.8rem;
       }
     }
 
-    /* liste à puces */
-    ul, .liste-simple {
+    ul {
       padding-left: 1.3rem;
       margin: 0.5rem 0;
     }
     li {
       margin: 0.3rem 0;
-    }
-    .text-small {
-      font-size: 0.9rem;
-    }
-    .link-white {
-      color: white;
-      text-decoration: underline;
     }
   </style>
 </head>
@@ -357,37 +382,55 @@
     <div class="hero-text">
       <div class="badge"><i class="fas fa-graduation-cap"></i> Formation certifiante</div>
       <h1>📘 BUREAUTIQUE PRO <br> Word • Excel • PowerPoint</h1>
-      <p style="margin-top: 0.5rem; opacity:0.9;">Maîtrisez les outils essentiels – documents pro, rapports, présentations percutantes.</p>
+      <p style="margin-top: 0.5rem; opacity:0.9;">Maîtrisez les outils indispensables – documents, rapports, présentations.</p>
       <button class="btn-inscription" id="heroInscriptionBtn" style="margin-top: 1.2rem;"><i class="fas fa-pen-alt"></i> S’inscrire maintenant</button>
     </div>
     <div class="hero-stats">
-      <p>📆 1 mois • 16 séances</p>
+      <p><i class="far fa-calendar-check"></i> 1er Août → 22 Août 2026</p>
       <p><i class="fas fa-users"></i> 4 places par vague</p>
-      <span>⚠️ Accès limité</span>
+      <span>⚠️ Session intensive</span>
     </div>
   </div>
 </header>
 
 <main class="container">
-  <!-- infos clés -->
-  <div class="info-grid">
-    <div class="info-card"><i class="far fa-calendar-alt"></i><h3>1 mois</h3><span>3 séances/semaine</span></div>
-    <div class="info-card"><i class="fas fa-tag"></i><span class="prix">20.000 F</span><br><span>Tarif unique, tout inclus</span></div>
-    <div class="info-card"><i class="fas fa-chair"></i><h3>4 places</h3><span>par vague, petit groupe</span></div>
-    <div class="info-card"><i class="fas fa-map-marker-alt"></i><h3>Korhogo? Siège : Kassirimé non loin de Bethlem</h3><span>Présentiel & support</span></div>
+  <!-- Mise en avant image office (Word, Excel, PowerPoint) avec icônes grandes -->
+  <div class="office-showcase">
+    <div class="office-icons">
+      <div class="office-item">
+        <i class="fas fa-file-word word-icon"></i>
+        <span>Microsoft Word</span>
+      </div>
+      <div class="office-item">
+        <i class="fas fa-file-excel excel-icon"></i>
+        <span>Microsoft Excel</span>
+      </div>
+      <div class="office-item">
+        <i class="fas fa-file-powerpoint powerpoint-icon"></i>
+        <span>Microsoft PowerPoint</span>
+      </div>
+    </div>
+    <div class="showcase-text">
+      <i class="fas fa-laptop-code"></i> Pack Office complet<br>Word • Excel • PowerPoint
+    </div>
   </div>
 
-  <!-- OBJECTIF GENERAL -->
+  <!-- infos clés mises à jour -->
+  <div class="info-grid">
+    <div class="info-card"><i class="far fa-calendar-alt"></i><h3>1er - 22 Août 2026</h3><span>3 séances/semaine</span></div>
+    <div class="info-card"><i class="fas fa-tag"></i><span class="prix">20.000 F</span><br><span class="paiement-info"><i class="fas fa-sync-alt"></i> 2 paiements échelonnés</span></div>
+    <div class="info-card"><i class="fas fa-chair"></i><h3>4 places</h3><span>par vague, petit groupe</span></div>
+    <div class="info-card"><i class="fas fa-map-marker-alt"></i><h3>Korhogo</h3><span>Kassirimé, non loin de Bethlem</span></div>
+  </div>
+
   <div class="objectif-general">
     <h2><i class="fas fa-bullseye" style="color:#02208e;"></i> OBJECTIF GÉNÉRAL</h2>
     <p style="font-size:1.05rem;">Permettre aux apprenants de maîtriser les outils bureautiques essentiels <strong>(Word, Excel, PowerPoint)</strong> afin de produire des documents professionnels, académiques et pratiques, utiles pour les études, le travail et l’entreprise.</p>
   </div>
 
-  <!-- PROGRAMME COMPLET (Accordéon) -->
   <div>
     <h2 class="section-title"><i class="fas fa-book-open"></i> Programme détaillé</h2>
 
-    <!-- Séance 1 intro -->
     <div class="module">
       <div class="module-header">
         <span>🖥️ SÉANCE 1 : INITIATION À L’INFORMATIQUE</span>
@@ -398,163 +441,116 @@
           <h4>✅ Objectifs</h4>
           <ul><li>Comprendre fonctionnement ordinateur</li><li>Différencier matériel/logiciel</li><li>Système d’exploitation & applications</li><li>Gérer fichiers/dossiers</li><li>Utiliser Internet et e-mail</li></ul>
           <h4>📚 Contenu</h4>
-          <ul><li>Composants de l’ordinateur</li><li>Windows : bureau, menu démarrer, fenêtres</li><li>Création et gestion des dossiers</li><li>Navigation Internet et messagerie</li></ul>
+          <ul><li>Composants de l’ordinateur</li><li>Windows : bureau, menu démarrer</li><li>Création et gestion des dossiers</li><li>Navigation Internet et messagerie</li></ul>
         </div>
       </div>
     </div>
 
-    <!-- MODULE 1 WORD (5 chapitres) -->
     <div class="module">
       <div class="module-header">
-        <span>📘 MODULE 1 : MICROSOFT WORD (Chapitres 1 à 5)</span>
+        <span><i class="fas fa-file-word" style="color:#2b579a; margin-right:6px;"></i> MODULE 1 : MICROSOFT WORD (Chap. 1-5)</span>
         <i class="fas fa-chevron-down"></i>
       </div>
       <div class="module-body">
         <div class="seance-item"><span class="badge-chap">Chapitre 1</span><h4>Bases et structuration</h4><ul><li>Interface Word, créer/enregistrer</li><li>Styles (Titre1, Titre2...)</li><li>Structurer un document long</li></ul></div>
-        <div class="seance-item"><span class="badge-chap">Chapitre 2</span><h4>Mise en forme professionnelle</h4><ul><li>Mise en forme texte/paragraphes</li><li>Marges, orientation, sauts de page</li><li>En-têtes, pieds de page, numérotation auto</li></ul></div>
-        <div class="seance-item"><span class="badge-chap">Chapitre 3</span><h4>Automatisation du document</h4><ul><li>Table des matières automatique</li><li>Insérer légendes (images, tableaux)</li><li>Générer table des figures / tableaux</li><li>Mettre à jour automatique</li></ul></div>
-        <div class="seance-item"><span class="badge-chap">Chapitre 4</span><h4>Références et bibliographie</h4><ul><li>Insérer citations</li><li>Bibliographie automatique (APA, ISO...)</li></ul></div>
+        <div class="seance-item"><span class="badge-chap">Chapitre 2</span><h4>Mise en forme pro</h4><ul><li>Mise en forme texte/paragraphes</li><li>Marges, orientation, sauts de page</li><li>En-têtes, pieds de page, numérotation</li></ul></div>
+        <div class="seance-item"><span class="badge-chap">Chapitre 3</span><h4>Automatisation</h4><ul><li>Table des matières automatique</li><li>Légendes, table des figures</li><li>Mise à jour automatique</li></ul></div>
+        <div class="seance-item"><span class="badge-chap">Chapitre 4</span><h4>Références</h4><ul><li>Insérer citations</li><li>Bibliographie automatique (APA, ISO)</li></ul></div>
         <div class="seance-item"><span class="badge-chap">Chapitre 5</span><h4>Finalisation</h4><ul><li>Correction orthographique</li><li>Export PDF, préparation impression</li></ul></div>
-        <div class="mini-projet"><i class="fas fa-file-word" style="color:#0b5e9e;"></i> <strong>Mini-projet Word</strong> : Document professionnel complet (page de garde, styles, table matières, légendes, bibliographie automatique)</div>
+        <div class="mini-projet"><i class="fas fa-file-word"></i> <strong>Mini-projet Word</strong> : Document professionnel complet</div>
       </div>
     </div>
 
-    <!-- MODULE 2 EXCEL -->
     <div class="module">
       <div class="module-header">
-        <span>📗 MODULE 2 : MICROSOFT EXCEL (Chapitres 6,7,8)</span>
+        <span><i class="fas fa-file-excel" style="color:#217346; margin-right:6px;"></i> MODULE 2 : MICROSOFT EXCEL (Chap. 6-8)</span>
         <i class="fas fa-chevron-down"></i>
       </div>
       <div class="module-body">
-        <div class="seance-item"><span class="badge-chap">Chapitre 6</span><h4>Bases d’Excel</h4><ul><li>Cellules, lignes, colonnes</li><li>Saisir et organiser données, mise en forme tableaux</li></ul></div>
-        <div class="seance-item"><span class="badge-chap">Chapitre 7</span><h4>Formules et fonctions</h4><ul><li>Calculs simples</li><li>SOMME, MOYENNE, MIN, MAX</li><li>Références relatives/absolues</li></ul></div>
-        <div class="seance-item"><span class="badge-chap">Chapitre 8</span><h4>Analyse et graphiques</h4><ul><li>Trier/filtrer données</li><li>Créer graphiques simples</li><li>Exploiter résultats</li></ul></div>
-        <div class="mini-projet"><i class="fas fa-chart-line"></i> <strong>Mini-projet Excel</strong> : Tableau de gestion (dépenses, suivi de paiements)</div>
+        <div class="seance-item"><span class="badge-chap">Chapitre 6</span><h4>Bases d’Excel</h4><ul><li>Cellules, lignes, colonnes</li><li>Saisir et organiser données</li></ul></div>
+        <div class="seance-item"><span class="badge-chap">Chapitre 7</span><h4>Formules et fonctions</h4><ul><li>SOMME, MOYENNE, MIN, MAX</li><li>Références relatives/absolues</li></ul></div>
+        <div class="seance-item"><span class="badge-chap">Chapitre 8</span><h4>Analyse et graphiques</h4><ul><li>Trier/filtrer données</li><li>Créer graphiques simples</li></ul></div>
+        <div class="mini-projet"><i class="fas fa-chart-line"></i> <strong>Mini-projet Excel</strong> : Tableau de gestion</div>
       </div>
     </div>
 
-    <!-- MODULE 3 POWERPOINT -->
     <div class="module">
       <div class="module-header">
-        <span>📕 MODULE 3 : MICROSOFT POWERPOINT (Chapitres 9 & 10)</span>
+        <span><i class="fas fa-file-powerpoint" style="color:#d24726; margin-right:6px;"></i> MODULE 3 : POWERPOINT (Chap. 9-10)</span>
         <i class="fas fa-chevron-down"></i>
       </div>
       <div class="module-body">
         <div class="seance-item"><span class="badge-chap">Chapitre 9</span><h4>Création de présentation</h4><ul><li>Interface, organiser diapositives</li><li>Insérer texte et images</li></ul></div>
-        <div class="seance-item"><span class="badge-chap">Chapitre 10</span><h4>Design et animations</h4><ul><li>Choisir thème professionnel</li><li>Transitions & animations, impact visuel</li></ul></div>
-        <div class="mini-projet"><i class="fas fa-chalkboard"></i> <strong>Mini-projet PowerPoint</strong> : Présentation complète et professionnelle</div>
+        <div class="seance-item"><span class="badge-chap">Chapitre 10</span><h4>Design et animations</h4><ul><li>Thème professionnel</li><li>Transitions & animations</li></ul></div>
+        <div class="mini-projet"><i class="fas fa-chalkboard"></i> <strong>Mini-projet PowerPoint</strong> : Présentation pro</div>
       </div>
     </div>
 
-    <!-- PROJET FINAL -->
     <div class="module">
       <div class="module-header">
         <span>🎓 PROJET FINAL : SYNTHÈSE GLOBALE</span>
         <i class="fas fa-chevron-down"></i>
       </div>
       <div class="module-body">
-        <p><strong>Objectif :</strong> Réaliser un projet intégrant Word, Excel et PowerPoint :</p>
+        <p><strong>Objectif :</strong> Projet intégrant Word, Excel et PowerPoint :</p>
         <ul>
-          <li>📄 Rapport rédigé sous Word (styles, TDM, bibliographie)</li>
-          <li>📊 Tableau de données sous Excel (graphiques, formules)</li>
-          <li>🎤 Présentation finale sous PowerPoint</li>
-        </ul>
-        <p>À l’issue, l’apprenant sera capable de :</p>
-        <ul>
-          <li>✔ Produire des documents professionnels</li>
-          <li>✔ Automatiser Word (TDM, bibliographie)</li>
-          <li>✔ Gérer des données avec Excel</li>
-          <li>✔ Présenter efficacement avec PowerPoint</li>
+          <li>📄 Rapport Word (styles, TDM, biblio)</li>
+          <li>📊 Tableau Excel (graphiques, formules)</li>
+          <li>🎤 Présentation PowerPoint finale</li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- Liens inscription + Contacts -->
   <div class="contact-card">
     <div class="contact-details">
-      <h3><i class="fas fa-link"></i> Inscription & pré-inscription</h3>
-      <p><i class="fas fa-file-alt"></i> Lien d’inscription officiel : <br> <a href="https://forms.office.com/r/E3GmUc2gsi" target="_blank" style="color:#0b5e9e; font-weight:600; word-break:break-all;">https://forms.office.com/r/E3GmUc2gsi</a></p>
+      <h3><i class="fas fa-link"></i> Inscription</h3>
+      <p><i class="fas fa-file-alt"></i> Lien officiel : <br> <a href="https://forms.office.com/r/E3GmUc2gsi" target="_blank" style="color:#0b5e9e; font-weight:600;">forms.office.com/r/E3GmUc2gsi</a></p>
       <button class="btn-inscription" id="inscriptionBtn" style="margin-top: 10px;"><i class="fas fa-check-circle"></i> Remplir le formulaire</button>
     </div>
     <div class="contact-details">
       <h3><i class="fas fa-address-card"></i> Contacts & lieu</h3>
-      <p><i class="fas fa-map-pin"></i> 📍 Korhogo (salle équipée)</p>
-      <p><i class="fab fa-whatsapp"></i> WhatsApp / Appels : <strong>0716851525</strong> <br> <a href="https://wa.me/qr/P3GB6WP45P6PK1" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> Écrire sur WhatsApp</a></p>
-      <p><i class="fas fa-envelope"></i> Email : novaacademy27@gmail.com</p>
-      <p><i class="fas fa-user-plus"></i> Ajoutez-moi en contact : <a href="https://wa.me/qr/P3GB6WP45P6PK1" target="_blank" style="color:#0b5e9e;">Lien WhatsApp direct</a></p>
+      <p><i class="fas fa-map-pin"></i> 📍 Korhogo, Kassirimé (non loin de Bethlem)</p>
+      <p><i class="fab fa-whatsapp"></i> <strong>0716851525</strong> <br> <a href="https://wa.me/qr/P3GB6WP45P6PK1" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> WhatsApp</a></p>
+      <p><i class="fas fa-envelope"></i> novaacademy27@gmail.com</p>
     </div>
   </div>
 
-  <!-- Petite note places limitées -->
   <div style="background: #e2edf7; border-radius: 20px; padding: 0.8rem 1.5rem; text-align: center; margin-top: 1rem;">
-    <i class="fas fa-hourglass-half"></i> <strong>4 places disponibles par vague</strong> – Inscription rapide pour garantir votre session.
+    <i class="fas fa-hourglass-half"></i> <strong>4 places disponibles par vague</strong> – Paiement échelonné possible (2 versements)
   </div>
 </main>
 
 <footer class="footer">
-  <p>© 2025 Nova Academy – Formation bureautique à Korhogo. Maîtrisez Word, Excel, PowerPoint.</p>
-  <p style="margin-top: 8px; font-size:0.85rem;"><i class="fas fa-mobile-alt"></i> 0716851525 | novaacademy27@gmail.com</p>
+  <p>© 2026 Nova Academy – Formation bureautique à Korhogo. Word, Excel, PowerPoint.</p>
+  <p style="margin-top: 8px;"><i class="fas fa-mobile-alt"></i> 0716851525 | novaacademy27@gmail.com</p>
 </footer>
 
-<!-- Script Accordéon + redirections inscription -->
 <script>
   (function() {
-    // Accordéon dynamique pour tous les modules
     const modules = document.querySelectorAll('.module');
-    function closeAllModules(exceptIndex = -1) {
-      modules.forEach((mod, idx) => {
-        if (exceptIndex !== idx) {
-          mod.classList.remove('active');
-        }
-      });
+    function closeAll(exceptIdx = -1) {
+      modules.forEach((mod, idx) => { if (exceptIdx !== idx) mod.classList.remove('active'); });
     }
     modules.forEach((module, index) => {
       const header = module.querySelector('.module-header');
       header.addEventListener('click', (e) => {
-        e.stopPropagation();
         const isActive = module.classList.contains('active');
-        if (!isActive) {
-          closeAllModules(index);
-          module.classList.add('active');
-        } else {
-          module.classList.remove('active');
-        }
+        if (!isActive) { closeAll(index); module.classList.add('active'); }
+        else { module.classList.remove('active'); }
       });
     });
-    // Ouvrir le premier module par défaut (Word ? mais laisser l'info claire) - optionnel ouvrir module word par défaut
-    // On peut ouvrir le module "MODULE 1 WORD" pour montrer contenu (index 2)
-    if(modules.length >= 3) {
-      // éviter ouverture forcée mais pour rendre visible, on ouvre le module Word (index 1? 0: Séance, 1: Word, 2:Excel,3:PPT,4:ProjetFinal)
-      // activons le module Word par défaut pour un meilleur aperçu
-      if(!modules[1].classList.contains('active')) {
-        closeAllModules(1);
-        modules[1].classList.add('active');
-      }
-    } else if(modules.length) {
-      modules[0].classList.add('active');
+    // Ouvrir module Word par défaut (index 1 après séance 1)
+    if(modules.length >= 2 && !modules[1].classList.contains('active')) {
+      closeAll(1);
+      modules[1].classList.add('active');
     }
 
-    // Boutons inscription : redirection vers le lien Microsoft Forms
-    const inscriptionBtns = document.querySelectorAll('#heroInscriptionBtn, #inscriptionBtn');
-    const inscriptionLink = "https://forms.office.com/r/E3GmUc2gsi";
-    function redirectToForm() {
-      window.open(inscriptionLink, '_blank');
-    }
-    inscriptionBtns.forEach(btn => {
-      btn.addEventListener('click', redirectToForm);
+    const link = "https://forms.office.com/r/E3GmUc2gsi";
+    document.querySelectorAll('#heroInscriptionBtn, #inscriptionBtn').forEach(b => {
+      b.addEventListener('click', () => window.open(link, '_blank'));
     });
-
-    // Ajout de sécurité pour le bouton hero
-    const heroBtn = document.getElementById('heroInscriptionBtn');
-    if(heroBtn) heroBtn.addEventListener('click', redirectToForm);
-    
-    // Pour les liens "whatsapp" déjà natifs, ils sont corrects.
-    // rendre tout responsive avec images éventuelles
   })();
 </script>
-<!-- note : tous les contenus textes et structurations sont fidèles au brief,
-     couleurs bleu/blanc, responsive, avec accordéon, informations tarif, places, 
-     objectif général, chapitres, mini-projets, projet final, contacts whatsapp et email -->
 </body>
 </html>
