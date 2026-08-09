@@ -58,6 +58,10 @@
       from { width: 0; }
       to { width: 60px; }
     }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     .animate {
       opacity: 0;
@@ -114,6 +118,7 @@
       align-items: center;
       gap: 16px;
       text-decoration: none;
+      z-index: 101;
     }
     .logo-crest {
       width: 52px;
@@ -159,6 +164,8 @@
       color: var(--gray-600);
       font-weight: 500;
     }
+
+    /* Menu desktop */
     .nav-links {
       display: flex;
       gap: 0;
@@ -182,6 +189,7 @@
       border-bottom: 3px solid transparent;
       transition: var(--transition);
       letter-spacing: 0.3px;
+      white-space: nowrap;
     }
     .nav-links a:hover {
       color: var(--navy);
@@ -202,6 +210,40 @@
     .btn-nav:hover {
       background: #1a2f50 !important;
       transform: translateY(-1px);
+    }
+
+    /* Bouton burger */
+    .burger-btn {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      background: var(--navy);
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      z-index: 101;
+      gap: 5px;
+      transition: var(--transition);
+    }
+    .burger-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .burger-btn.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .burger-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .burger-btn.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
     }
 
     /* Hero section */
@@ -652,6 +694,8 @@
       display: flex;
       align-items: center;
       gap: 16px;
+      flex: 1;
+      min-width: 0;
     }
     .module-icon-img {
       width: 48px;
@@ -837,19 +881,169 @@
       font-size: 0.9rem;
     }
 
-    @media (max-width: 968px) {
-      .hero-content { grid-template-columns: 1fr; gap: 40px; }
-      .hero-text h1 { font-size: 2.6rem; }
-      .software-grid { grid-template-columns: 1fr; }
-      .software-item { border-right: none; border-bottom: 1px solid var(--gray-200); }
-      .info-grid { grid-template-columns: 1fr 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .schedule-section { padding: 32px; }
+    /* Overlay mobile */
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 99;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
+    .mobile-overlay.active {
+      opacity: 1;
+    }
+
+    /* ============ MEDIA QUERIES ============ */
+    @media (max-width: 1024px) {
+      .hero-content { 
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+      }
+      .hero-text h1 { font-size: 2.8rem; }
+    }
+
+    @media (max-width: 900px) {
+      .container { padding: 0 20px; }
+      
+      /* Menu burger */
+      .burger-btn {
+        display: flex;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: var(--white);
+        flex-direction: column;
+        padding: 100px 32px 40px;
+        box-shadow: var(--shadow-lg);
+        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        z-index: 100;
+        overflow-y: auto;
+        gap: 4px;
+      }
+      .nav-links.active {
+        right: 0;
+      }
+      .nav-links li {
+        height: auto;
+        width: 100%;
+      }
+      .nav-links a {
+        padding: 14px 0;
+        height: auto;
+        border-bottom: 1px solid var(--gray-200);
+        width: 100%;
+        font-size: 0.95rem;
+      }
+      .nav-links a:hover {
+        border-bottom-color: var(--gold);
+        background: transparent;
+      }
+      .btn-nav {
+        margin-left: 0;
+        margin-top: 8px;
+        text-align: center;
+        justify-content: center;
+        border-bottom: none !important;
+      }
+      
+      .mobile-overlay {
+        display: block;
+        pointer-events: none;
+      }
+      .mobile-overlay.active {
+        pointer-events: auto;
+      }
+
+      .software-grid { 
+        grid-template-columns: 1fr; 
+      }
+      .software-item { 
+        border-right: none; 
+        border-bottom: 1px solid var(--gray-200); 
+      }
+      .software-item:last-child { border-bottom: none; }
+      
+      .info-grid { 
+        grid-template-columns: 1fr 1fr; 
+      }
+      
+      .contact-grid { 
+        grid-template-columns: 1fr; 
+      }
+      
+      .schedule-section { 
+        padding: 32px 24px; 
+      }
+      .schedule-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .hero-text h1 { font-size: 2.2rem; }
+      .hero-card { padding: 28px; }
+      
+      .module-header { 
+        padding: 20px; 
+        font-size: 0.95rem;
+      }
+      .module-header-left { gap: 12px; }
+      .module-icon-img { width: 40px; height: 40px; }
+      .module-body-inner { padding: 24px 20px; }
+      
+      .chapter-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .top-bar .container {
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
     @media (max-width: 540px) {
-      .info-grid { grid-template-columns: 1fr; }
-      .hero-text h1 { font-size: 2rem; }
+      .info-grid { 
+        grid-template-columns: 1fr; 
+      }
+      .hero-text h1 { 
+        font-size: 1.8rem; 
+      }
+      .hero-buttons {
+        flex-direction: column;
+      }
+      .btn-primary, .btn-outline {
+        width: 100%;
+        justify-content: center;
+      }
+      .hero { 
+        padding: 48px 0 64px; 
+      }
+      .nav-links {
+        width: 100%;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+      .alert-announcement {
+        flex-direction: column;
+        padding: 20px;
+      }
+      .contact-card {
+        padding: 24px;
+      }
+      .mini-projet {
+        flex-direction: column;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -876,15 +1070,27 @@
         <span class="logo-subtitle">Academy</span>
       </div>
     </a>
-    <ul class="nav-links">
+    
+    <!-- Menu desktop/mobile -->
+    <ul class="nav-links" id="navLinks">
       <li><a href="#programme">Programme</a></li>
       <li><a href="#horaires">Horaires</a></li>
       <li><a href="#tarifs">Tarifs</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#inscription" class="btn-nav">S'inscrire</a></li>
     </ul>
+    
+    <!-- Bouton burger -->
+    <button class="burger-btn" id="burgerBtn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Overlay mobile -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
 
 <!-- Hero -->
 <header class="hero">
@@ -1264,6 +1470,51 @@
 
 <script>
   (function() {
+    // ============ MENU BURGER ============
+    const burgerBtn = document.getElementById('burgerBtn');
+    const navLinks = document.getElementById('navLinks');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const allNavLinks = navLinks.querySelectorAll('a');
+    
+    function openMenu() {
+      burgerBtn.classList.add('active');
+      navLinks.classList.add('active');
+      mobileOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeMenu() {
+      burgerBtn.classList.remove('active');
+      navLinks.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    burgerBtn.addEventListener('click', () => {
+      if (navLinks.classList.contains('active')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    
+    mobileOverlay.addEventListener('click', closeMenu);
+    
+    // Fermer le menu quand on clique sur un lien
+    allNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
+    
+    // Fermer le menu avec la touche Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+        closeMenu();
+      }
+    });
+
+    // ============ INTERSECTION OBSERVER ============
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1274,6 +1525,7 @@
 
     document.querySelectorAll('.animate').forEach(el => observer.observe(el));
 
+    // ============ ACCORDÉON MODULES ============
     const modules = document.querySelectorAll('.module');
     modules.forEach(mod => {
       const header = mod.querySelector('.module-header');
@@ -1292,6 +1544,7 @@
       modules[1].classList.add('active');
     }
 
+    // ============ BOUTONS INSCRIPTION ============
     const link = "https://forms.office.com/r/E3GmUc2gsi";
     document.querySelectorAll('#heroBtn, #inscriptionBtn').forEach(btn => {
       btn.addEventListener('click', (e) => {
