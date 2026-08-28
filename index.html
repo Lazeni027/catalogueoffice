@@ -45,38 +45,42 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ===== ANIMATION DE SIGNALEMENT DES BOUTONS ===== */
-        @keyframes btnGlow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6); }
-            50% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+        /* ===== ANIMATIONS DE SIGNALEMENT ===== */
+        @keyframes signalPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5); transform: scale(1); }
+            50% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); transform: scale(1.03); }
         }
-        @keyframes btnGlowSal {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 162, 97, 0.6); }
-            50% { box-shadow: 0 0 0 15px rgba(244, 162, 97, 0); }
+        @keyframes signalPulseSal {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 162, 97, 0.5); transform: scale(1); }
+            50% { box-shadow: 0 0 0 10px rgba(244, 162, 97, 0); transform: scale(1.03); }
         }
-        @keyframes btnPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        @keyframes signalPulseRed {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5); transform: scale(1); }
+            50% { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); transform: scale(1.05); }
         }
-        @keyframes redGlow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6); }
-            50% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .btn-signal {
-            animation: btnGlow 2s ease-in-out infinite, btnPulse 2s ease-in-out infinite;
+        /* Élément actif signalé */
+        .signal-active-blue {
+            animation: signalPulse 2s ease-in-out infinite;
             position: relative;
-            z-index: 5;
+            z-index: 10;
+            border-radius: 6px;
         }
-        .btn-signal-sal {
-            animation: btnGlowSal 2s ease-in-out infinite, btnPulse 2s ease-in-out infinite;
+        .signal-active-sal {
+            animation: signalPulseSal 2s ease-in-out infinite;
             position: relative;
-            z-index: 5;
+            z-index: 10;
+            border-radius: 6px;
         }
-        .btn-signal-red {
-            animation: redGlow 1.5s ease-in-out infinite;
+        .signal-active-red {
+            animation: signalPulseRed 1.5s ease-in-out infinite;
             position: relative;
-            z-index: 5;
+            z-index: 10;
+            border-radius: 50%;
         }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
@@ -87,8 +91,6 @@
             color: rgba(255,255,255,0.85);
             font-size: 0.8rem;
             padding: 8px 0;
-            letter-spacing: 0.5px;
-            font-weight: 500;
         }
         .top-bar .container {
             display: flex;
@@ -103,7 +105,6 @@
         .nav-academy {
             background: var(--white);
             border-bottom: 1px solid var(--gray-200);
-            padding: 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -115,13 +116,7 @@
             align-items: center;
             height: 70px;
         }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            text-decoration: none;
-            z-index: 101;
-        }
+        .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
         .logo-crest {
             width: 48px;
             height: 48px;
@@ -130,13 +125,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
         }
-        .logo-crest img {
-            width: 32px;
-            height: 32px;
-            filter: brightness(0) invert(1);
-        }
+        .logo-crest img { width: 32px; height: 32px; filter: brightness(0) invert(1); }
         .logo-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.3rem;
@@ -150,12 +140,7 @@
             color: var(--gray-600);
         }
 
-        .nav-links {
-            display: flex;
-            gap: 0;
-            list-style: none;
-            height: 100%;
-        }
+        .nav-links { display: flex; list-style: none; height: 100%; }
         .nav-links li { height: 100%; display: flex; align-items: center; }
         .nav-links a {
             text-decoration: none;
@@ -170,10 +155,7 @@
             transition: var(--transition);
             white-space: nowrap;
         }
-        .nav-links a:hover {
-            color: var(--navy);
-            border-bottom-color: var(--sal);
-        }
+        .nav-links a:hover { color: var(--navy); border-bottom-color: var(--sal); }
         .btn-nav {
             background: var(--navy);
             color: var(--white) !important;
@@ -182,7 +164,6 @@
             font-weight: 600 !important;
             height: auto !important;
             margin-left: 12px;
-            border-bottom: none !important;
         }
         .btn-nav:hover { background: var(--navy-light) !important; }
 
@@ -246,7 +227,6 @@
             font-size: 1rem;
             opacity: 0.85;
             margin-bottom: 28px;
-            line-height: 1.7;
         }
         .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
         .btn-primary {
@@ -329,7 +309,6 @@
         .software-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0;
             text-align: center;
         }
         .software-item { padding: 24px 16px; border-right: 1px solid var(--gray-200); }
@@ -421,6 +400,7 @@
             border-radius: var(--border-radius);
             padding: 28px 24px;
             text-align: center;
+            transition: var(--transition);
         }
         .group-card.morning-group { border-top: 4px solid var(--blue); }
         .group-card.evening-group { border-top: 4px solid var(--navy); }
@@ -467,6 +447,7 @@
             border-radius: var(--border-radius);
             overflow: hidden;
             background: var(--white);
+            transition: var(--transition);
         }
         .week-accordion-header {
             display: flex;
@@ -508,7 +489,6 @@
         .week-accordion.open .week-close-btn {
             background: var(--red);
             color: white;
-            animation: redGlow 1.5s ease-in-out infinite;
         }
         .week-accordion-body {
             max-height: 0;
@@ -551,6 +531,7 @@
             border: 1px solid var(--gray-200);
             border-radius: var(--border-radius);
             overflow: hidden;
+            transition: var(--transition);
         }
         .module-header {
             padding: 16px 20px;
@@ -599,7 +580,6 @@
         .module.open .module-close-btn {
             background: var(--red);
             color: white;
-            animation: redGlow 1.5s ease-in-out infinite;
         }
 
         /* ===== CONTACT ===== */
@@ -625,6 +605,7 @@
             align-items: center;
             gap: 8px;
             font-weight: 600;
+            transition: var(--transition);
         }
 
         /* ===== FOOTER ===== */
@@ -735,15 +716,15 @@
 <div class="mobile-overlay" id="mobileOverlay"></div>
 
 <!-- HERO -->
-<header class="hero">
+<header class="hero" id="heroSection">
     <div class="container hero-content">
         <div class="hero-text">
             <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(244,162,97,0.15);border:1px solid rgba(244,162,97,0.3);padding:4px 16px;border-radius:4px;font-size:0.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;color:#fdf0e6;"><i class="fas fa-star" style="color:var(--sal);"></i> Formation pratique</div>
             <h1>Bureautique <span class="highlight">Professionnelle</span></h1>
             <p class="hero-subtitle">Maîtrisez Microsoft Word, Excel et PowerPoint. Deux groupes distincts pour s'adapter à votre emploi du temps.</p>
             <div class="hero-buttons">
-                <button class="btn-primary" id="heroBtn" data-signal="btn-signal-sal"><i class="fas fa-graduation-cap"></i> Réserver ma place</button>
-                <button class="btn-outline" onclick="document.getElementById('groupes').scrollIntoView({behavior:'smooth'})" data-signal="btn-signal"><i class="fas fa-users"></i> Voir les groupes</button>
+                <button class="btn-primary" id="heroBtn"><i class="fas fa-graduation-cap"></i> Réserver ma place</button>
+                <button class="btn-outline" onclick="document.getElementById('groupes').scrollIntoView({behavior:'smooth'})"><i class="fas fa-users"></i> Voir les groupes</button>
             </div>
         </div>
         <div class="hero-card">
@@ -817,143 +798,141 @@
 
     <!-- GROUPES -->
     <h2 class="section-title" id="groupes">Deux groupes distincts</h2>
-    <div class="group-grid">
-        <div class="group-card morning-group" data-signal="btn-signal">
+    <div class="group-grid" id="groupSection">
+        <div class="group-card morning-group" id="groupMatin">
             <div class="group-icon"><i class="fas fa-sun"></i></div>
             <h3>Groupe Matin</h3>
             <p class="group-time">08h00 — 11h00</p>
             <p><i class="fas fa-calendar-alt"></i> Du Lundi au Samedi</p>
+            <span style="display:inline-block;padding:6px 20px;border-radius:30px;font-size:0.75rem;font-weight:700;background:var(--blue-bg);color:var(--blue);"><i class="fas fa-check-circle"></i> Session complète</span>
         </div>
-        <div class="group-card evening-group" data-signal="btn-signal-sal">
+        <div class="group-card evening-group" id="groupSoir">
             <div class="group-icon"><i class="fas fa-moon"></i></div>
             <h3>Groupe Soir</h3>
             <p class="group-time">14h30 — 17h00</p>
             <p><i class="fas fa-calendar-alt"></i> Mardi · Vendredi · Samedi</p>
+            <span style="display:inline-block;padding:6px 20px;border-radius:30px;font-size:0.75rem;font-weight:700;background:var(--evening-bg);color:var(--navy);"><i class="fas fa-check-circle"></i> Session renforcée</span>
         </div>
     </div>
 
     <!-- CALENDRIER -->
     <h2 class="section-title" id="calendrier">Calendrier détaillé</h2>
-    <div class="calendar-tabs">
-        <button class="calendar-tab morning-tab active" data-group="morning" data-signal="btn-signal"><i class="fas fa-sun"></i> Groupe Matin</button>
-        <button class="calendar-tab evening-tab" data-group="evening" data-signal="btn-signal-sal"><i class="fas fa-moon"></i> Groupe Soir</button>
-    </div>
+    <div class="calendar-section" id="calendarSection">
+        <div class="calendar-tabs">
+            <button class="calendar-tab morning-tab active" data-group="morning" id="tabMorning"><i class="fas fa-sun"></i> Groupe Matin</button>
+            <button class="calendar-tab evening-tab" data-group="evening" id="tabEvening"><i class="fas fa-moon"></i> Groupe Soir</button>
+        </div>
 
-    <div id="morningCalendar">
-        <!-- Semaine 1 -->
-        <div class="week-accordion" data-signal="btn-signal">
-            <div class="week-accordion-header">
-                <span class="week-emoji">📘</span>
-                <h3>Semaine 1</h3>
-                <span class="week-dates">1er – 6 septembre</span>
-                <span class="week-close-btn"><i class="fas fa-times"></i></span>
+        <div id="morningCalendar">
+            <div class="week-accordion" id="week1Morning">
+                <div class="week-accordion-header">
+                    <span class="week-emoji">📘</span>
+                    <h3>Semaine 1</h3>
+                    <span class="week-dates">1er – 6 septembre</span>
+                    <span class="week-close-btn"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="week-accordion-body">
+                    <div class="week-accordion-body-inner">
+                        <div class="calendar-days">
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Lundi</span><span class="calendar-day-date">1er septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Accueil et initiation</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">2 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Bases et structuration</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mercredi</span><span class="calendar-day-date">3 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Mise en forme</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Jeudi</span><span class="calendar-day-date">4 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Automatisation</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">5 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Références et finalisation</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">6 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Mini-projet Word + Révision</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="week-accordion-body">
-                <div class="week-accordion-body-inner">
-                    <div class="calendar-days">
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Lundi</span><span class="calendar-day-date">1er septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Accueil et initiation</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">2 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Bases et structuration</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mercredi</span><span class="calendar-day-date">3 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Mise en forme</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Jeudi</span><span class="calendar-day-date">4 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Automatisation</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">5 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Références et finalisation</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">6 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Mini-projet Word + Révision</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+            <div class="week-accordion" id="week2Morning">
+                <div class="week-accordion-header">
+                    <span class="week-emoji">📙</span>
+                    <h3>Semaine 2</h3>
+                    <span class="week-dates">8 – 13 septembre</span>
+                    <span class="week-close-btn"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="week-accordion-body">
+                    <div class="week-accordion-body-inner">
+                        <div class="calendar-days">
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Lundi</span><span class="calendar-day-date">8 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Excel — Bases</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">9 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Excel — Formules et fonctions</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mercredi</span><span class="calendar-day-date">10 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Excel — Analyse et graphiques</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Jeudi</span><span class="calendar-day-date">11 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Mini-projet Excel</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">12 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">PowerPoint — Création</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">13 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">PowerPoint — Design et animations</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="week-accordion" id="week3Morning">
+                <div class="week-accordion-header">
+                    <span class="week-emoji">📕</span>
+                    <h3>Semaine 3</h3>
+                    <span class="week-dates">15 – 19 septembre</span>
+                    <span class="week-close-btn"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="week-accordion-body">
+                    <div class="week-accordion-body-inner">
+                        <div class="calendar-days">
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Lundi</span><span class="calendar-day-date">15 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Projet final — Word</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">16 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Projet final — Excel</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mercredi</span><span class="calendar-day-date">17 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Projet final — PowerPoint</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Jeudi</span><span class="calendar-day-date">18 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Évaluation finale</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">19 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Feedback, attestations, clôture</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Semaine 2 -->
-        <div class="week-accordion" data-signal="btn-signal">
-            <div class="week-accordion-header">
-                <span class="week-emoji">📙</span>
-                <h3>Semaine 2</h3>
-                <span class="week-dates">8 – 13 septembre</span>
-                <span class="week-close-btn"><i class="fas fa-times"></i></span>
-            </div>
-            <div class="week-accordion-body">
-                <div class="week-accordion-body-inner">
-                    <div class="calendar-days">
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Lundi</span><span class="calendar-day-date">8 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Excel — Bases</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">9 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Excel — Formules et fonctions</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mercredi</span><span class="calendar-day-date">10 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Excel — Analyse et graphiques</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Jeudi</span><span class="calendar-day-date">11 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Mini-projet Excel</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">12 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">PowerPoint — Création</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">13 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">PowerPoint — Design et animations</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Semaine 3 -->
-        <div class="week-accordion" data-signal="btn-signal">
-            <div class="week-accordion-header">
-                <span class="week-emoji">📕</span>
-                <h3>Semaine 3</h3>
-                <span class="week-dates">15 – 19 septembre</span>
-                <span class="week-close-btn"><i class="fas fa-times"></i></span>
-            </div>
-            <div class="week-accordion-body">
-                <div class="week-accordion-body-inner">
-                    <div class="calendar-days">
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Lundi</span><span class="calendar-day-date">15 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Projet final — Word</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">16 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Projet final — Excel</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mercredi</span><span class="calendar-day-date">17 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Projet final — PowerPoint</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Jeudi</span><span class="calendar-day-date">18 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Évaluation finale</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">19 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Feedback, attestations, clôture</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div id="eveningCalendar" style="display:none;">
-        <!-- Semaine 1 Soir -->
-        <div class="week-accordion" data-signal="btn-signal-sal">
-            <div class="week-accordion-header">
-                <span class="week-emoji">📘</span>
-                <h3>Semaine 1</h3>
-                <span class="week-dates">1er – 6 septembre</span>
-                <span class="week-close-btn"><i class="fas fa-times"></i></span>
-            </div>
-            <div class="week-accordion-body">
-                <div class="week-accordion-body-inner">
-                    <div class="calendar-days">
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">2 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Accueil et initiation</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">5 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Word — Bases et mise en forme</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">6 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Word — Approfondissement</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
+        <div id="eveningCalendar" style="display:none;">
+            <div class="week-accordion" id="week1Evening">
+                <div class="week-accordion-header">
+                    <span class="week-emoji">📘</span>
+                    <h3>Semaine 1</h3>
+                    <span class="week-dates">1er – 6 septembre</span>
+                    <span class="week-close-btn"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="week-accordion-body">
+                    <div class="week-accordion-body-inner">
+                        <div class="calendar-days">
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">2 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Accueil et initiation</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">5 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Word — Bases et mise en forme</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">6 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Word — Approfondissement</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Semaine 2 Soir -->
-        <div class="week-accordion" data-signal="btn-signal-sal">
-            <div class="week-accordion-header">
-                <span class="week-emoji">📙</span>
-                <h3>Semaine 2</h3>
-                <span class="week-dates">8 – 13 septembre</span>
-                <span class="week-close-btn"><i class="fas fa-times"></i></span>
-            </div>
-            <div class="week-accordion-body">
-                <div class="week-accordion-body-inner">
-                    <div class="calendar-days">
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">9 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Excel — Bases et formules</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">12 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Excel — Analyse et graphiques</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">13 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">PowerPoint — Création et design</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
+            <div class="week-accordion" id="week2Evening">
+                <div class="week-accordion-header">
+                    <span class="week-emoji">📙</span>
+                    <h3>Semaine 2</h3>
+                    <span class="week-dates">8 – 13 septembre</span>
+                    <span class="week-close-btn"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="week-accordion-body">
+                    <div class="week-accordion-body-inner">
+                        <div class="calendar-days">
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">9 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Excel — Bases et formules</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">12 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Excel — Analyse et graphiques</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">13 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">PowerPoint — Création et design</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Semaine 3 Soir -->
-        <div class="week-accordion" data-signal="btn-signal-sal">
-            <div class="week-accordion-header">
-                <span class="week-emoji">📕</span>
-                <h3>Semaine 3</h3>
-                <span class="week-dates">15 – 19 septembre</span>
-                <span class="week-close-btn"><i class="fas fa-times"></i></span>
-            </div>
-            <div class="week-accordion-body">
-                <div class="week-accordion-body-inner">
-                    <div class="calendar-days">
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">16 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Projet final — Synthèse</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
-                        <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">19 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Évaluation finale, attestations, clôture</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
+            <div class="week-accordion" id="week3Evening">
+                <div class="week-accordion-header">
+                    <span class="week-emoji">📕</span>
+                    <h3>Semaine 3</h3>
+                    <span class="week-dates">15 – 19 septembre</span>
+                    <span class="week-close-btn"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="week-accordion-body">
+                    <div class="week-accordion-body-inner">
+                        <div class="calendar-days">
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">16 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Projet final — Synthèse</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
+                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">19 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Évaluation finale, attestations, clôture</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -962,102 +941,100 @@
 
     <!-- PROGRAMME -->
     <h2 class="section-title" id="programme">Programme académique</h2>
-
-    <div class="module" data-signal="btn-signal">
-        <div class="module-header">
-            <div class="module-header-left">
-                <img src="https://img.icons8.com/color/48/000000/laptop.png" alt="Initiation" class="module-icon-img" loading="lazy">
-                <div><strong>Séance inaugurale :</strong> Initiation à l'informatique</div>
+    <div id="programmeSection">
+        <div class="module" id="moduleInitiation">
+            <div class="module-header">
+                <div class="module-header-left">
+                    <img src="https://img.icons8.com/color/48/000000/laptop.png" alt="Initiation" class="module-icon-img" loading="lazy">
+                    <div><strong>Séance inaugurale :</strong> Initiation à l'informatique</div>
+                </div>
+                <span class="module-close-btn"><i class="fas fa-times"></i></span>
             </div>
-            <span class="module-close-btn"><i class="fas fa-times"></i></span>
-        </div>
-        <div class="module-body">
-            <div class="module-body-inner">
-                <p class="module-description">Découverte de l'environnement informatique : matériel, système d'exploitation Windows, gestion des fichiers et navigation Internet.</p>
-                <div class="module-tags">
-                    <span class="module-tag">🖥️ Matériel et logiciel</span>
-                    <span class="module-tag">📁 Gestion des fichiers</span>
-                    <span class="module-tag">🌐 Internet et messagerie</span>
+            <div class="module-body">
+                <div class="module-body-inner">
+                    <p class="module-description">Découverte de l'environnement informatique : matériel, Windows, fichiers et Internet.</p>
+                    <div class="module-tags">
+                        <span class="module-tag">🖥️ Matériel</span>
+                        <span class="module-tag">📁 Fichiers</span>
+                        <span class="module-tag">🌐 Internet</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="module" data-signal="btn-signal">
-        <div class="module-header">
-            <div class="module-header-left">
-                <img src="https://img.icons8.com/color/48/000000/microsoft-word-2019.png" alt="Word" class="module-icon-img" loading="lazy">
-                <div><strong>Module I :</strong> Microsoft Word</div>
+        <div class="module" id="moduleWord">
+            <div class="module-header">
+                <div class="module-header-left">
+                    <img src="https://img.icons8.com/color/48/000000/microsoft-word-2019.png" alt="Word" class="module-icon-img" loading="lazy">
+                    <div><strong>Module I :</strong> Microsoft Word</div>
+                </div>
+                <span class="module-close-btn"><i class="fas fa-times"></i></span>
             </div>
-            <span class="module-close-btn"><i class="fas fa-times"></i></span>
-        </div>
-        <div class="module-body">
-            <div class="module-body-inner">
-                <p class="module-description">Maîtrise du traitement de texte professionnel : structuration de documents, mise en forme avancée, automatisation et références.</p>
-                <div class="module-tags">
-                    <span class="module-tag">📝 Styles et structuration</span>
-                    <span class="module-tag">📑 Table des matières</span>
-                    <span class="module-tag">🔗 Références</span>
+            <div class="module-body">
+                <div class="module-body-inner">
+                    <p class="module-description">Traitement de texte professionnel : structuration, mise en forme, automatisation.</p>
+                    <div class="module-tags">
+                        <span class="module-tag">📝 Styles</span>
+                        <span class="module-tag">📑 Table des matières</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="module" data-signal="btn-signal">
-        <div class="module-header">
-            <div class="module-header-left">
-                <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019.png" alt="Excel" class="module-icon-img" loading="lazy">
-                <div><strong>Module II :</strong> Microsoft Excel</div>
+        <div class="module" id="moduleExcel">
+            <div class="module-header">
+                <div class="module-header-left">
+                    <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019.png" alt="Excel" class="module-icon-img" loading="lazy">
+                    <div><strong>Module II :</strong> Microsoft Excel</div>
+                </div>
+                <span class="module-close-btn"><i class="fas fa-times"></i></span>
             </div>
-            <span class="module-close-btn"><i class="fas fa-times"></i></span>
-        </div>
-        <div class="module-body">
-            <div class="module-body-inner">
-                <p class="module-description">Gestion et analyse de données avec le tableur : formules, fonctions, tri, filtres et création de graphiques.</p>
-                <div class="module-tags">
-                    <span class="module-tag">🔢 Formules et fonctions</span>
-                    <span class="module-tag">📊 Graphiques</span>
-                    <span class="module-tag">🔍 Tri et filtres</span>
+            <div class="module-body">
+                <div class="module-body-inner">
+                    <p class="module-description">Analyse de données : formules, fonctions, graphiques.</p>
+                    <div class="module-tags">
+                        <span class="module-tag">🔢 Formules</span>
+                        <span class="module-tag">📊 Graphiques</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="module" data-signal="btn-signal">
-        <div class="module-header">
-            <div class="module-header-left">
-                <img src="https://img.icons8.com/color/48/000000/microsoft-powerpoint-2019.png" alt="PowerPoint" class="module-icon-img" loading="lazy">
-                <div><strong>Module III :</strong> Microsoft PowerPoint</div>
+        <div class="module" id="modulePowerPoint">
+            <div class="module-header">
+                <div class="module-header-left">
+                    <img src="https://img.icons8.com/color/48/000000/microsoft-powerpoint-2019.png" alt="PowerPoint" class="module-icon-img" loading="lazy">
+                    <div><strong>Module III :</strong> Microsoft PowerPoint</div>
+                </div>
+                <span class="module-close-btn"><i class="fas fa-times"></i></span>
             </div>
-            <span class="module-close-btn"><i class="fas fa-times"></i></span>
-        </div>
-        <div class="module-body">
-            <div class="module-body-inner">
-                <p class="module-description">Conception de présentations professionnelles : organisation des diapositives, thèmes, transitions et animations.</p>
-                <div class="module-tags">
-                    <span class="module-tag">🎨 Design et thèmes</span>
-                    <span class="module-tag">🔄 Transitions</span>
-                    <span class="module-tag">✨ Animations</span>
+            <div class="module-body">
+                <div class="module-body-inner">
+                    <p class="module-description">Présentations professionnelles : design, transitions, animations.</p>
+                    <div class="module-tags">
+                        <span class="module-tag">🎨 Design</span>
+                        <span class="module-tag">✨ Animations</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="module" data-signal="btn-signal-sal">
-        <div class="module-header">
-            <div class="module-header-left">
-                <img src="https://img.icons8.com/color/48/000000/trophy.png" alt="Projet final" class="module-icon-img" loading="lazy">
-                <div><strong>Projet Final :</strong> Synthèse et certification</div>
+        <div class="module" id="moduleFinal">
+            <div class="module-header">
+                <div class="module-header-left">
+                    <img src="https://img.icons8.com/color/48/000000/trophy.png" alt="Projet final" class="module-icon-img" loading="lazy">
+                    <div><strong>Projet Final :</strong> Synthèse et certification</div>
+                </div>
+                <span class="module-close-btn"><i class="fas fa-times"></i></span>
             </div>
-            <span class="module-close-btn"><i class="fas fa-times"></i></span>
-        </div>
-        <div class="module-body">
-            <div class="module-body-inner">
-                <p class="module-description">Projet complet intégrant Word, Excel et PowerPoint. Évaluation finale et remise des attestations.</p>
-                <div class="module-tags">
-                    <span class="module-tag">📝 Rapport Word</span>
-                    <span class="module-tag">📊 Tableau Excel</span>
-                    <span class="module-tag">📽️ Présentation PowerPoint</span>
+            <div class="module-body">
+                <div class="module-body-inner">
+                    <p class="module-description">Projet complet intégrant Word, Excel et PowerPoint.</p>
+                    <div class="module-tags">
+                        <span class="module-tag">📝 Word</span>
+                        <span class="module-tag">📊 Excel</span>
+                        <span class="module-tag">📽️ PowerPoint</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1066,18 +1043,18 @@
     <!-- CONTACT -->
     <h2 class="section-title" id="contact">Inscription & Contact</h2>
     <div class="contact-grid" id="inscription">
-        <div class="contact-card">
+        <div class="contact-card" id="contactInscription">
             <h3><i class="fas fa-file-signature"></i> Finalisez votre inscription</h3>
             <p style="margin-bottom:10px;"><strong>📍 Passez au centre NOVA Academy à Kassirimé</strong></p>
             <p style="margin-bottom:14px;color:var(--gray-600);">Ou consultez le lien ci-dessous :</p>
             <p style="margin-bottom:16px;"><a href="https://forms.office.com/r/E3GmUc2gsi" target="_blank" style="color:var(--navy);font-weight:600;">https://forms.office.com/r/E3GmUc2gsi</a></p>
-            <button class="btn-primary" id="inscriptionBtn" data-signal="btn-signal-sal"><i class="fas fa-check-circle"></i> S'inscrire maintenant</button>
+            <button class="btn-primary" id="inscriptionBtn"><i class="fas fa-check-circle"></i> S'inscrire maintenant</button>
         </div>
-        <div class="contact-card">
+        <div class="contact-card" id="contactWhatsApp">
             <h3><i class="fas fa-address-card"></i> Contacts & Lieu</h3>
             <p style="margin-bottom:10px;"><i class="fas fa-map-pin" style="color:var(--blue);"></i> <strong>Centre NOVA Academy, Kassirimé</strong> (Korhogo)</p>
             <p style="margin-bottom:10px;"><i class="fab fa-whatsapp" style="color:var(--whatsapp);"></i> <strong>0716851525</strong></p>
-            <a href="https://wa.me/qr/P3GB6WP45P6PK1" target="_blank" class="whatsapp-btn" data-signal="btn-signal"><i class="fab fa-whatsapp"></i> Écrire sur WhatsApp</a>
+            <a href="https://wa.me/qr/P3GB6WP45P6PK1" target="_blank" class="whatsapp-btn" id="whatsappBtn"><i class="fab fa-whatsapp"></i> Écrire sur WhatsApp</a>
             <p style="margin-top:12px;"><i class="fas fa-envelope" style="color:var(--blue);"></i> novaacademy27@gmail.com</p>
         </div>
     </div>
@@ -1120,13 +1097,11 @@
             navLinks.classList.toggle('active');
             mobileOverlay.classList.toggle('active');
         });
-        
         mobileOverlay.addEventListener('click', () => {
             burgerBtn.classList.remove('active');
             navLinks.classList.remove('active');
             mobileOverlay.classList.remove('active');
         });
-        
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 burgerBtn.classList.remove('active');
@@ -1135,43 +1110,133 @@
             });
         });
 
-        // ============ SIGNALEMENT DES BOUTONS AU SCROLL ============
-        function signalButtonsInView() {
-            const signalElements = document.querySelectorAll('[data-signal]');
-            const viewportHeight = window.innerHeight;
-            
-            signalElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                // Si l'élément est dans le viewport
-                if (rect.top < viewportHeight && rect.bottom > 0) {
-                    const signalType = el.getAttribute('data-signal');
-                    if (!el.classList.contains(signalType)) {
-                        el.classList.add(signalType);
-                    }
-                } else {
-                    // Retirer le signal quand hors du viewport
-                    const signalType = el.getAttribute('data-signal');
-                    el.classList.remove(signalType);
-                }
+        // ============ SYSTÈME DE GUIDAGE CONTEXTUEL INTELLIGENT ============
+        const signalClasses = {
+            blue: 'signal-active-blue',
+            sal: 'signal-active-sal',
+            red: 'signal-active-red'
+        };
+        
+        let currentSignaledElement = null;
+        let currentSignalClass = null;
+        
+        // Fonction pour retirer tous les signaux
+        function clearAllSignals() {
+            document.querySelectorAll('.signal-active-blue, .signal-active-sal, .signal-active-red').forEach(el => {
+                el.classList.remove('signal-active-blue', 'signal-active-sal', 'signal-active-red');
             });
+            currentSignaledElement = null;
+            currentSignalClass = null;
         }
         
-        // ============ ACCORDÉONS AUTO-OUVERTURE AU SCROLL ============
-        function autoOpenAccordions() {
+        // Fonction pour signaler un élément
+        function signalElement(element, signalType) {
+            if (!element) return;
+            
+            // Ne pas re-signaler le même élément
+            if (currentSignaledElement === element) return;
+            
+            // Retirer les anciens signaux
+            clearAllSignals();
+            
+            // Ajouter le nouveau signal
+            element.classList.add(signalType);
+            currentSignaledElement = element;
+            currentSignalClass = signalType;
+        }
+        
+        // Fonction principale : déterminer quel élément signaler
+        function determineContextualSignal() {
+            const scrollY = window.scrollY;
+            const viewportHeight = window.innerHeight;
+            const scrollPosition = scrollY + viewportHeight / 2; // Centre de l'écran
+            
+            // ===== SECTION HERO (0 - 600px) =====
+            if (scrollPosition < 600) {
+                signalElement(document.getElementById('heroBtn'), signalClasses.sal);
+                return;
+            }
+            
+            // ===== SECTION GROUPES (600 - 1200px) =====
+            const groupSection = document.getElementById('groupSection');
+            if (groupSection) {
+                const groupRect = groupSection.getBoundingClientRect();
+                if (groupRect.top < viewportHeight * 0.7 && groupRect.bottom > 0) {
+                    // Signaler le groupe Matin en priorité
+                    signalElement(document.getElementById('groupMatin'), signalClasses.blue);
+                    return;
+                }
+            }
+            
+            // ===== SECTION CALENDRIER (1200 - 2000px) =====
+            const calendarSection = document.getElementById('calendarSection');
+            if (calendarSection) {
+                const calRect = calendarSection.getBoundingClientRect();
+                if (calRect.top < viewportHeight * 0.7 && calRect.bottom > 0) {
+                    // Vérifier si un accordéon est ouvert
+                    const openAccordion = document.querySelector('.week-accordion.open');
+                    if (openAccordion) {
+                        // Signaler la croix rouge pour fermer
+                        const closeBtn = openAccordion.querySelector('.week-close-btn');
+                        signalElement(closeBtn, signalClasses.red);
+                    } else {
+                        // Signaler le premier accordéon fermé
+                        const firstClosedAccordion = document.querySelector('.week-accordion:not(.open)');
+                        if (firstClosedAccordion) {
+                            signalElement(firstClosedAccordion.querySelector('.week-accordion-header'), signalClasses.blue);
+                        }
+                    }
+                    return;
+                }
+            }
+            
+            // ===== SECTION PROGRAMME (2000 - 2800px) =====
+            const programmeSection = document.getElementById('programmeSection');
+            if (programmeSection) {
+                const progRect = programmeSection.getBoundingClientRect();
+                if (progRect.top < viewportHeight * 0.7 && progRect.bottom > 0) {
+                    // Vérifier si un module est ouvert
+                    const openModule = document.querySelector('.module.open');
+                    if (openModule) {
+                        const closeBtn = openModule.querySelector('.module-close-btn');
+                        signalElement(closeBtn, signalClasses.red);
+                    } else {
+                        const firstClosedModule = document.querySelector('.module:not(.open)');
+                        if (firstClosedModule) {
+                            signalElement(firstClosedModule.querySelector('.module-header'), signalClasses.blue);
+                        }
+                    }
+                    return;
+                }
+            }
+            
+            // ===== SECTION CONTACT (2800px+) =====
+            const contactSection = document.getElementById('inscription');
+            if (contactSection) {
+                const contactRect = contactSection.getBoundingClientRect();
+                if (contactRect.top < viewportHeight * 0.7 && contactRect.bottom > 0) {
+                    signalElement(document.getElementById('inscriptionBtn'), signalClasses.sal);
+                    return;
+                }
+            }
+            
+            // Aucun élément à signaler
+            clearAllSignals();
+        }
+        
+        // ============ AUTO-OUVERTURE/FERMETURE DES ACCORDÉONS ============
+        function autoToggleAccordions() {
             const accordions = document.querySelectorAll('.week-accordion, .module');
+            const viewportHeight = window.innerHeight;
             
             accordions.forEach(acc => {
                 const rect = acc.getBoundingClientRect();
-                const viewportHeight = window.innerHeight;
-                const isInView = rect.top < viewportHeight * 0.6 && rect.bottom > 0;
+                const centerY = rect.top + rect.height / 2;
+                const isInReadingZone = centerY > viewportHeight * 0.3 && centerY < viewportHeight * 0.7;
                 
-                if (isInView) {
-                    // Ouvrir si dans la zone de lecture
-                    if (!acc.classList.contains('open')) {
-                        acc.classList.add('open');
-                    }
+                if (isInReadingZone && !acc.classList.contains('open')) {
+                    acc.classList.add('open');
                 } else if (rect.top > viewportHeight || rect.bottom < 0) {
-                    // Fermer si hors du viewport (scrolled past)
                     if (acc.classList.contains('open')) {
                         acc.classList.remove('open');
                     }
@@ -1182,14 +1247,14 @@
         // ============ SCROLL HANDLER ============
         let scrollTimeout;
         window.addEventListener('scroll', () => {
-            // Signalement des boutons
-            signalButtonsInView();
+            // Mise à jour du signal contextuel (immédiat)
+            determineContextualSignal();
             
-            // Auto-ouverture/fermeture des accordéons
+            // Auto-ouverture/fermeture avec délai
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {
-                autoOpenAccordions();
-            }, 300);
+                autoToggleAccordions();
+            }, 200);
         }, { passive: true });
         
         // ============ CLIC MANUEL SUR ACCORDÉON ============
@@ -1197,6 +1262,8 @@
             header.addEventListener('click', () => {
                 const accordion = header.closest('.week-accordion');
                 accordion.classList.toggle('open');
+                // Mettre à jour le signal
+                setTimeout(determineContextualSignal, 100);
             });
         });
         
@@ -1204,12 +1271,13 @@
             header.addEventListener('click', () => {
                 const module = header.closest('.module');
                 module.classList.toggle('open');
+                setTimeout(determineContextualSignal, 100);
             });
         });
         
         // ============ TABS CALENDRIER ============
-        const morningTab = document.querySelector('.calendar-tab.morning-tab');
-        const eveningTab = document.querySelector('.calendar-tab.evening-tab');
+        const morningTab = document.getElementById('tabMorning');
+        const eveningTab = document.getElementById('tabEvening');
         const morningCal = document.getElementById('morningCalendar');
         const eveningCal = document.getElementById('eveningCalendar');
         
@@ -1218,6 +1286,7 @@
             eveningTab.classList.remove('active');
             morningCal.style.display = 'block';
             eveningCal.style.display = 'none';
+            setTimeout(determineContextualSignal, 100);
         });
         
         eveningTab.addEventListener('click', () => {
@@ -1225,6 +1294,7 @@
             morningTab.classList.remove('active');
             eveningCal.style.display = 'block';
             morningCal.style.display = 'none';
+            setTimeout(determineContextualSignal, 100);
         });
         
         // ============ BOUTONS INSCRIPTION ============
@@ -1238,14 +1308,15 @@
         
         // ============ INITIALISATION ============
         window.addEventListener('load', () => {
-            signalButtonsInView();
-            autoOpenAccordions();
+            // Première détermination du signal
+            setTimeout(determineContextualSignal, 500);
+            
+            // Vérification périodique (toutes les 3 secondes)
+            setInterval(determineContextualSignal, 3000);
+            
+            // Auto-ouverture initiale
+            autoToggleAccordions();
         });
-        
-        // Vérifier périodiquement (pour les changements dynamiques)
-        setInterval(() => {
-            signalButtonsInView();
-        }, 8000); // Intervalle de 8 secondes pour re-signaler
     })();
 </script>
 </body>
