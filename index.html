@@ -68,13 +68,13 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-6px); }
         }
-        @keyframes glowPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
-            50% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
+        @keyframes fingerTap {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+            50% { transform: translateY(8px) scale(0.9); opacity: 0.7; }
         }
-        @keyframes shimmer {
-            0% { background-position: -200% center; }
-            100% { background-position: 200% center; }
+        @keyframes fingerPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 162, 97, 0.5); }
+            50% { box-shadow: 0 0 0 12px rgba(244, 162, 97, 0); }
         }
         @keyframes pulse-ring {
             0% { transform: scale(1); opacity: 1; }
@@ -91,7 +91,40 @@
             transform: translateY(0);
         }
 
-        /* ===== GUIDE SCROLL ===== */
+        /* ===== FINGER GUIDE (mobile uniquement) ===== */
+        .finger-guide {
+            display: none;
+            position: fixed;
+            z-index: 300;
+            pointer-events: none;
+            animation: fingerTap 1.5s ease-in-out infinite;
+        }
+        .finger-guide .finger-icon {
+            font-size: 3rem;
+            color: var(--sal);
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            animation: fingerPulse 1.5s ease-in-out infinite;
+        }
+        .finger-guide .finger-label {
+            background: var(--navy);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            text-align: center;
+            margin-top: 4px;
+            display: block;
+        }
+        .finger-guide.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* ===== GUIDE SCROLL (desktop) ===== */
         .guide-hint {
             position: fixed;
             bottom: 30px;
@@ -727,6 +760,7 @@
             border-radius: var(--border-radius);
             overflow: hidden;
             background: var(--white);
+            position: relative;
         }
         .week-accordion-header {
             display: flex;
@@ -1189,12 +1223,27 @@
             .week-accordion-header { flex-wrap: wrap; gap: 8px; }
             .week-accordion-header .week-dates { margin-left: auto; }
             .group-grid { gap: 16px; }
+            /* Masquer le guide desktop sur mobile */
+            .guide-hint { display: none; }
+            /* Afficher le finger guide sur mobile */
+            .finger-guide { display: flex; }
+        }
+
+        @media (min-width: 541px) {
+            .finger-guide { display: none !important; }
+            .guide-hint { display: flex; }
         }
     </style>
 </head>
 <body>
 
-<!-- GUIDE HINT SCROLL -->
+<!-- FINGER GUIDE (mobile uniquement) -->
+<div class="finger-guide" id="fingerGuide">
+    <i class="fas fa-hand-point-up finger-icon"></i>
+    <span class="finger-label">Cliquez sur une semaine</span>
+</div>
+
+<!-- GUIDE HINT SCROLL (desktop) -->
 <div class="guide-hint" id="guideHint">
     <button class="guide-hint-btn" id="guideBtn" aria-label="Continuer">
         <i class="fas fa-arrow-down"></i>
@@ -1360,7 +1409,7 @@
         <!-- Contenu Groupe Matin -->
         <div class="calendar-group-content" id="morningCalendar">
             <!-- Semaine 1 -->
-            <div class="week-accordion active">
+            <div class="week-accordion active" id="week1Morning">
                 <div class="week-accordion-header">
                     <span class="week-emoji">📘</span>
                     <h3>Semaine 1</h3>
@@ -1399,7 +1448,7 @@
                 </div>
             </div>
             <!-- Semaine 2 -->
-            <div class="week-accordion">
+            <div class="week-accordion" id="week2Morning">
                 <div class="week-accordion-header">
                     <span class="week-emoji">📙</span>
                     <h3>Semaine 2</h3>
@@ -1438,7 +1487,7 @@
                 </div>
             </div>
             <!-- Semaine 3 -->
-            <div class="week-accordion">
+            <div class="week-accordion" id="week3Morning">
                 <div class="week-accordion-header">
                     <span class="week-emoji">📕</span>
                     <h3>Semaine 3</h3>
@@ -1477,7 +1526,7 @@
         <!-- Contenu Groupe Soir -->
         <div class="calendar-group-content" id="eveningCalendar" style="display:none;">
             <!-- Semaine 1 -->
-            <div class="week-accordion active">
+            <div class="week-accordion active" id="week1Evening">
                 <div class="week-accordion-header">
                     <span class="week-emoji">📘</span>
                     <h3>Semaine 1</h3>
@@ -1504,7 +1553,7 @@
                 </div>
             </div>
             <!-- Semaine 2 -->
-            <div class="week-accordion">
+            <div class="week-accordion" id="week2Evening">
                 <div class="week-accordion-header">
                     <span class="week-emoji">📙</span>
                     <h3>Semaine 2</h3>
@@ -1531,7 +1580,7 @@
                 </div>
             </div>
             <!-- Semaine 3 -->
-            <div class="week-accordion">
+            <div class="week-accordion" id="week3Evening">
                 <div class="week-accordion-header">
                     <span class="week-emoji">📕</span>
                     <h3>Semaine 3</h3>
@@ -1760,26 +1809,74 @@
             }
         });
 
-        // ============ GUIDE HINT SCROLL ============
+        // ============ GUIDE HINT SCROLL (desktop) ============
         const guideHint = document.getElementById('guideHint');
         const guideBtn = document.getElementById('guideBtn');
         
-        // Cacher le guide après 10 secondes
         setTimeout(() => {
             guideHint.classList.add('hidden');
         }, 10000);
         
-        // Cacher le guide quand l'utilisateur a déjà scrollé
         window.addEventListener('scroll', () => {
             if (window.scrollY > 500) {
                 guideHint.classList.add('hidden');
             }
         });
         
-        // Action du bouton guide : scroll vers la section groupes
         guideBtn.addEventListener('click', () => {
             document.getElementById('groupes').scrollIntoView({ behavior: 'smooth' });
             guideHint.classList.add('hidden');
+        });
+
+        // ============ FINGER GUIDE (mobile) ============
+        const fingerGuide = document.getElementById('fingerGuide');
+        
+        // Positionner le finger guide sur le premier accordéon semaine visible
+        function positionFingerGuide() {
+            const firstWeek = document.querySelector('.week-accordion');
+            if (firstWeek && window.innerWidth <= 540) {
+                const rect = firstWeek.getBoundingClientRect();
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const absoluteTop = rect.top + scrollTop;
+                
+                // Positionner le doigt au-dessus du premier accordéon
+                fingerGuide.style.top = (absoluteTop - 80) + 'px';
+                fingerGuide.style.left = '50%';
+                fingerGuide.style.transform = 'translateX(-50%)';
+                
+                // Afficher le finger guide
+                fingerGuide.classList.remove('hidden');
+            }
+        }
+        
+        // Positionner après le chargement et au scroll
+        window.addEventListener('load', () => {
+            if (window.innerWidth <= 540) {
+                setTimeout(positionFingerGuide, 2000);
+            }
+        });
+        
+        // Masquer le finger guide quand l'utilisateur clique sur une semaine
+        document.querySelectorAll('.week-accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                fingerGuide.classList.add('hidden');
+            });
+        });
+        
+        // Masquer le finger guide après 8 secondes
+        setTimeout(() => {
+            fingerGuide.classList.add('hidden');
+        }, 8000);
+        
+        // Repositionner au scroll
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth <= 540 && !fingerGuide.classList.contains('hidden')) {
+                positionFingerGuide();
+            }
+            // Masquer après avoir scrollé beaucoup
+            if (window.scrollY > 1500) {
+                fingerGuide.classList.add('hidden');
+            }
         });
 
         // ============ INTERSECTION OBSERVER ============
