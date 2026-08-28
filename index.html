@@ -72,13 +72,27 @@
             0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
             50% { transform: translateY(8px) scale(0.9); opacity: 0.7; }
         }
-        @keyframes fingerPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 162, 97, 0.5); }
-            50% { box-shadow: 0 0 0 12px rgba(244, 162, 97, 0); }
+        @keyframes cursorMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(2px, -3px) rotate(5deg); }
+            75% { transform: translate(-2px, 3px) rotate(-5deg); }
+        }
+        @keyframes cursorClick {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.7); }
+            100% { transform: scale(1); }
         }
         @keyframes pulse-ring {
             0% { transform: scale(1); opacity: 1; }
             100% { transform: scale(1.5); opacity: 0; }
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 162, 97, 0.6); }
+            50% { box-shadow: 0 0 0 12px rgba(244, 162, 97, 0); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
         }
 
         .animate {
@@ -91,25 +105,35 @@
             transform: translateY(0);
         }
 
-        /* ===== FINGER GUIDE (mobile uniquement) ===== */
-        .finger-guide {
-            display: none;
+        /* ===== CURSEUR INTELLIGENT (main/doigt) ===== */
+        .smart-cursor {
             position: fixed;
-            z-index: 300;
+            z-index: 500;
             pointer-events: none;
-            animation: fingerTap 1.5s ease-in-out infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 0;
         }
-        .finger-guide .finger-icon {
-            font-size: 3rem;
+        .smart-cursor.active {
+            opacity: 1;
+        }
+        .smart-cursor .cursor-icon {
+            font-size: 2.8rem;
             color: var(--sal);
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-            animation: fingerPulse 1.5s ease-in-out infinite;
+            animation: cursorMove 2s ease-in-out infinite, glowPulse 2s ease-in-out infinite;
+            position: relative;
         }
-        .finger-guide .finger-label {
+        .smart-cursor .cursor-icon.clicking {
+            animation: cursorClick 0.4s ease;
+        }
+        .smart-cursor .cursor-label {
             background: var(--navy);
             color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
+            padding: 8px 16px;
+            border-radius: 30px;
             font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 0.5px;
@@ -117,11 +141,32 @@
             white-space: nowrap;
             text-align: center;
             margin-top: 4px;
-            display: block;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            animation: bounce 2s ease-in-out infinite;
         }
-        .finger-guide.hidden {
+        .smart-cursor .cursor-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 3px solid var(--sal);
+            animation: pulse-ring 2s ease-in-out infinite;
+        }
+        .smart-cursor.hidden {
             opacity: 0;
             pointer-events: none;
+        }
+
+        /* Surligner l'élément ciblé */
+        .target-highlight {
+            outline: 3px solid var(--sal) !important;
+            outline-offset: 4px;
+            border-radius: 8px !important;
+            animation: glowPulse 1.5s ease-in-out infinite;
+            transition: outline 0.3s ease;
         }
 
         /* ===== GUIDE SCROLL (desktop) ===== */
@@ -1202,8 +1247,6 @@
             .week-accordion-header h3 { font-size: 1.1rem; }
             .week-accordion-body-inner { padding: 16px 20px; }
             .group-card { padding: 28px 20px; }
-            .guide-hint { bottom: 20px; right: 20px; }
-            .guide-hint-btn { width: 48px; height: 48px; font-size: 1.2rem; }
         }
 
         @media (max-width: 540px) {
@@ -1223,32 +1266,18 @@
             .week-accordion-header { flex-wrap: wrap; gap: 8px; }
             .week-accordion-header .week-dates { margin-left: auto; }
             .group-grid { gap: 16px; }
-            /* Masquer le guide desktop sur mobile */
-            .guide-hint { display: none; }
-            /* Afficher le finger guide sur mobile */
-            .finger-guide { display: flex; }
-        }
-
-        @media (min-width: 541px) {
-            .finger-guide { display: none !important; }
-            .guide-hint { display: flex; }
+            .smart-cursor .cursor-icon { font-size: 2rem; }
+            .smart-cursor .cursor-label { font-size: 0.6rem; padding: 6px 12px; }
         }
     </style>
 </head>
 <body>
 
-<!-- FINGER GUIDE (mobile uniquement) -->
-<div class="finger-guide" id="fingerGuide">
-    <i class="fas fa-hand-point-up finger-icon"></i>
-    <span class="finger-label">Cliquez sur une semaine</span>
-</div>
-
-<!-- GUIDE HINT SCROLL (desktop) -->
-<div class="guide-hint" id="guideHint">
-    <button class="guide-hint-btn" id="guideBtn" aria-label="Continuer">
-        <i class="fas fa-arrow-down"></i>
-    </button>
-    <span class="guide-hint-label">Cliquez pour explorer</span>
+<!-- CURSEUR INTELLIGENT IA -->
+<div class="smart-cursor" id="smartCursor">
+    <div class="cursor-ring"></div>
+    <i class="fas fa-hand-pointer cursor-icon" id="cursorIcon"></i>
+    <span class="cursor-label" id="cursorLabel">Cliquez ici</span>
 </div>
 
 <!-- TOP BAR -->
@@ -1299,8 +1328,8 @@
             <h1>Bureautique <span class="highlight">Professionnelle</span></h1>
             <p class="hero-subtitle">Maîtrisez Microsoft Word, Excel et PowerPoint avec une approche académique rigoureuse. Deux groupes distincts pour s'adapter à votre emploi du temps.</p>
             <div class="hero-buttons">
-                <button class="btn-primary" id="heroBtn"><i class="fas fa-graduation-cap"></i> Réserver ma place</button>
-                <button class="btn-outline" onclick="document.getElementById('groupes').scrollIntoView({behavior:'smooth'})"><i class="fas fa-users"></i> Voir les groupes</button>
+                <button class="btn-primary" id="heroBtn" data-guide="Réserver ma place"><i class="fas fa-graduation-cap"></i> Réserver ma place</button>
+                <button class="btn-outline" onclick="document.getElementById('groupes').scrollIntoView({behavior:'smooth'})" data-guide="Voir les groupes"><i class="fas fa-users"></i> Voir les groupes</button>
             </div>
         </div>
         <div class="hero-card">
@@ -1376,14 +1405,14 @@
     <h2 class="section-title animate" id="groupes">Deux groupes distincts</h2>
     <div class="group-section animate">
         <div class="group-grid">
-            <div class="group-card morning-group">
+            <div class="group-card morning-group" data-guide="Groupe Matin">
                 <div class="group-icon"><i class="fas fa-sun"></i></div>
                 <h3>Groupe Matin</h3>
                 <p class="group-time">08h00 — 11h00</p>
                 <p class="group-days"><i class="fas fa-calendar-alt"></i> Du Lundi au Samedi</p>
                 <span class="group-badge"><i class="fas fa-check-circle"></i> Session complète</span>
             </div>
-            <div class="group-card evening-group">
+            <div class="group-card evening-group" data-guide="Groupe Soir">
                 <div class="group-icon"><i class="fas fa-moon"></i></div>
                 <h3>Groupe Soir</h3>
                 <p class="group-time">14h30 — 17h00</p>
@@ -1398,10 +1427,10 @@
     <div class="calendar-section animate">
         <!-- Tabs -->
         <div class="calendar-tabs">
-            <button class="calendar-tab morning-tab active" data-group="morning">
+            <button class="calendar-tab morning-tab active" data-group="morning" data-guide="Voir Groupe Matin">
                 <i class="fas fa-sun"></i> Groupe Matin
             </button>
-            <button class="calendar-tab evening-tab" data-group="evening">
+            <button class="calendar-tab evening-tab" data-group="evening" data-guide="Voir Groupe Soir">
                 <i class="fas fa-moon"></i> Groupe Soir
             </button>
         </div>
@@ -1409,7 +1438,7 @@
         <!-- Contenu Groupe Matin -->
         <div class="calendar-group-content" id="morningCalendar">
             <!-- Semaine 1 -->
-            <div class="week-accordion active" id="week1Morning">
+            <div class="week-accordion active" data-guide="Cliquez pour déplier la Semaine 1">
                 <div class="week-accordion-header">
                     <span class="week-emoji">📘</span>
                     <h3>Semaine 1</h3>
@@ -1448,7 +1477,7 @@
                 </div>
             </div>
             <!-- Semaine 2 -->
-            <div class="week-accordion" id="week2Morning">
+            <div class="week-accordion" data-guide="Cliquez pour déplier la Semaine 2">
                 <div class="week-accordion-header">
                     <span class="week-emoji">📙</span>
                     <h3>Semaine 2</h3>
@@ -1487,7 +1516,7 @@
                 </div>
             </div>
             <!-- Semaine 3 -->
-            <div class="week-accordion" id="week3Morning">
+            <div class="week-accordion" data-guide="Cliquez pour déplier la Semaine 3">
                 <div class="week-accordion-header">
                     <span class="week-emoji">📕</span>
                     <h3>Semaine 3</h3>
@@ -1526,7 +1555,7 @@
         <!-- Contenu Groupe Soir -->
         <div class="calendar-group-content" id="eveningCalendar" style="display:none;">
             <!-- Semaine 1 -->
-            <div class="week-accordion active" id="week1Evening">
+            <div class="week-accordion active" data-guide="Cliquez pour déplier la Semaine 1 (Soir)">
                 <div class="week-accordion-header">
                     <span class="week-emoji">📘</span>
                     <h3>Semaine 1</h3>
@@ -1553,7 +1582,7 @@
                 </div>
             </div>
             <!-- Semaine 2 -->
-            <div class="week-accordion" id="week2Evening">
+            <div class="week-accordion" data-guide="Cliquez pour déplier la Semaine 2 (Soir)">
                 <div class="week-accordion-header">
                     <span class="week-emoji">📙</span>
                     <h3>Semaine 2</h3>
@@ -1580,7 +1609,7 @@
                 </div>
             </div>
             <!-- Semaine 3 -->
-            <div class="week-accordion" id="week3Evening">
+            <div class="week-accordion" data-guide="Cliquez pour déplier la Semaine 3 (Soir)">
                 <div class="week-accordion-header">
                     <span class="week-emoji">📕</span>
                     <h3>Semaine 3</h3>
@@ -1609,7 +1638,7 @@
     <h2 class="section-title animate" id="programme">Programme académique</h2>
 
     <!-- Module 1 : Initiation -->
-    <div class="module animate">
+    <div class="module animate" data-guide="Cliquez pour voir le module">
         <div class="module-header">
             <div class="module-header-left">
                 <img src="https://img.icons8.com/color/48/000000/laptop.png" alt="Initiation" class="module-icon-img" loading="lazy">
@@ -1630,7 +1659,7 @@
     </div>
 
     <!-- Module 2 : Word -->
-    <div class="module animate">
+    <div class="module animate" data-guide="Cliquez pour voir le module Word">
         <div class="module-header">
             <div class="module-header-left">
                 <img src="https://img.icons8.com/color/48/000000/microsoft-word-2019.png" alt="Word" class="module-icon-img" loading="lazy">
@@ -1652,7 +1681,7 @@
     </div>
 
     <!-- Module 3 : Excel -->
-    <div class="module animate">
+    <div class="module animate" data-guide="Cliquez pour voir le module Excel">
         <div class="module-header">
             <div class="module-header-left">
                 <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019.png" alt="Excel" class="module-icon-img" loading="lazy">
@@ -1673,7 +1702,7 @@
     </div>
 
     <!-- Module 4 : PowerPoint -->
-    <div class="module animate">
+    <div class="module animate" data-guide="Cliquez pour voir le module PowerPoint">
         <div class="module-header">
             <div class="module-header-left">
                 <img src="https://img.icons8.com/color/48/000000/microsoft-powerpoint-2019.png" alt="PowerPoint" class="module-icon-img" loading="lazy">
@@ -1694,7 +1723,7 @@
     </div>
 
     <!-- Module 5 : Projet final -->
-    <div class="module animate">
+    <div class="module animate" data-guide="Cliquez pour voir le projet final">
         <div class="module-header">
             <div class="module-header-left">
                 <img src="https://img.icons8.com/color/48/000000/trophy.png" alt="Projet final" class="module-icon-img" loading="lazy">
@@ -1722,13 +1751,13 @@
             <p style="margin-bottom:12px;"><strong>📍 Passez au centre NOVA Academy à Kassirimé</strong></p>
             <p style="margin-bottom:16px; color:var(--gray-600);">Ou consultez le lien ci-dessous pour découvrir le programme, les formations et les modalités d'inscription :</p>
             <p style="margin-bottom:20px;"><a href="https://forms.office.com/r/E3GmUc2gsi" target="_blank" style="color:var(--navy); font-weight:600; word-break:break-all;">https://forms.office.com/r/E3GmUc2gsi</a></p>
-            <button class="btn-primary" id="inscriptionBtn"><i class="fas fa-check-circle"></i> S'inscrire maintenant</button>
+            <button class="btn-primary" id="inscriptionBtn" data-guide="S'inscrire maintenant"><i class="fas fa-check-circle"></i> S'inscrire maintenant</button>
         </div>
         <div class="contact-card">
             <h3><i class="fas fa-address-card"></i> Contacts & Lieu</h3>
             <p style="margin-bottom:12px;"><i class="fas fa-map-pin" style="color:var(--blue);"></i> <strong>Centre NOVA Academy, Kassirimé</strong> (Korhogo)</p>
             <p style="margin-bottom:12px;"><i class="fab fa-whatsapp" style="color:var(--whatsapp);"></i> <strong>0716851525</strong></p>
-            <a href="https://wa.me/qr/P3GB6WP45P6PK1" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Écrire sur WhatsApp</a>
+            <a href="https://wa.me/qr/P3GB6WP45P6PK1" target="_blank" class="whatsapp-btn" data-guide="Écrire sur WhatsApp"><i class="fab fa-whatsapp"></i> Écrire sur WhatsApp</a>
             <p style="margin-top:16px;"><i class="fas fa-envelope" style="color:var(--blue);"></i> novaacademy27@gmail.com</p>
             <p style="margin-top:12px; font-style:italic; color:var(--gray-600); font-size:0.9rem;">Pour toute information ou difficulté à vous déplacer, contactez l'équipe NOVA Academy.</p>
         </div>
@@ -1809,75 +1838,155 @@
             }
         });
 
-        // ============ GUIDE HINT SCROLL (desktop) ============
-        const guideHint = document.getElementById('guideHint');
-        const guideBtn = document.getElementById('guideBtn');
+        // ============ CURSEUR INTELLIGENT IA ============
+        const smartCursor = document.getElementById('smartCursor');
+        const cursorIcon = document.getElementById('cursorIcon');
+        const cursorLabel = document.getElementById('cursorLabel');
         
-        setTimeout(() => {
-            guideHint.classList.add('hidden');
-        }, 10000);
+        let currentTarget = null;
+        let scrollTimeout = null;
+        let cursorTimeout = null;
+        let isCursorVisible = false;
+        let guideIndex = 0;
         
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                guideHint.classList.add('hidden');
+        // Liste des éléments cliquables à guider (dans l'ordre de priorité)
+        const guideElements = [
+            { selector: '#heroBtn', label: 'Réserver ma place' },
+            { selector: '.calendar-tab.morning-tab', label: 'Voir Groupe Matin' },
+            { selector: '.week-accordion-header', label: 'Cliquez pour déplier la semaine' },
+            { selector: '.module-header', label: 'Cliquez pour voir le module' },
+            { selector: '#inscriptionBtn', label: 'S inscrire maintenant' },
+            { selector: '.whatsapp-btn', label: 'Écrire sur WhatsApp' }
+        ];
+        
+        function getElementFromGuide(guide) {
+            if (!guide) return null;
+            const element = document.querySelector(guide.selector);
+            if (element && element.offsetParent !== null) {
+                return element;
             }
-        });
+            return null;
+        }
         
-        guideBtn.addEventListener('click', () => {
-            document.getElementById('groupes').scrollIntoView({ behavior: 'smooth' });
-            guideHint.classList.add('hidden');
-        });
-
-        // ============ FINGER GUIDE (mobile) ============
-        const fingerGuide = document.getElementById('fingerGuide');
+        function positionCursor(target, label) {
+            if (!target || !smartCursor) return;
+            
+            const rect = target.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+            
+            // Positionner le curseur au centre de l'élément cible
+            const targetX = rect.left + scrollLeft + rect.width / 2;
+            const targetY = rect.top + scrollTop + rect.height / 2;
+            
+            // Ajuster pour que le curseur soit au-dessus de l'élément
+            const cursorWidth = 50;
+            const cursorHeight = 80;
+            
+            smartCursor.style.left = (targetX - cursorWidth / 2) + 'px';
+            smartCursor.style.top = (targetY - cursorHeight - 20) + 'px';
+            
+            cursorLabel.textContent = label || 'Cliquez ici';
+            
+            // Afficher le curseur
+            smartCursor.classList.add('active');
+            smartCursor.classList.remove('hidden');
+            isCursorVisible = true;
+            
+            // Ajouter le highlight à l'élément cible
+            if (currentTarget && currentTarget !== target) {
+                currentTarget.classList.remove('target-highlight');
+            }
+            target.classList.add('target-highlight');
+            currentTarget = target;
+        }
         
-        // Positionner le finger guide sur le premier accordéon semaine visible
-        function positionFingerGuide() {
-            const firstWeek = document.querySelector('.week-accordion');
-            if (firstWeek && window.innerWidth <= 540) {
-                const rect = firstWeek.getBoundingClientRect();
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                const absoluteTop = rect.top + scrollTop;
-                
-                // Positionner le doigt au-dessus du premier accordéon
-                fingerGuide.style.top = (absoluteTop - 80) + 'px';
-                fingerGuide.style.left = '50%';
-                fingerGuide.style.transform = 'translateX(-50%)';
-                
-                // Afficher le finger guide
-                fingerGuide.classList.remove('hidden');
+        function hideCursor() {
+            smartCursor.classList.add('hidden');
+            smartCursor.classList.remove('active');
+            isCursorVisible = false;
+            if (currentTarget) {
+                currentTarget.classList.remove('target-highlight');
+                currentTarget = null;
             }
         }
         
-        // Positionner après le chargement et au scroll
-        window.addEventListener('load', () => {
-            if (window.innerWidth <= 540) {
-                setTimeout(positionFingerGuide, 2000);
+        function showNextGuide() {
+            // Chercher le premier élément visible dans la liste
+            for (let i = 0; i < guideElements.length; i++) {
+                const element = getElementFromGuide(guideElements[i]);
+                if (element) {
+                    // Vérifier si l'élément est dans le viewport
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        positionCursor(element, guideElements[i].label);
+                        return;
+                    }
+                }
             }
-        });
+            hideCursor();
+        }
         
-        // Masquer le finger guide quand l'utilisateur clique sur une semaine
-        document.querySelectorAll('.week-accordion-header').forEach(header => {
-            header.addEventListener('click', () => {
-                fingerGuide.classList.add('hidden');
-            });
-        });
+        function simulateClick() {
+            if (currentTarget) {
+                cursorIcon.classList.add('clicking');
+                setTimeout(() => {
+                    cursorIcon.classList.remove('clicking');
+                    // Simuler un vrai clic sur l'élément
+                    if (currentTarget.tagName === 'BUTTON' || currentTarget.tagName === 'A') {
+                        currentTarget.click();
+                    } else {
+                        // Pour les div/header cliquables
+                        currentTarget.click();
+                    }
+                }, 300);
+            }
+        }
         
-        // Masquer le finger guide après 8 secondes
-        setTimeout(() => {
-            fingerGuide.classList.add('hidden');
-        }, 8000);
-        
-        // Repositionner au scroll
+        // Détecter quand l'utilisateur scroll pour repositionner le curseur
         window.addEventListener('scroll', () => {
-            if (window.innerWidth <= 540 && !fingerGuide.classList.contains('hidden')) {
-                positionFingerGuide();
-            }
-            // Masquer après avoir scrollé beaucoup
-            if (window.scrollY > 1500) {
-                fingerGuide.classList.add('hidden');
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                if (isCursorVisible) {
+                    showNextGuide();
+                }
+            }, 300);
+        });
+        
+        // Détecter quand l'utilisateur clique pour cacher le curseur temporairement
+        document.addEventListener('click', (e) => {
+            if (isCursorVisible && currentTarget && !currentTarget.contains(e.target)) {
+                hideCursor();
+                // Réafficher après un délai
+                clearTimeout(cursorTimeout);
+                cursorTimeout = setTimeout(() => {
+                    showNextGuide();
+                }, 3000);
             }
         });
+        
+        // Démarrer le guidage après le chargement
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                showNextGuide();
+            }, 2000);
+        });
+        
+        // Re-guider périodiquement si l'utilisateur est inactif
+        let inactivityTimeout;
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimeout);
+            inactivityTimeout = setTimeout(() => {
+                if (!isCursorVisible) {
+                    showNextGuide();
+                }
+            }, 10000);
+        }
+        
+        document.addEventListener('mousemove', resetInactivityTimer);
+        document.addEventListener('touchstart', resetInactivityTimer);
+        document.addEventListener('scroll', resetInactivityTimer);
+        resetInactivityTimer();
 
         // ============ INTERSECTION OBSERVER ============
         const observer = new IntersectionObserver((entries) => {
@@ -1896,6 +2005,8 @@
             const header = accordion.querySelector('.week-accordion-header');
             header.addEventListener('click', () => {
                 accordion.classList.toggle('active');
+                hideCursor();
+                setTimeout(showNextGuide, 1500);
             });
         });
 
@@ -1912,6 +2023,8 @@
                         mod.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                     }, 150);
                 }
+                hideCursor();
+                setTimeout(showNextGuide, 1500);
             });
         });
         if (modules.length >= 2) {
@@ -1936,6 +2049,8 @@
                 eveningCal.style.display = 'block';
                 morningCal.style.display = 'none';
             }
+            hideCursor();
+            setTimeout(showNextGuide, 1500);
         }
 
         morningTab.addEventListener('click', () => switchCalendar('morning'));
