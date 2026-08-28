@@ -1,1558 +1,1858 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Nova Academy | Formation Bureautique Pro</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --navy: #0a1628;
-      --navy-light: #132441;
-      --gold: #c8a44e;
-      --gold-light: #f4e5c2;
-      --white: #ffffff;
-      --cream: #faf8f3;
-      --gray-50: #f8f9fa;
-      --gray-100: #f1f3f5;
-      --gray-200: #e9ecef;
-      --gray-600: #6c757d;
-      --gray-800: #212529;
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
-      --shadow-md: 0 8px 32px rgba(0,0,0,0.08);
-      --shadow-lg: 0 24px 64px rgba(0,0,0,0.12);
-      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      --border-radius: 4px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>NOVA Academy | Formation Bureautique Pro · Septembre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1a365d;
+            --navy-light: #2a5298;
+            --blue: #2563eb;
+            --blue-light: #3b82f6;
+            --blue-bg: #eff6ff;
+            --sal: #f4a261;
+            --sal-light: #fdf0e6;
+            --white: #ffffff;
+            --cream: #faf8f3;
+            --gray-50: #f8f9fa;
+            --gray-100: #f1f3f5;
+            --gray-200: #e9ecef;
+            --gray-600: #6c757d;
+            --gray-800: #212529;
+            --whatsapp: #25D366;
+            --red: #dc2626;
+            --red-bg: #fef2f2;
+            --morning: #2563eb;
+            --morning-bg: #eff6ff;
+            --evening: #1e40af;
+            --evening-bg: #dbeafe;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 8px 32px rgba(0,0,0,0.08);
+            --shadow-lg: 0 24px 64px rgba(0,0,0,0.12);
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --border-radius: 4px;
+        }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: var(--white);
-      color: var(--gray-800);
-      line-height: 1.7;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--gray-800);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-    /* Animations académiques */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(32px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes slideInLeft {
-      from { opacity: 0; transform: translateX(-48px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes slideInRight {
-      from { opacity: 0; transform: translateX(48px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes accentLine {
-      from { width: 0; }
-      to { width: 60px; }
-    }
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(32px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-48px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(48px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes accentLine {
+            from { width: 0; }
+            to { width: 60px; }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
 
-    .animate {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .animate.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        .animate {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    .container { 
-      max-width: 1200px; 
-      margin: 0 auto; 
-      padding: 0 32px; 
-    }
+        /* ===== GUIDE SCROLL ===== */
+        .guide-hint {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: bounce 2s ease-in-out infinite;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        .guide-hint.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .guide-hint-btn {
+            background: var(--sal);
+            color: var(--navy);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 8px 24px rgba(244, 162, 97, 0.4);
+            pointer-events: auto;
+            position: relative;
+        }
+        .guide-hint-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            border: 3px solid var(--sal);
+            animation: pulse-ring 2s ease-in-out infinite;
+        }
+        .guide-hint-label {
+            background: var(--navy);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
 
-    /* Top bar académique */
-    .top-bar {
-      background: var(--navy);
-      color: rgba(255,255,255,0.8);
-      font-size: 0.8rem;
-      padding: 8px 0;
-      letter-spacing: 0.5px;
-      font-weight: 500;
-    }
-    .top-bar .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .top-bar i { color: var(--gold); margin-right: 6px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 
-    /* Navigation principale */
-    .nav-academy {
-      background: var(--white);
-      border-bottom: 1px solid var(--gray-200);
-      padding: 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: var(--shadow-sm);
-    }
-    .nav-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 80px;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      text-decoration: none;
-      z-index: 101;
-    }
-    .logo-crest {
-      width: 52px;
-      height: 52px;
-      background: var(--navy);
-      border-radius: var(--border-radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .logo-crest::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--gold);
-    }
-    .logo-crest img {
-      width: 36px;
-      height: 36px;
-      filter: brightness(0) invert(1);
-    }
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-    .logo-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--navy);
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-    }
-    .logo-subtitle {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--gray-600);
-      font-weight: 500;
-    }
+        /* ===== TOP BAR ===== */
+        .top-bar {
+            background: var(--navy);
+            color: rgba(255,255,255,0.85);
+            font-size: 0.8rem;
+            padding: 8px 0;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .top-bar i { color: var(--sal); margin-right: 6px; }
 
-    /* Menu desktop */
-    .nav-links {
-      display: flex;
-      gap: 0;
-      list-style: none;
-      height: 100%;
-    }
-    .nav-links li {
-      height: 100%;
-      display: flex;
-      align-items: center;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--gray-800);
-      font-weight: 500;
-      font-size: 0.9rem;
-      padding: 0 20px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      border-bottom: 3px solid transparent;
-      transition: var(--transition);
-      letter-spacing: 0.3px;
-      white-space: nowrap;
-    }
-    .nav-links a:hover {
-      color: var(--navy);
-      border-bottom-color: var(--gold);
-      background: var(--gray-50);
-    }
-    .btn-nav {
-      background: var(--navy);
-      color: var(--white) !important;
-      padding: 12px 28px !important;
-      border-radius: var(--border-radius);
-      font-weight: 600 !important;
-      height: auto !important;
-      margin-left: 16px;
-      border-bottom: none !important;
-      transition: var(--transition);
-    }
-    .btn-nav:hover {
-      background: #1a2f50 !important;
-      transform: translateY(-1px);
-    }
+        /* ===== NAVIGATION ===== */
+        .nav-academy {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            z-index: 101;
+        }
+        .logo-crest {
+            width: 52px;
+            height: 52px;
+            background: var(--navy);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .logo-crest::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--sal);
+        }
+        .logo-crest img {
+            width: 36px;
+            height: 36px;
+            filter: brightness(0) invert(1);
+        }
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        .logo-subtitle {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
 
-    /* Bouton burger */
-    .burger-btn {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 44px;
-      height: 44px;
-      background: var(--navy);
-      border: none;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      z-index: 101;
-      gap: 5px;
-      transition: var(--transition);
-    }
-    .burger-btn span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 2px;
-      transition: var(--transition);
-    }
-    .burger-btn.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    .burger-btn.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .burger-btn.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
+        .nav-links {
+            display: flex;
+            gap: 0;
+            list-style: none;
+            height: 100%;
+        }
+        .nav-links li { height: 100%; display: flex; align-items: center; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-800);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0 20px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+        .nav-links a:hover {
+            color: var(--navy);
+            border-bottom-color: var(--sal);
+            background: var(--gray-50);
+        }
+        .btn-nav {
+            background: var(--navy);
+            color: var(--white) !important;
+            padding: 12px 28px !important;
+            border-radius: var(--border-radius);
+            font-weight: 600 !important;
+            height: auto !important;
+            margin-left: 16px;
+            border-bottom: none !important;
+            transition: var(--transition);
+        }
+        .btn-nav:hover {
+            background: var(--navy-light) !important;
+            transform: translateY(-1px);
+        }
 
-    /* Hero section */
-    .hero {
-      background: var(--navy);
-      color: white;
-      padding: 80px 0 100px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 45%;
-      height: 100%;
-      background: linear-gradient(105deg, transparent 0%, rgba(200,164,78,0.03) 100%);
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--gold);
-    }
-    .hero-pattern {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 600px;
-      height: 100%;
-      opacity: 0.03;
-      background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.5) 2px, rgba(255,255,255,0.5) 4px);
-    }
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 64px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-text { animation: slideInLeft 0.8s ease forwards; }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(200,164,78,0.12);
-      border: 1px solid rgba(200,164,78,0.25);
-      padding: 6px 20px;
-      border-radius: var(--border-radius);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-      color: var(--gold-light);
-    }
-    .hero-badge i { color: var(--gold); }
-    .hero-text h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.6rem;
-      font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 20px;
-      letter-spacing: -1px;
-    }
-    .hero-text h1 .highlight {
-      color: var(--gold);
-      position: relative;
-    }
-    .hero-text h1 .highlight::after {
-      content: '';
-      position: absolute;
-      bottom: 4px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--gold);
-      opacity: 0.5;
-    }
-    .hero-subtitle {
-      font-size: 1.15rem;
-      opacity: 0.85;
-      margin-bottom: 36px;
-      font-weight: 300;
-      line-height: 1.8;
-      max-width: 480px;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      background: var(--gold);
-      color: var(--navy);
-      border: none;
-      padding: 16px 36px;
-      border-radius: var(--border-radius);
-      font-weight: 700;
-      font-size: 0.95rem;
-      cursor: pointer;
-      letter-spacing: 0.5px;
-      transition: var(--transition);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Inter', sans-serif;
-    }
-    .btn-primary:hover {
-      background: #d4b35a;
-      transform: translateY(-2px);
-      box-shadow: 0 16px 40px rgba(200,164,78,0.3);
-    }
-    .btn-outline {
-      background: transparent;
-      border: 2px solid rgba(255,255,255,0.3);
-      color: white;
-      padding: 16px 36px;
-      border-radius: var(--border-radius);
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      letter-spacing: 0.5px;
-      font-family: 'Inter', sans-serif;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .btn-outline:hover {
-      border-color: white;
-      background: rgba(255,255,255,0.05);
-    }
-    .hero-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--border-radius);
-      padding: 40px;
-      animation: slideInRight 0.8s ease forwards;
-      position: relative;
-    }
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: var(--gold);
-      opacity: 0.6;
-    }
-    .hero-card .stat-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 20px;
-      font-size: 1rem;
-      padding-bottom: 16px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .hero-card .stat-row:last-of-type {
-      border-bottom: none;
-    }
-    .hero-card .stat-icon {
-      width: 44px;
-      height: 44px;
-      background: rgba(200,164,78,0.15);
-      border-radius: var(--border-radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      color: var(--gold);
-      flex-shrink: 0;
-    }
-    .hero-card .urgent-badge {
-      background: #c53030;
-      color: white;
-      padding: 8px 20px;
-      border-radius: var(--border-radius);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      display: inline-block;
-      margin-top: 12px;
-    }
+        .burger-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: var(--navy);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            z-index: 101;
+            gap: 5px;
+            transition: var(--transition);
+        }
+        .burger-btn span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        .burger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .burger-btn.active span:nth-child(2) { opacity: 0; }
+        .burger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-    /* Section logos logiciels */
-    .software-strip {
-      background: var(--white);
-      border-bottom: 1px solid var(--gray-200);
-      padding: 32px 0;
-      margin-top: -1px;
-    }
-    .software-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      text-align: center;
-    }
-    .software-item {
-      padding: 32px 24px;
-      transition: var(--transition);
-      position: relative;
-      border-right: 1px solid var(--gray-200);
-    }
-    .software-item:last-child { border-right: none; }
-    .software-item:hover {
-      background: var(--cream);
-    }
-    .software-item img {
-      width: 72px;
-      height: 72px;
-      margin-bottom: 16px;
-      transition: var(--transition);
-      object-fit: contain;
-      filter: grayscale(100%);
-      opacity: 0.7;
-    }
-    .software-item:hover img {
-      filter: grayscale(0%);
-      opacity: 1;
-      transform: scale(1.05);
-    }
-    .software-item h4 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 4px;
-      font-size: 1.1rem;
-    }
-    .software-item p {
-      font-size: 0.85rem;
-      color: var(--gray-600);
-      font-weight: 400;
-    }
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, #1a365d 0%, #2a5298 50%, #1a365d 100%);
+            color: white;
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--sal);
+        }
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 600px;
+            height: 100%;
+            opacity: 0.03;
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.5) 2px, rgba(255,255,255,0.5) 4px);
+        }
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 64px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-text { animation: slideInLeft 0.8s ease forwards; }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(244,162,97,0.15);
+            border: 1px solid rgba(244,162,97,0.3);
+            padding: 6px 20px;
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            color: #fdf0e6;
+        }
+        .hero-badge i { color: var(--sal); }
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        .hero-text h1 .highlight {
+            color: var(--sal);
+            position: relative;
+        }
+        .hero-text h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--sal);
+            opacity: 0.5;
+        }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-bottom: 36px;
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 480px;
+        }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--sal);
+            color: var(--navy);
+            border: none;
+            padding: 16px 36px;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-primary:hover {
+            background: #e89450;
+            transform: translateY(-2px);
+            box-shadow: 0 16px 40px rgba(244,162,97,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 16px 36px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-outline:hover {
+            border-color: white;
+            background: rgba(255,255,255,0.05);
+        }
+        .hero-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            animation: slideInRight 0.8s ease forwards;
+            position: relative;
+        }
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--sal);
+            opacity: 0.7;
+        }
+        .hero-card .stat-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .hero-card .stat-row:last-of-type { border-bottom: none; }
+        .hero-card .stat-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(244,162,97,0.2);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--sal);
+            flex-shrink: 0;
+        }
+        .hero-card .urgent-badge {
+            background: var(--red);
+            color: white;
+            padding: 8px 20px;
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-top: 12px;
+        }
 
-    /* Section alert */
-    .alert-announcement {
-      background: linear-gradient(135deg, #faf5e8, #f7edd5);
-      border-left: 4px solid var(--gold);
-      padding: 28px 36px;
-      margin: 48px 0;
-      border-radius: var(--border-radius);
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-    }
-    .alert-announcement .alert-icon {
-      font-size: 2rem;
-      color: var(--gold);
-      flex-shrink: 0;
-    }
-    .alert-announcement h3 {
-      font-family: 'Playfair Display', serif;
-      color: var(--navy);
-      margin-bottom: 4px;
-    }
-    .alert-announcement p {
-      color: var(--gray-800);
-      font-weight: 500;
-    }
+        /* ===== SOFTWARE STRIP ===== */
+        .software-strip {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 32px 0;
+            margin-top: -1px;
+        }
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            text-align: center;
+        }
+        .software-item {
+            padding: 32px 24px;
+            transition: var(--transition);
+            position: relative;
+            border-right: 1px solid var(--gray-200);
+        }
+        .software-item:last-child { border-right: none; }
+        .software-item:hover { background: var(--cream); }
+        .software-item img {
+            width: 72px;
+            height: 72px;
+            margin-bottom: 16px;
+            transition: var(--transition);
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.7;
+        }
+        .software-item:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        .software-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+            font-size: 1.1rem;
+        }
+        .software-item p {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            font-weight: 400;
+        }
 
-    /* Section title */
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin: 56px 0 32px;
-      position: relative;
-      padding-bottom: 20px;
-    }
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 60px;
-      height: 3px;
-      background: var(--gold);
-      animation: accentLine 0.8s ease forwards;
-    }
+        /* ===== ALERT ===== */
+        .alert-announcement {
+            background: var(--blue-bg);
+            border-left: 4px solid var(--blue);
+            padding: 28px 36px;
+            margin: 48px 0;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .alert-announcement .alert-icon {
+            font-size: 2rem;
+            color: var(--blue);
+            flex-shrink: 0;
+        }
+        .alert-announcement h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+        .alert-announcement p {
+            color: var(--gray-800);
+            font-weight: 500;
+        }
 
-    /* Info grid */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin: 48px 0;
-    }
-    .info-card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      padding: 36px 24px;
-      text-align: center;
-      transition: var(--transition);
-      border-radius: var(--border-radius);
-      position: relative;
-      overflow: hidden;
-    }
-    .info-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transition: var(--transition);
-    }
-    .info-card:hover::before {
-      transform: scaleX(1);
-    }
-    .info-card:hover {
-      border-color: var(--gold);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-4px);
-    }
-    .info-card .card-icon {
-      width: 56px;
-      height: 56px;
-      background: var(--navy);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px auto;
-      font-size: 1.3rem;
-      color: var(--gold);
-    }
-    .info-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 4px;
-      font-size: 1.2rem;
-    }
-    .info-card p {
-      font-size: 0.9rem;
-      color: var(--gray-600);
-    }
-    .prix-large {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--navy);
-      font-family: 'Playfair Display', serif;
-    }
+        /* ===== SECTION TITLE ===== */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 56px 0 32px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--sal);
+            animation: accentLine 0.8s ease forwards;
+        }
 
-    /* Horaire section */
-    .schedule-section {
-      background: var(--navy);
-      padding: 56px;
-      margin: 48px 0;
-      border-radius: var(--border-radius);
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-    .schedule-section::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--gold);
-    }
-    .schedule-section h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      margin-bottom: 32px;
-      color: var(--gold);
-    }
-    .schedule-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 36px;
-      border-radius: var(--border-radius);
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-    .schedule-icon {
-      width: 72px;
-      height: 72px;
-      background: rgba(200,164,78,0.2);
-      border-radius: var(--border-radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: var(--gold);
-      flex-shrink: 0;
-    }
-    .schedule-info h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-    .schedule-info .time {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--gold);
-      margin: 8px 0;
-    }
-    .schedule-info p {
-      opacity: 0.8;
-      font-size: 0.95rem;
-    }
+        /* ===== INFO GRID ===== */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 48px 0;
+        }
+        .info-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            padding: 36px 24px;
+            text-align: center;
+            transition: var(--transition);
+            border-radius: var(--border-radius);
+            position: relative;
+            overflow: hidden;
+        }
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--blue);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+        .info-card:hover::before { transform: scaleX(1); }
+        .info-card:hover {
+            border-color: var(--blue);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+        .info-card .card-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            font-size: 1.3rem;
+            color: var(--sal);
+        }
+        .info-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+            font-size: 1.2rem;
+        }
+        .info-card p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .prix-large {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--navy);
+            font-family: 'Playfair Display', serif;
+        }
 
-    /* Modules */
-    .module {
-      background: var(--white);
-      margin-bottom: 16px;
-      border: 1px solid var(--gray-200);
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      transition: var(--transition);
-    }
-    .module:hover {
-      border-color: #c0c9d4;
-      box-shadow: var(--shadow-sm);
-    }
-    .module-header {
-      padding: 24px 32px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-      font-size: 1.05rem;
-      background: var(--white);
-      transition: var(--transition);
-      user-select: none;
-      gap: 16px;
-    }
-    .module-header-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex: 1;
-      min-width: 0;
-    }
-    .module-icon-img {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--border-radius);
-      object-fit: contain;
-      flex-shrink: 0;
-      background: var(--gray-100);
-      padding: 8px;
-    }
-    .module.active .module-header {
-      background: var(--gray-50);
-      border-bottom: 1px solid var(--gray-200);
-    }
-    .module-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease;
-      background: var(--white);
-    }
-    .module.active .module-body {
-      max-height: 3000px;
-    }
-    .module-body-inner {
-      padding: 40px 32px;
-    }
-    .chevron-icon {
-      transition: transform 0.3s ease;
-      font-size: 1rem;
-      color: var(--navy);
-      width: 36px;
-      height: 36px;
-      background: var(--gray-100);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .module.active .chevron-icon {
-      transform: rotate(180deg);
-      background: var(--navy);
-      color: var(--gold);
-    }
+        /* ===== SECTION GROUPES ===== */
+        .group-section { margin: 48px 0; }
+        .group-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .group-card {
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            padding: 40px 32px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .group-card:hover {
+            border-color: var(--blue);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+        .group-card.morning-group { border-top: 4px solid var(--blue); }
+        .group-card.evening-group { border-top: 4px solid var(--navy); }
+        .group-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            font-size: 2rem;
+        }
+        .group-card.morning-group .group-icon {
+            background: var(--blue-bg);
+            color: var(--blue);
+        }
+        .group-card.evening-group .group-icon {
+            background: var(--evening-bg);
+            color: var(--navy);
+        }
+        .group-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+        .group-card .group-time {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .group-card.morning-group .group-time { color: var(--blue); }
+        .group-card.evening-group .group-time { color: var(--navy); }
+        .group-card .group-days {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        .group-card .group-badge {
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .group-card.morning-group .group-badge {
+            background: var(--blue-bg);
+            color: var(--blue);
+        }
+        .group-card.evening-group .group-badge {
+            background: var(--evening-bg);
+            color: var(--navy);
+        }
 
-    .chapter-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      margin: 24px 0;
-    }
-    .chapter-card {
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--border-radius);
-      padding: 28px;
-      transition: var(--transition);
-    }
-    .chapter-card:hover {
-      background: var(--white);
-      border-color: var(--gold);
-      box-shadow: var(--shadow-sm);
-    }
-    .chapter-badge {
-      background: var(--navy);
-      color: var(--gold);
-      padding: 4px 14px;
-      border-radius: var(--border-radius);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      display: inline-block;
-      margin-bottom: 12px;
-    }
-    .chapter-card h5 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 12px;
-      font-size: 1.1rem;
-    }
-    .chapter-card ul {
-      list-style: none;
-      padding: 0;
-    }
-    .chapter-card ul li {
-      padding: 5px 0;
-      font-size: 0.9rem;
-      color: var(--gray-800);
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .chapter-card ul li::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--gold);
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 8px;
-    }
+        /* ===== CALENDRIER ===== */
+        .calendar-section { margin: 48px 0; }
+        
+        .week-accordion {
+            margin-bottom: 16px;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: var(--white);
+        }
+        .week-accordion-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 28px;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--white);
+            user-select: none;
+        }
+        .week-accordion-header:hover {
+            background: var(--gray-50);
+        }
+        .week-accordion-header .week-emoji {
+            font-size: 1.8rem;
+        }
+        .week-accordion-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--navy);
+            flex: 1;
+        }
+        .week-accordion-header .week-dates {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            background: var(--gray-50);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+        .week-toggle-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            flex-shrink: 0;
+            background: var(--gray-100);
+            color: var(--gray-600);
+        }
+        .week-accordion.active .week-toggle-icon {
+            background: var(--red);
+            color: white;
+            transform: rotate(45deg);
+        }
+        .week-accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: var(--white);
+        }
+        .week-accordion.active .week-accordion-body {
+            max-height: 4000px;
+        }
+        .week-accordion-body-inner {
+            padding: 24px 28px;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .calendar-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .calendar-tab {
+            padding: 10px 24px;
+            border-radius: 30px;
+            border: 2px solid var(--gray-200);
+            background: var(--white);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .calendar-tab.morning-tab {
+            color: var(--blue);
+            border-color: #bfdbfe;
+        }
+        .calendar-tab.morning-tab:hover,
+        .calendar-tab.morning-tab.active {
+            background: var(--blue);
+            color: white;
+            border-color: var(--blue);
+        }
+        .calendar-tab.evening-tab {
+            color: var(--navy);
+            border-color: #c7d2fe;
+        }
+        .calendar-tab.evening-tab:hover,
+        .calendar-tab.evening-tab.active {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+        .calendar-days {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .calendar-day {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            transition: var(--transition);
+            position: relative;
+        }
+        .calendar-day:hover {
+            border-color: var(--blue);
+            box-shadow: var(--shadow-sm);
+        }
+        .calendar-day::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+        }
+        .calendar-day.morning-day::before { background: var(--blue); }
+        .calendar-day.evening-day::before { background: var(--navy); }
+        .calendar-day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 8px;
+        }
+        .calendar-day-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--navy);
+        }
+        .calendar-day-date {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            background: var(--gray-50);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .calendar-session {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 10px 0;
+        }
+        .calendar-session-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .calendar-session-icon.morning { background: var(--blue-bg); }
+        .calendar-session-icon.evening { background: var(--evening-bg); }
+        .calendar-session-details { flex: 1; }
+        .calendar-session-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+        .calendar-session-label.morning { color: var(--blue); }
+        .calendar-session-label.evening { color: var(--navy); }
+        .calendar-session-text {
+            font-size: 0.82rem;
+            color: var(--gray-800);
+            font-weight: 500;
+        }
+        .calendar-session-time {
+            font-size: 0.7rem;
+            color: var(--gray-600);
+            white-space: nowrap;
+            font-weight: 600;
+            align-self: center;
+        }
 
-    .mini-projet {
-      background: linear-gradient(135deg, #faf8f3, #f7edd5);
-      border-left: 3px solid var(--gold);
-      padding: 24px 28px;
-      margin-top: 28px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      border-radius: var(--border-radius);
-    }
+        /* ===== PROGRAMME ===== */
+        .module {
+            background: var(--white);
+            margin-bottom: 16px;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .module:hover {
+            border-color: #c0c9d4;
+            box-shadow: var(--shadow-sm);
+        }
+        .module-header {
+            padding: 20px 28px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1rem;
+            background: var(--white);
+            transition: var(--transition);
+            user-select: none;
+            gap: 16px;
+        }
+        .module-header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+            min-width: 0;
+        }
+        .module-icon-img {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--border-radius);
+            object-fit: contain;
+            flex-shrink: 0;
+            background: var(--gray-100);
+            padding: 8px;
+        }
+        .module.active .module-header {
+            background: var(--gray-50);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .module-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: var(--white);
+        }
+        .module.active .module-body { max-height: 1500px; }
+        .module-body-inner { padding: 28px; }
+        .chevron-icon {
+            transition: transform 0.3s ease;
+            font-size: 0.9rem;
+            color: var(--navy);
+            width: 32px;
+            height: 32px;
+            background: var(--gray-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .module.active .chevron-icon {
+            transform: rotate(180deg);
+            background: var(--navy);
+            color: var(--sal);
+        }
+        .module-description {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .module-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .module-tag {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            transition: var(--transition);
+        }
+        .module-tag:hover {
+            background: var(--blue);
+            color: var(--white);
+            border-color: var(--blue);
+        }
 
-    /* Contact */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin: 48px 0;
-    }
-    .contact-card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      padding: 40px;
-      border-radius: var(--border-radius);
-      transition: var(--transition);
-    }
-    .contact-card:hover {
-      border-color: var(--gold);
-      box-shadow: var(--shadow-md);
-    }
-    .contact-card h3 {
-      font-family: 'Playfair Display', serif;
-      color: var(--navy);
-      margin-bottom: 16px;
-      font-size: 1.3rem;
-    }
-    .whatsapp-btn {
-      background: #25D366;
-      color: white;
-      padding: 14px 28px;
-      border-radius: var(--border-radius);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 600;
-      transition: var(--transition);
-    }
-    .whatsapp-btn:hover {
-      background: #1da851;
-    }
+        /* ===== CONTACT ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 48px 0;
+        }
+        .contact-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        .contact-card:hover {
+            border-color: var(--blue);
+            box-shadow: var(--shadow-md);
+        }
+        .contact-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--navy);
+            margin-bottom: 16px;
+            font-size: 1.3rem;
+        }
+        .whatsapp-btn {
+            background: var(--whatsapp);
+            color: white;
+            padding: 14px 28px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .whatsapp-btn:hover {
+            background: #1da851;
+        }
 
-    /* Footer */
-    .footer {
-      background: var(--navy);
-      color: rgba(255,255,255,0.75);
-      padding: 64px 32px 40px;
-      margin-top: 64px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 40px;
-      border-top: 4px solid var(--gold);
-    }
-    .footer h4 {
-      font-family: 'Playfair Display', serif;
-      color: var(--white);
-      margin-bottom: 16px;
-      font-size: 1.1rem;
-    }
-    .footer a { 
-      color: rgba(255,255,255,0.6); 
-      text-decoration: none; 
-      transition: var(--transition);
-    }
-    .footer a:hover { color: var(--gold); }
-    .footer-motto {
-      font-style: italic;
-      color: var(--gold);
-      margin-top: 8px;
-      font-size: 0.9rem;
-    }
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.75);
+            padding: 64px 32px 40px;
+            margin-top: 64px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            border-top: 4px solid var(--sal);
+        }
+        .footer h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+        .footer a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer a:hover { color: var(--sal); }
+        .footer-motto {
+            font-style: italic;
+            color: var(--sal);
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
 
-    /* Overlay mobile */
-    .mobile-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 99;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .mobile-overlay.active {
-      opacity: 1;
-    }
+        /* ===== OVERLAY ===== */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .mobile-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
 
-    /* ============ MEDIA QUERIES ============ */
-    @media (max-width: 1024px) {
-      .hero-content { 
-        grid-template-columns: 1fr; 
-        gap: 40px; 
-      }
-      .hero-text h1 { font-size: 2.8rem; }
-    }
+        /* ===== MEDIA QUERIES ===== */
+        @media (max-width: 1024px) {
+            .hero-content { grid-template-columns: 1fr; gap: 40px; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .calendar-days { grid-template-columns: 1fr; }
+            .group-grid { grid-template-columns: 1fr; }
+            .info-grid { grid-template-columns: 1fr 1fr; }
+        }
 
-    @media (max-width: 900px) {
-      .container { padding: 0 20px; }
-      
-      /* Menu burger */
-      .burger-btn {
-        display: flex;
-      }
-      
-      .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 300px;
-        height: 100vh;
-        background: var(--white);
-        flex-direction: column;
-        padding: 100px 32px 40px;
-        box-shadow: var(--shadow-lg);
-        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        z-index: 100;
-        overflow-y: auto;
-        gap: 4px;
-      }
-      .nav-links.active {
-        right: 0;
-      }
-      .nav-links li {
-        height: auto;
-        width: 100%;
-      }
-      .nav-links a {
-        padding: 14px 0;
-        height: auto;
-        border-bottom: 1px solid var(--gray-200);
-        width: 100%;
-        font-size: 0.95rem;
-      }
-      .nav-links a:hover {
-        border-bottom-color: var(--gold);
-        background: transparent;
-      }
-      .btn-nav {
-        margin-left: 0;
-        margin-top: 8px;
-        text-align: center;
-        justify-content: center;
-        border-bottom: none !important;
-      }
-      
-      .mobile-overlay {
-        display: block;
-        pointer-events: none;
-      }
-      .mobile-overlay.active {
-        pointer-events: auto;
-      }
+        @media (max-width: 900px) {
+            .container { padding: 0 20px; }
+            .burger-btn { display: flex; }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                padding: 100px 32px 40px;
+                box-shadow: var(--shadow-lg);
+                transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                z-index: 100;
+                overflow-y: auto;
+                gap: 4px;
+            }
+            .nav-links.active { right: 0; }
+            .nav-links li { height: auto; width: 100%; }
+            .nav-links a {
+                padding: 14px 0;
+                height: auto;
+                border-bottom: 1px solid var(--gray-200);
+                width: 100%;
+                font-size: 0.95rem;
+            }
+            .nav-links a:hover { border-bottom-color: var(--sal); background: transparent; }
+            .btn-nav {
+                margin-left: 0;
+                margin-top: 8px;
+                text-align: center;
+                justify-content: center;
+                border-bottom: none !important;
+            }
+            .mobile-overlay { display: block; }
+            .software-grid { grid-template-columns: 1fr; }
+            .software-item { border-right: none; border-bottom: 1px solid var(--gray-200); }
+            .software-item:last-child { border-bottom: none; }
+            .info-grid { grid-template-columns: 1fr 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 2rem; }
+            .hero-card { padding: 28px; }
+            .module-header { padding: 16px 20px; font-size: 0.9rem; }
+            .module-header-left { gap: 12px; }
+            .module-icon-img { width: 36px; height: 36px; }
+            .module-body-inner { padding: 20px; }
+            .top-bar .container { justify-content: center; text-align: center; }
+            .week-accordion-header { padding: 16px 20px; }
+            .week-accordion-header h3 { font-size: 1.1rem; }
+            .week-accordion-body-inner { padding: 16px 20px; }
+            .group-card { padding: 28px 20px; }
+            .guide-hint { bottom: 20px; right: 20px; }
+            .guide-hint-btn { width: 48px; height: 48px; font-size: 1.2rem; }
+        }
 
-      .software-grid { 
-        grid-template-columns: 1fr; 
-      }
-      .software-item { 
-        border-right: none; 
-        border-bottom: 1px solid var(--gray-200); 
-      }
-      .software-item:last-child { border-bottom: none; }
-      
-      .info-grid { 
-        grid-template-columns: 1fr 1fr; 
-      }
-      
-      .contact-grid { 
-        grid-template-columns: 1fr; 
-      }
-      
-      .schedule-section { 
-        padding: 32px 24px; 
-      }
-      .schedule-card {
-        flex-direction: column;
-        text-align: center;
-      }
-      
-      .hero-text h1 { font-size: 2.2rem; }
-      .hero-card { padding: 28px; }
-      
-      .module-header { 
-        padding: 20px; 
-        font-size: 0.95rem;
-      }
-      .module-header-left { gap: 12px; }
-      .module-icon-img { width: 40px; height: 40px; }
-      .module-body-inner { padding: 24px 20px; }
-      
-      .chapter-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .top-bar .container {
-        justify-content: center;
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 540px) {
-      .info-grid { 
-        grid-template-columns: 1fr; 
-      }
-      .hero-text h1 { 
-        font-size: 1.8rem; 
-      }
-      .hero-buttons {
-        flex-direction: column;
-      }
-      .btn-primary, .btn-outline {
-        width: 100%;
-        justify-content: center;
-      }
-      .hero { 
-        padding: 48px 0 64px; 
-      }
-      .nav-links {
-        width: 100%;
-      }
-      .section-title {
-        font-size: 1.5rem;
-      }
-      .alert-announcement {
-        flex-direction: column;
-        padding: 20px;
-      }
-      .contact-card {
-        padding: 24px;
-      }
-      .mini-projet {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-  </style>
+        @media (max-width: 540px) {
+            .info-grid { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 1.7rem; }
+            .hero-buttons { flex-direction: column; }
+            .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+            .hero { padding: 48px 0 64px; }
+            .nav-links { width: 100%; }
+            .section-title { font-size: 1.5rem; }
+            .alert-announcement { flex-direction: column; padding: 20px; }
+            .contact-card { padding: 24px; }
+            .calendar-day { padding: 16px; }
+            .calendar-session { flex-wrap: wrap; }
+            .calendar-session-time { width: 100%; text-align: right; }
+            .calendar-tab { padding: 8px 16px; font-size: 0.75rem; }
+            .week-accordion-header { flex-wrap: wrap; gap: 8px; }
+            .week-accordion-header .week-dates { margin-left: auto; }
+            .group-grid { gap: 16px; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- Top bar académique -->
-<div class="top-bar">
-  <div class="container">
-    <span><i class="fas fa-phone"></i> 0716851525</span>
-    <span><i class="fas fa-envelope"></i> novaacademy27@gmail.com</span>
-    <span><i class="fas fa-map-marker-alt"></i> Centre NOVA Academy, Kassirimé — Korhogo</span>
-  </div>
+<!-- GUIDE HINT SCROLL -->
+<div class="guide-hint" id="guideHint">
+    <button class="guide-hint-btn" id="guideBtn" aria-label="Continuer">
+        <i class="fas fa-arrow-down"></i>
+    </button>
+    <span class="guide-hint-label">Cliquez pour explorer</span>
 </div>
 
-<!-- Navigation -->
+<!-- TOP BAR -->
+<div class="top-bar">
+    <div class="container">
+        <span><i class="fas fa-phone"></i> 0716851525</span>
+        <span><i class="fas fa-envelope"></i> novaacademy27@gmail.com</span>
+        <span><i class="fas fa-map-marker-alt"></i> Centre NOVA Academy, Kassirimé — Korhogo</span>
+    </div>
+</div>
+
+<!-- NAVIGATION -->
 <nav class="nav-academy">
-  <div class="container nav-inner">
-    <a href="#" class="logo">
-      <div class="logo-crest">
-        <img src="https://img.icons8.com/ios-filled/50/FFFFFF/graduation-cap.png" alt="Nova Academy">
-      </div>
-      <div class="logo-text">
-        <span class="logo-title">NOVA</span>
-        <span class="logo-subtitle">Academy</span>
-      </div>
-    </a>
-    
-    <!-- Menu desktop/mobile -->
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#programme">Programme</a></li>
-      <li><a href="#horaires">Horaires</a></li>
-      <li><a href="#tarifs">Tarifs</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#inscription" class="btn-nav">S'inscrire</a></li>
-    </ul>
-    
-    <!-- Bouton burger -->
-    <button class="burger-btn" id="burgerBtn" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
+    <div class="container nav-inner">
+        <a href="#" class="logo">
+            <div class="logo-crest">
+                <img src="https://img.icons8.com/ios-filled/50/FFFFFF/graduation-cap.png" alt="NOVA Academy" loading="lazy">
+            </div>
+            <div class="logo-text">
+                <span class="logo-title">NOVA</span>
+                <span class="logo-subtitle">Academy</span>
+            </div>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#groupes">Groupes</a></li>
+            <li><a href="#calendrier">Calendrier</a></li>
+            <li><a href="#programme">Programme</a></li>
+            <li><a href="#tarifs">Tarifs</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#inscription" class="btn-nav">S'inscrire</a></li>
+        </ul>
+        <button class="burger-btn" id="burgerBtn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
 </nav>
 
-<!-- Overlay mobile -->
 <div class="mobile-overlay" id="mobileOverlay"></div>
 
-<!-- Hero -->
+<!-- HERO -->
 <header class="hero">
-  <div class="hero-pattern"></div>
-  <div class="container hero-content">
-    <div class="hero-text">
-      <div class="hero-badge"><i class="fas fa-star"></i> Formation pratique</div>
-      <h1>Bureautique <span class="highlight">Professionnelle</span></h1>
-      <p class="hero-subtitle">Maîtrisez Microsoft Word, Excel et PowerPoint avec une approche académique rigoureuse. Projets concrets, encadrement personnalisé et certification.</p>
-      <div class="hero-buttons">
-        <button class="btn-primary" id="heroBtn"><i class="fas fa-graduation-cap"></i> Réserver ma place</button>
-        <button class="btn-outline" onclick="document.getElementById('programme').scrollIntoView({behavior:'smooth'})"><i class="fas fa-book-open"></i> Programme complet</button>
-      </div>
+    <div class="hero-pattern"></div>
+    <div class="container hero-content">
+        <div class="hero-text">
+            <div class="hero-badge"><i class="fas fa-star"></i> Formation pratique</div>
+            <h1>Bureautique <span class="highlight">Professionnelle</span></h1>
+            <p class="hero-subtitle">Maîtrisez Microsoft Word, Excel et PowerPoint avec une approche académique rigoureuse. Deux groupes distincts pour s'adapter à votre emploi du temps.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" id="heroBtn"><i class="fas fa-graduation-cap"></i> Réserver ma place</button>
+                <button class="btn-outline" onclick="document.getElementById('groupes').scrollIntoView({behavior:'smooth'})"><i class="fas fa-users"></i> Voir les groupes</button>
+            </div>
+        </div>
+        <div class="hero-card">
+            <div class="stat-row"><span class="stat-icon"><i class="far fa-calendar-alt"></i></span> <strong>1er – 19 Septembre 2025</strong></div>
+            <div class="stat-row"><span class="stat-icon"><i class="fas fa-sun"></i></span> <strong>Groupe Matin</strong> 08h00 – 11h00</div>
+            <div class="stat-row"><span class="stat-icon"><i class="fas fa-moon"></i></span> <strong>Groupe Soir</strong> 14h30 – 17h00</div>
+            <div class="stat-row"><span class="stat-icon"><i class="fas fa-hourglass-half"></i></span> <strong>3 semaines</strong> de formation intensive</div>
+            <div class="stat-row"><span class="stat-icon"><i class="fas fa-map-marker-alt"></i></span> <strong>Korhogo, Kassirimé</strong></div>
+            <span class="urgent-badge"><i class="fas fa-exclamation-circle"></i> Places limitées</span>
+        </div>
     </div>
-    <div class="hero-card">
-      <div class="stat-row"><span class="stat-icon"><i class="far fa-calendar-alt"></i></span> <strong>18 Août - 4 Septembre 2026</strong></div>
-      <div class="stat-row"><span class="stat-icon"><i class="fas fa-clock"></i></span> <strong>08h00 - 11h00</strong>Mardi au Vendredi</div>
-      <div class="stat-row"><span class="stat-icon"><i class="fas fa-hourglass-half"></i></span> <strong>3 semaines</strong> de formation intensive</div>
-      <div class="stat-row"><span class="stat-icon"><i class="fas fa-map-marker-alt"></i></span> <strong>Korhogo, Kassirimé</strong></div>
-      <span class="urgent-badge"><i class="fas fa-exclamation-circle"></i> Places limitées</span>
-    </div>
-  </div>
 </header>
 
 <main class="container">
 
-  <!-- Software strip -->
-  <div class="software-strip animate" style="margin-top: -1px;">
-    <div class="software-grid">
-      <div class="software-item">
-        <img src="https://img.icons8.com/color/96/000000/microsoft-word-2019.png" alt="Word" loading="lazy">
-        <h4>Microsoft Word</h4>
-        <p>Traitement de texte avancé</p>
-      </div>
-      <div class="software-item">
-        <img src="https://img.icons8.com/color/96/000000/microsoft-excel-2019.png" alt="Excel" loading="lazy">
-        <h4>Microsoft Excel</h4>
-        <p>Tableur & analyse de données</p>
-      </div>
-      <div class="software-item">
-        <img src="https://img.icons8.com/color/96/000000/microsoft-powerpoint-2019.png" alt="PowerPoint" loading="lazy">
-        <h4>Microsoft PowerPoint</h4>
-        <p>Présentations professionnelles</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Alerte -->
-  <div class="alert-announcement animate">
-    <div class="alert-icon"><i class="fas fa-bullhorn"></i></div>
-    <div>
-      <h3>📢 Reprise des formations — NOVA ACADEMY</h3>
-      <p>Les personnes déjà inscrites ou intéressées sont invitées à <strong>passer au centre NOVA Academy à Kassirimé</strong> afin de finaliser leur inscription. Pour toute information ou difficulté à vous déplacer, vous pouvez également contacter l'équipe NOVA Academy.</p>
-    </div>
-  </div>
-
-  <!-- Infos clés -->
-  <h2 class="section-title animate" id="tarifs">Informations clés</h2>
-  <div class="info-grid animate">
-    <div class="info-card">
-      <div class="card-icon"><i class="far fa-calendar-alt"></i></div>
-      <h3>Début des cours</h3>
-      <p>18 Août 2026</p>
-    </div>
-    <div class="info-card">
-      <div class="card-icon"><i class="fas fa-tag"></i></div>
-      <h3>Frais de formation</h3>
-      <span class="prix-large">20 000 F</span>
-      <p>Paiement échelonné possible</p>
-    </div>
-    <div class="info-card">
-      <div class="card-icon"><i class="fas fa-hourglass-half"></i></div>
-      <h3>Durée</h3>
-      <p>3 semaines intensives</p>
-    </div>
-    <div class="info-card">
-      <div class="card-icon"><i class="fas fa-location-dot"></i></div>
-      <h3>Lieu</h3>
-      <p>Centre NOVA, Kassirimé</p>
-    </div>
-  </div>
-
-  <!-- Horaires -->
-  <div class="schedule-section animate" id="horaires">
-    <h3><i class="far fa-clock"></i> Horaires de la formation</h3>
-    <div class="schedule-card">
-      <div class="schedule-icon">
-        <i class="fas fa-sun"></i>
-      </div>
-      <div class="schedule-info">
-        <h4>Session du Matin</h4>
-        <p class="time">08h00 — 11h00</p>
-        <p><i class="fas fa-calendar-alt"></i> Du Mardi au Vendredi</p>
-        <p><i class="fas fa-calendar-check"></i> Durée : 3 semaines (18 Août — 4 Septembre 2026)</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Programme -->
-  <h2 class="section-title animate" id="programme">Programme académique</h2>
-
-  <!-- Module Initiation -->
-  <div class="module animate">
-    <div class="module-header">
-      <div class="module-header-left">
-        <img src="https://img.icons8.com/color/48/000000/laptop.png" alt="Initiation" class="module-icon-img" loading="lazy">
-        <div><strong>Séance inaugurale :</strong> Initiation à l'informatique</div>
-      </div>
-      <i class="fas fa-chevron-down chevron-icon"></i>
-    </div>
-    <div class="module-body">
-      <div class="module-body-inner">
-        <div class="chapter-grid">
-          <div class="chapter-card">
-            <span class="chapter-badge">Objectifs</span>
-            <ul>
-              <li>Comprendre le fonctionnement d'un ordinateur</li>
-              <li>Différencier matériel et logiciel</li>
-              <li>Maîtriser le système d'exploitation Windows</li>
-              <li>Gérer les fichiers et dossiers</li>
-              <li>Utiliser Internet et la messagerie</li>
-            </ul>
-          </div>
-          <div class="chapter-card">
-            <span class="chapter-badge">Contenu pratique</span>
-            <ul>
-              <li>Découverte des composants</li>
-              <li>Bureau, menu Démarrer, fenêtres</li>
-              <li>Explorateur de fichiers</li>
-              <li>Navigation web et emails</li>
-            </ul>
-          </div>
+    <!-- SOFTWARE STRIP -->
+    <div class="software-strip animate">
+        <div class="software-grid">
+            <div class="software-item">
+                <img src="https://img.icons8.com/color/96/000000/microsoft-word-2019.png" alt="Word" loading="lazy">
+                <h4>Microsoft Word</h4>
+                <p>Traitement de texte avancé</p>
+            </div>
+            <div class="software-item">
+                <img src="https://img.icons8.com/color/96/000000/microsoft-excel-2019.png" alt="Excel" loading="lazy">
+                <h4>Microsoft Excel</h4>
+                <p>Tableur & analyse de données</p>
+            </div>
+            <div class="software-item">
+                <img src="https://img.icons8.com/color/96/000000/microsoft-powerpoint-2019.png" alt="PowerPoint" loading="lazy">
+                <h4>Microsoft PowerPoint</h4>
+                <p>Présentations professionnelles</p>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Module Word -->
-  <div class="module animate">
-    <div class="module-header">
-      <div class="module-header-left">
-        <img src="https://img.icons8.com/color/48/000000/microsoft-word-2019.png" alt="Word" class="module-icon-img" loading="lazy">
-        <div><strong>Module I :</strong> Microsoft Word — Chapitres 1 à 5</div>
-      </div>
-      <i class="fas fa-chevron-down chevron-icon"></i>
-    </div>
-    <div class="module-body">
-      <div class="module-body-inner">
-        <div class="chapter-grid">
-          <div class="chapter-card">
-            <span class="chapter-badge">Chapitre 1</span>
-            <h5>Bases et structuration</h5>
-            <ul>
-              <li>Interface Word, créer/enregistrer</li>
-              <li>Styles (Titre 1, Titre 2...)</li>
-              <li>Structurer un document long</li>
-            </ul>
-          </div>
-          <div class="chapter-card">
-            <span class="chapter-badge">Chapitre 2</span>
-            <h5>Mise en forme professionnelle</h5>
-            <ul>
-              <li>Mise en forme texte/paragraphes</li>
-              <li>Marges, orientation, sauts de page</li>
-              <li>En-têtes, pieds de page, numérotation</li>
-            </ul>
-          </div>
-          <div class="chapter-card">
-            <span class="chapter-badge">Chapitre 3</span>
-            <h5>Automatisation</h5>
-            <ul>
-              <li>Table des matières automatique</li>
-              <li>Légendes (images, tableaux)</li>
-              <li>Table des figures/tableaux</li>
-            </ul>
-          </div>
-          <div class="chapter-card">
-            <span class="chapter-badge">Chapitre 4</span>
-            <h5>Références et bibliographie</h5>
-            <ul>
-              <li>Insertion de citations</li>
-              <li>Bibliographie automatique</li>
-              <li>Styles APA, ISO, etc.</li>
-            </ul>
-          </div>
-          <div class="chapter-card">
-            <span class="chapter-badge">Chapitre 5</span>
-            <h5>Finalisation et export</h5>
-            <ul>
-              <li>Correction orthographique</li>
-              <li>Export PDF optimisé</li>
-              <li>Préparation pour l'impression</li>
-            </ul>
-          </div>
+    <!-- ALERTE -->
+    <div class="alert-announcement animate">
+        <div class="alert-icon"><i class="fas fa-bullhorn"></i></div>
+        <div>
+            <h3>📢 Reprise des formations — NOVA ACADEMY</h3>
+            <p>Les personnes déjà inscrites ou intéressées sont invitées à <strong>passer au centre NOVA Academy à Kassirimé</strong> afin de finaliser leur inscription. Pour toute information ou difficulté à vous déplacer, vous pouvez également contacter l'équipe NOVA Academy.</p>
         </div>
-        <div class="mini-projet">
-          <img src="https://img.icons8.com/color/48/000000/microsoft-word-2019.png" alt="Word projet" loading="lazy">
-          <div><strong>Mini-projet Word :</strong> Rédaction d'un document professionnel complet avec page de garde, styles, table des matières, légendes et bibliographie automatique.</div>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Module Excel -->
-  <div class="module animate">
-    <div class="module-header">
-      <div class="module-header-left">
-        <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019.png" alt="Excel" class="module-icon-img" loading="lazy">
-        <div><strong>Module II :</strong> Microsoft Excel — Chapitres 6 à 8</div>
-      </div>
-      <i class="fas fa-chevron-down chevron-icon"></i>
-    </div>
-    <div class="module-body">
-      <div class="module-body-inner">
-        <div class="chapter-grid">
-          <div class="chapter-card">
-            <span class="chapter-badge">Chapitre 6</span>
-            <h5>Bases d'Excel</h5>
-            <ul>
-              <li>Cellules, lignes, colonnes</li>
-              <li>Saisie et organisation des données</li>
-              <li>Mise en forme des tableaux</li>
-            </ul>
-          </div>
-          <div class="chapter-card">
-            <span class="chapter-badge">Chapitre 7</span>
-            <h5>Formules et fonctions</h5>
-            <ul>
-              <li>Calculs simples et avancés</li>
-              <li>SOMME, MOYENNE, MIN, MAX</li>
-              <li>Références relatives/absolues</li>
-            </ul>
-          </div>
-          <div class="chapter-card">
-            <span class="chapter-badge">Chapitre 8</span>
-            <h5>Analyse et graphiques</h5>
-            <ul>
-              <li>Trier et filtrer les données</li>
-              <li>Créer des graphiques</li>
-              <li>Exploiter les résultats</li>
-            </ul>
-          </div>
+    <!-- INFOS CLÉS -->
+    <h2 class="section-title animate" id="tarifs">Informations clés</h2>
+    <div class="info-grid animate">
+        <div class="info-card">
+            <div class="card-icon"><i class="far fa-calendar-alt"></i></div>
+            <h3>Début des cours</h3>
+            <p>1er Septembre 2025</p>
         </div>
-        <div class="mini-projet">
-          <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019.png" alt="Excel projet" loading="lazy">
-          <div><strong>Mini-projet Excel :</strong> Création d'un tableau de gestion (dépenses, suivi de paiements) avec formules et graphiques.</div>
+        <div class="info-card">
+            <div class="card-icon"><i class="fas fa-tag"></i></div>
+            <h3>Frais de formation</h3>
+            <span class="prix-large">20 000 F</span>
+            <p>Paiement échelonné possible</p>
         </div>
-      </div>
+        <div class="info-card">
+            <div class="card-icon"><i class="fas fa-hourglass-half"></i></div>
+            <h3>Durée</h3>
+            <p>3 semaines intensives</p>
+        </div>
+        <div class="info-card">
+            <div class="card-icon"><i class="fas fa-location-dot"></i></div>
+            <h3>Lieu</h3>
+            <p>Centre NOVA, Kassirimé</p>
+        </div>
     </div>
-  </div>
 
-  <!-- Module PowerPoint -->
-  <div class="module animate">
-    <div class="module-header">
-      <div class="module-header-left">
-        <img src="https://img.icons8.com/color/48/000000/microsoft-powerpoint-2019.png" alt="PowerPoint" class="module-icon-img" loading="lazy">
-        <div><strong>Module III :</strong> Microsoft PowerPoint — Chapitres 9 & 10</div>
-      </div>
-      <i class="fas fa-chevron-down chevron-icon"></i>
-    </div>
-    <div class="module-body">
-      <div class="module-body-inner">
-        <div class="chapter-grid">
-          <div class="chapter-card">
-            <span class="chapter-badge">Chapitre 9</span>
-            <h5>Création de présentation</h5>
-            <ul>
-              <li>Interface PowerPoint</li>
-              <li>Organiser les diapositives</li>
-              <li>Insérer texte et images</li>
-            </ul>
-          </div>
-          <div class="chapter-card">
-            <span class="chapter-badge">Chapitre 10</span>
-            <h5>Design et animations</h5>
-            <ul>
-              <li>Choisir un thème professionnel</li>
-              <li>Transitions et animations</li>
-              <li>Impact visuel et narration</li>
-            </ul>
-          </div>
+    <!-- GROUPES -->
+    <h2 class="section-title animate" id="groupes">Deux groupes distincts</h2>
+    <div class="group-section animate">
+        <div class="group-grid">
+            <div class="group-card morning-group">
+                <div class="group-icon"><i class="fas fa-sun"></i></div>
+                <h3>Groupe Matin</h3>
+                <p class="group-time">08h00 — 11h00</p>
+                <p class="group-days"><i class="fas fa-calendar-alt"></i> Du Lundi au Samedi</p>
+                <span class="group-badge"><i class="fas fa-check-circle"></i> Session complète</span>
+            </div>
+            <div class="group-card evening-group">
+                <div class="group-icon"><i class="fas fa-moon"></i></div>
+                <h3>Groupe Soir</h3>
+                <p class="group-time">14h30 — 17h00</p>
+                <p class="group-days"><i class="fas fa-calendar-alt"></i> Mardi · Vendredi · Samedi</p>
+                <span class="group-badge"><i class="fas fa-check-circle"></i> Session renforcée</span>
+            </div>
         </div>
-        <div class="mini-projet">
-          <img src="https://img.icons8.com/color/48/000000/microsoft-powerpoint-2019.png" alt="PowerPoint projet" loading="lazy">
-          <div><strong>Mini-projet PowerPoint :</strong> Conception d'une présentation complète et professionnelle avec slides, transitions et animations.</div>
+    </div>
+
+    <!-- CALENDRIER DÉPLIABLE -->
+    <h2 class="section-title animate" id="calendrier">Calendrier détaillé</h2>
+    <div class="calendar-section animate">
+        <!-- Tabs -->
+        <div class="calendar-tabs">
+            <button class="calendar-tab morning-tab active" data-group="morning">
+                <i class="fas fa-sun"></i> Groupe Matin
+            </button>
+            <button class="calendar-tab evening-tab" data-group="evening">
+                <i class="fas fa-moon"></i> Groupe Soir
+            </button>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Projet final -->
-  <div class="module animate">
-    <div class="module-header">
-      <div class="module-header-left">
-        <img src="https://img.icons8.com/color/48/000000/trophy.png" alt="Projet final" class="module-icon-img" loading="lazy">
-        <div><strong>Projet Final :</strong> Synthèse et certification</div>
-      </div>
-      <i class="fas fa-chevron-down chevron-icon"></i>
-    </div>
-    <div class="module-body">
-      <div class="module-body-inner">
-        <p style="font-size:1.1rem; margin-bottom:24px; color:var(--navy);"><strong>Objectif :</strong> Réaliser un projet complet intégrant les trois logiciels :</p>
-        <div class="chapter-grid">
-          <div class="chapter-card">
-            <h5><img src="https://img.icons8.com/color/24/000000/microsoft-word-2019.png" alt="Word" style="vertical-align:middle;"> Rapport Word</h5>
-            <p>Document structuré avec styles, table des matières, légendes et bibliographie automatique.</p>
-          </div>
-          <div class="chapter-card">
-            <h5><img src="https://img.icons8.com/color/24/000000/microsoft-excel-2019.png" alt="Excel" style="vertical-align:middle;"> Tableau Excel</h5>
-            <p>Analyse de données avec formules, fonctions et graphiques dynamiques.</p>
-          </div>
-          <div class="chapter-card">
-            <h5><img src="https://img.icons8.com/color/24/000000/microsoft-powerpoint-2019.png" alt="PowerPoint" style="vertical-align:middle;"> Présentation PowerPoint</h5>
-            <p>Présentation professionnelle synthétisant l'ensemble du projet.</p>
-          </div>
+        <!-- Contenu Groupe Matin -->
+        <div class="calendar-group-content" id="morningCalendar">
+            <!-- Semaine 1 -->
+            <div class="week-accordion active">
+                <div class="week-accordion-header">
+                    <span class="week-emoji">📘</span>
+                    <h3>Semaine 1</h3>
+                    <span class="week-dates">1er – 6 septembre</span>
+                    <span class="week-toggle-icon"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="week-accordion-body">
+                    <div class="week-accordion-body-inner">
+                        <div class="calendar-days">
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Lundi</span><span class="calendar-day-date">1er septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Accueil et initiation</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">2 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Bases et structuration</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Mercredi</span><span class="calendar-day-date">3 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Mise en forme</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Jeudi</span><span class="calendar-day-date">4 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Automatisation</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">5 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Références et finalisation</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">6 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Mini-projet Word + Révision</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Semaine 2 -->
+            <div class="week-accordion">
+                <div class="week-accordion-header">
+                    <span class="week-emoji">📙</span>
+                    <h3>Semaine 2</h3>
+                    <span class="week-dates">8 – 13 septembre</span>
+                    <span class="week-toggle-icon"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="week-accordion-body">
+                    <div class="week-accordion-body-inner">
+                        <div class="calendar-days">
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Lundi</span><span class="calendar-day-date">8 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Excel — Bases</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">9 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Excel — Formules et fonctions</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Mercredi</span><span class="calendar-day-date">10 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Excel — Analyse et graphiques</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Jeudi</span><span class="calendar-day-date">11 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Mini-projet Excel</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">12 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">PowerPoint — Création</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">13 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">PowerPoint — Design et animations</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Semaine 3 -->
+            <div class="week-accordion">
+                <div class="week-accordion-header">
+                    <span class="week-emoji">📕</span>
+                    <h3>Semaine 3</h3>
+                    <span class="week-dates">15 – 19 septembre</span>
+                    <span class="week-toggle-icon"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="week-accordion-body">
+                    <div class="week-accordion-body-inner">
+                        <div class="calendar-days">
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Lundi</span><span class="calendar-day-date">15 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Projet final — Word</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">16 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Projet final — Excel</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Mercredi</span><span class="calendar-day-date">17 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Projet final — PowerPoint</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Jeudi</span><span class="calendar-day-date">18 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Évaluation finale</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                            <div class="calendar-day morning-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">19 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon morning">☀️</div><div class="calendar-session-details"><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Feedback, attestations, clôture</div></div><span class="calendar-session-time">8h – 11h</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p style="margin-top:16px; color:var(--navy);"><strong>À l'issue de la formation, vous serez capable de :</strong></p>
-        <ul style="list-style:none; padding:0; margin-top:8px;">
-          <li style="padding:6px 0; color:var(--gray-800);">✔ Produire des documents professionnels</li>
-          <li style="padding:6px 0; color:var(--gray-800);">✔ Automatiser Word (TDM, bibliographie)</li>
-          <li style="padding:6px 0; color:var(--gray-800);">✔ Gérer des données avec Excel</li>
-          <li style="padding:6px 0; color:var(--gray-800);">✔ Présenter efficacement avec PowerPoint</li>
-        </ul>
-      </div>
-    </div>
-  </div>
 
-  <!-- Contact -->
-  <h2 class="section-title animate" id="contact">Inscription & Contact</h2>
-  <div class="contact-grid animate" id="inscription">
-    <div class="contact-card">
-      <h3><i class="fas fa-file-signature"></i> Finalisez votre inscription</h3>
-      <p style="margin-bottom:12px;"><strong>📍 Passez au centre NOVA Academy à Kassirimé</strong></p>
-      <p style="margin-bottom:16px; color:var(--gray-600);">Ou consultez le lien ci-dessous pour découvrir le programme, les formations et les modalités d'inscription :</p>
-      <p style="margin-bottom:20px;"><a href="https://forms.office.com/r/E3GmUc2gsi" target="_blank" style="color:var(--navy); font-weight:600; word-break:break-all;">https://forms.office.com/r/E3GmUc2gsi</a></p>
-      <button class="btn-primary" id="inscriptionBtn"><i class="fas fa-check-circle"></i> S'inscrire maintenant</button>
+        <!-- Contenu Groupe Soir -->
+        <div class="calendar-group-content" id="eveningCalendar" style="display:none;">
+            <!-- Semaine 1 -->
+            <div class="week-accordion active">
+                <div class="week-accordion-header">
+                    <span class="week-emoji">📘</span>
+                    <h3>Semaine 1</h3>
+                    <span class="week-dates">1er – 6 septembre</span>
+                    <span class="week-toggle-icon"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="week-accordion-body">
+                    <div class="week-accordion-body-inner">
+                        <div class="calendar-days">
+                            <div class="calendar-day evening-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">2 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon evening">🌆</div><div class="calendar-session-details"><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Accueil et initiation</div></div><span class="calendar-session-time">14h30 – 17h</span></div>
+                            </div>
+                            <div class="calendar-day evening-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">5 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon evening">🌆</div><div class="calendar-session-details"><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Word — Bases et mise en forme</div></div><span class="calendar-session-time">14h30 – 17h</span></div>
+                            </div>
+                            <div class="calendar-day evening-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">6 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon evening">🌆</div><div class="calendar-session-details"><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Word — Approfondissement</div></div><span class="calendar-session-time">14h30 – 17h</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Semaine 2 -->
+            <div class="week-accordion">
+                <div class="week-accordion-header">
+                    <span class="week-emoji">📙</span>
+                    <h3>Semaine 2</h3>
+                    <span class="week-dates">8 – 13 septembre</span>
+                    <span class="week-toggle-icon"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="week-accordion-body">
+                    <div class="week-accordion-body-inner">
+                        <div class="calendar-days">
+                            <div class="calendar-day evening-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">9 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon evening">🌆</div><div class="calendar-session-details"><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Excel — Bases et formules</div></div><span class="calendar-session-time">14h30 – 17h</span></div>
+                            </div>
+                            <div class="calendar-day evening-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">12 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon evening">🌆</div><div class="calendar-session-details"><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Excel — Analyse et graphiques</div></div><span class="calendar-session-time">14h30 – 17h</span></div>
+                            </div>
+                            <div class="calendar-day evening-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">13 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon evening">🌆</div><div class="calendar-session-details"><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">PowerPoint — Création et design</div></div><span class="calendar-session-time">14h30 – 17h</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Semaine 3 -->
+            <div class="week-accordion">
+                <div class="week-accordion-header">
+                    <span class="week-emoji">📕</span>
+                    <h3>Semaine 3</h3>
+                    <span class="week-dates">15 – 19 septembre</span>
+                    <span class="week-toggle-icon"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="week-accordion-body">
+                    <div class="week-accordion-body-inner">
+                        <div class="calendar-days">
+                            <div class="calendar-day evening-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">16 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon evening">🌆</div><div class="calendar-session-details"><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Projet final — Synthèse</div></div><span class="calendar-session-time">14h30 – 17h</span></div>
+                            </div>
+                            <div class="calendar-day evening-day">
+                                <div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">19 septembre</span></div>
+                                <div class="calendar-session"><div class="calendar-session-icon evening">🌆</div><div class="calendar-session-details"><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Évaluation finale, attestations, clôture</div></div><span class="calendar-session-time">14h30 – 17h</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="contact-card">
-      <h3><i class="fas fa-address-card"></i> Contacts & Lieu</h3>
-      <p style="margin-bottom:12px;"><i class="fas fa-map-pin" style="color:var(--gold);"></i> <strong>Centre NOVA Academy, Kassirimé</strong> (Korhogo)</p>
-      <p style="margin-bottom:12px;"><i class="fab fa-whatsapp" style="color:#25D366;"></i> <strong>0716851525</strong></p>
-      <a href="https://wa.me/qr/P3GB6WP45P6PK1" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Écrire sur WhatsApp</a>
-      <p style="margin-top:16px;"><i class="fas fa-envelope" style="color:var(--gold);"></i> novaacademy27@gmail.com</p>
-      <p style="margin-top:12px; font-style:italic; color:var(--gray-600); font-size:0.9rem;">Pour toute information ou difficulté à vous déplacer, contactez l'équipe NOVA Academy.</p>
-    </div>
-  </div>
 
-  <div style="background:var(--navy); padding:20px 32px; text-align:center; color:white; font-weight:500; border-radius:var(--border-radius); letter-spacing:0.3px;">
-    <i class="fas fa-info-circle" style="color:var(--gold);"></i> <strong>Places limitées</strong> — Pensez à finaliser votre inscription rapidement. Paiement échelonné possible.
-  </div>
+    <!-- PROGRAMME -->
+    <h2 class="section-title animate" id="programme">Programme académique</h2>
+
+    <!-- Module 1 : Initiation -->
+    <div class="module animate">
+        <div class="module-header">
+            <div class="module-header-left">
+                <img src="https://img.icons8.com/color/48/000000/laptop.png" alt="Initiation" class="module-icon-img" loading="lazy">
+                <div><strong>Séance inaugurale :</strong> Initiation à l'informatique</div>
+            </div>
+            <i class="fas fa-chevron-down chevron-icon"></i>
+        </div>
+        <div class="module-body">
+            <div class="module-body-inner">
+                <p class="module-description">Découverte de l'environnement informatique : matériel, système d'exploitation Windows, gestion des fichiers et navigation Internet.</p>
+                <div class="module-tags">
+                    <span class="module-tag">🖥️ Matériel et logiciel</span>
+                    <span class="module-tag">📁 Gestion des fichiers</span>
+                    <span class="module-tag">🌐 Internet et messagerie</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Module 2 : Word -->
+    <div class="module animate">
+        <div class="module-header">
+            <div class="module-header-left">
+                <img src="https://img.icons8.com/color/48/000000/microsoft-word-2019.png" alt="Word" class="module-icon-img" loading="lazy">
+                <div><strong>Module I :</strong> Microsoft Word</div>
+            </div>
+            <i class="fas fa-chevron-down chevron-icon"></i>
+        </div>
+        <div class="module-body">
+            <div class="module-body-inner">
+                <p class="module-description">Maîtrise du traitement de texte professionnel : structuration de documents, mise en forme avancée, automatisation et références.</p>
+                <div class="module-tags">
+                    <span class="module-tag">📝 Styles et structuration</span>
+                    <span class="module-tag">📑 Table des matières</span>
+                    <span class="module-tag">🔗 Références et bibliographie</span>
+                    <span class="module-tag">📄 Export PDF</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Module 3 : Excel -->
+    <div class="module animate">
+        <div class="module-header">
+            <div class="module-header-left">
+                <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019.png" alt="Excel" class="module-icon-img" loading="lazy">
+                <div><strong>Module II :</strong> Microsoft Excel</div>
+            </div>
+            <i class="fas fa-chevron-down chevron-icon"></i>
+        </div>
+        <div class="module-body">
+            <div class="module-body-inner">
+                <p class="module-description">Gestion et analyse de données avec le tableur : formules, fonctions, tri, filtres et création de graphiques.</p>
+                <div class="module-tags">
+                    <span class="module-tag">🔢 Formules et fonctions</span>
+                    <span class="module-tag">📊 Graphiques</span>
+                    <span class="module-tag">🔍 Tri et filtres</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Module 4 : PowerPoint -->
+    <div class="module animate">
+        <div class="module-header">
+            <div class="module-header-left">
+                <img src="https://img.icons8.com/color/48/000000/microsoft-powerpoint-2019.png" alt="PowerPoint" class="module-icon-img" loading="lazy">
+                <div><strong>Module III :</strong> Microsoft PowerPoint</div>
+            </div>
+            <i class="fas fa-chevron-down chevron-icon"></i>
+        </div>
+        <div class="module-body">
+            <div class="module-body-inner">
+                <p class="module-description">Conception de présentations professionnelles : organisation des diapositives, thèmes, transitions et animations.</p>
+                <div class="module-tags">
+                    <span class="module-tag">🎨 Design et thèmes</span>
+                    <span class="module-tag">🔄 Transitions</span>
+                    <span class="module-tag">✨ Animations</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Module 5 : Projet final -->
+    <div class="module animate">
+        <div class="module-header">
+            <div class="module-header-left">
+                <img src="https://img.icons8.com/color/48/000000/trophy.png" alt="Projet final" class="module-icon-img" loading="lazy">
+                <div><strong>Projet Final :</strong> Synthèse et certification</div>
+            </div>
+            <i class="fas fa-chevron-down chevron-icon"></i>
+        </div>
+        <div class="module-body">
+            <div class="module-body-inner">
+                <p class="module-description">Projet complet intégrant Word, Excel et PowerPoint. Évaluation finale et remise des attestations.</p>
+                <div class="module-tags">
+                    <span class="module-tag">📝 Rapport Word</span>
+                    <span class="module-tag">📊 Tableau Excel</span>
+                    <span class="module-tag">📽️ Présentation PowerPoint</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <h2 class="section-title animate" id="contact">Inscription & Contact</h2>
+    <div class="contact-grid animate" id="inscription">
+        <div class="contact-card">
+            <h3><i class="fas fa-file-signature"></i> Finalisez votre inscription</h3>
+            <p style="margin-bottom:12px;"><strong>📍 Passez au centre NOVA Academy à Kassirimé</strong></p>
+            <p style="margin-bottom:16px; color:var(--gray-600);">Ou consultez le lien ci-dessous pour découvrir le programme, les formations et les modalités d'inscription :</p>
+            <p style="margin-bottom:20px;"><a href="https://forms.office.com/r/E3GmUc2gsi" target="_blank" style="color:var(--navy); font-weight:600; word-break:break-all;">https://forms.office.com/r/E3GmUc2gsi</a></p>
+            <button class="btn-primary" id="inscriptionBtn"><i class="fas fa-check-circle"></i> S'inscrire maintenant</button>
+        </div>
+        <div class="contact-card">
+            <h3><i class="fas fa-address-card"></i> Contacts & Lieu</h3>
+            <p style="margin-bottom:12px;"><i class="fas fa-map-pin" style="color:var(--blue);"></i> <strong>Centre NOVA Academy, Kassirimé</strong> (Korhogo)</p>
+            <p style="margin-bottom:12px;"><i class="fab fa-whatsapp" style="color:var(--whatsapp);"></i> <strong>0716851525</strong></p>
+            <a href="https://wa.me/qr/P3GB6WP45P6PK1" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Écrire sur WhatsApp</a>
+            <p style="margin-top:16px;"><i class="fas fa-envelope" style="color:var(--blue);"></i> novaacademy27@gmail.com</p>
+            <p style="margin-top:12px; font-style:italic; color:var(--gray-600); font-size:0.9rem;">Pour toute information ou difficulté à vous déplacer, contactez l'équipe NOVA Academy.</p>
+        </div>
+    </div>
+
+    <div style="background:var(--navy); padding:20px 32px; text-align:center; color:white; font-weight:500; border-radius:var(--border-radius); letter-spacing:0.3px;">
+        <i class="fas fa-info-circle" style="color:var(--sal);"></i> <strong>Places limitées</strong> — Pensez à finaliser votre inscription rapidement. Paiement échelonné possible.
+    </div>
 </main>
 
+<!-- FOOTER -->
 <footer class="footer">
-  <div>
-    <h4>NOVA Academy</h4>
-    <p>Formation bureautique professionnelle<br>Word · Excel · PowerPoint</p>
-    <p class="footer-motto">Vos compétences, notre accompagnement.</p>
-  </div>
-  <div>
-    <h4>Navigation</h4>
-    <p><a href="#programme">Programme académique</a></p>
-    <p><a href="#horaires">Horaires</a></p>
-    <p><a href="#contact">Contact</a></p>
-    <p><a href="#inscription">Inscription</a></p>
-  </div>
-  <div>
-    <h4>Contact</h4>
-    <p>0716851525</p>
-    <p>novaacademy27@gmail.com</p>
-    <p>Centre NOVA Academy, Kassirimé</p>
-    <p>Korhogo, Côte d'Ivoire</p>
-  </div>
-  <div style="grid-column:1/-1; text-align:center; padding-top:24px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.8rem; opacity:0.6;">
-    &copy; 2026 NOVA Academy — Tous droits réservés.
-  </div>
+    <div>
+        <h4>NOVA Academy</h4>
+        <p>Formation bureautique professionnelle<br>Word · Excel · PowerPoint</p>
+        <p class="footer-motto">Vos compétences, notre accompagnement.</p>
+    </div>
+    <div>
+        <h4>Navigation</h4>
+        <p><a href="#groupes">Groupes</a></p>
+        <p><a href="#calendrier">Calendrier</a></p>
+        <p><a href="#programme">Programme</a></p>
+        <p><a href="#contact">Contact</a></p>
+    </div>
+    <div>
+        <h4>Contact</h4>
+        <p>0716851525</p>
+        <p>novaacademy27@gmail.com</p>
+        <p>Centre NOVA Academy, Kassirimé</p>
+        <p>Korhogo, Côte d'Ivoire</p>
+    </div>
+    <div style="grid-column:1/-1; text-align:center; padding-top:24px; border-top:1px solid rgba(255,255,255,0.1); font-size:0.8rem; opacity:0.6;">
+        &copy; 2025 NOVA Academy — Tous droits réservés.
+    </div>
 </footer>
 
 <script>
-  (function() {
-    // ============ MENU BURGER ============
-    const burgerBtn = document.getElementById('burgerBtn');
-    const navLinks = document.getElementById('navLinks');
-    const mobileOverlay = document.getElementById('mobileOverlay');
-    const allNavLinks = navLinks.querySelectorAll('a');
-    
-    function openMenu() {
-      burgerBtn.classList.add('active');
-      navLinks.classList.add('active');
-      mobileOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    
-    function closeMenu() {
-      burgerBtn.classList.remove('active');
-      navLinks.classList.remove('active');
-      mobileOverlay.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    
-    burgerBtn.addEventListener('click', () => {
-      if (navLinks.classList.contains('active')) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-    
-    mobileOverlay.addEventListener('click', closeMenu);
-    
-    // Fermer le menu quand on clique sur un lien
-    allNavLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        closeMenu();
-      });
-    });
-    
-    // Fermer le menu avec la touche Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-        closeMenu();
-      }
-    });
+    (function() {
+        // ============ MENU BURGER ============
+        const burgerBtn = document.getElementById('burgerBtn');
+        const navLinks = document.getElementById('navLinks');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const allNavLinks = navLinks.querySelectorAll('a');
 
-    // ============ INTERSECTION OBSERVER ============
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+        function openMenu() {
+            burgerBtn.classList.add('active');
+            navLinks.classList.add('active');
+            mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
-      });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
 
-    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
-
-    // ============ ACCORDÉON MODULES ============
-    const modules = document.querySelectorAll('.module');
-    modules.forEach(mod => {
-      const header = mod.querySelector('.module-header');
-      header.addEventListener('click', () => {
-        const wasActive = mod.classList.contains('active');
-        modules.forEach(m => m.classList.remove('active'));
-        if (!wasActive) {
-          mod.classList.add('active');
-          setTimeout(() => {
-            mod.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }, 150);
+        function closeMenu() {
+            burgerBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
         }
-      });
-    });
-    if (modules.length >= 2) {
-      modules[1].classList.add('active');
-    }
 
-    // ============ BOUTONS INSCRIPTION ============
-    const link = "https://forms.office.com/r/E3GmUc2gsi";
-    document.querySelectorAll('#heroBtn, #inscriptionBtn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.open(link, '_blank');
-      });
-    });
-  })();
+        burgerBtn.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        mobileOverlay.addEventListener('click', closeMenu);
+
+        allNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMenu();
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        // ============ GUIDE HINT SCROLL ============
+        const guideHint = document.getElementById('guideHint');
+        const guideBtn = document.getElementById('guideBtn');
+        
+        // Cacher le guide après 10 secondes
+        setTimeout(() => {
+            guideHint.classList.add('hidden');
+        }, 10000);
+        
+        // Cacher le guide quand l'utilisateur a déjà scrollé
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                guideHint.classList.add('hidden');
+            }
+        });
+        
+        // Action du bouton guide : scroll vers la section groupes
+        guideBtn.addEventListener('click', () => {
+            document.getElementById('groupes').scrollIntoView({ behavior: 'smooth' });
+            guideHint.classList.add('hidden');
+        });
+
+        // ============ INTERSECTION OBSERVER ============
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+        document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+        // ============ ACCORDÉON SEMAINES ============
+        const weekAccordions = document.querySelectorAll('.week-accordion');
+        weekAccordions.forEach(accordion => {
+            const header = accordion.querySelector('.week-accordion-header');
+            header.addEventListener('click', () => {
+                accordion.classList.toggle('active');
+            });
+        });
+
+        // ============ ACCORDÉON MODULES ============
+        const modules = document.querySelectorAll('.module');
+        modules.forEach(mod => {
+            const header = mod.querySelector('.module-header');
+            header.addEventListener('click', () => {
+                const wasActive = mod.classList.contains('active');
+                modules.forEach(m => m.classList.remove('active'));
+                if (!wasActive) {
+                    mod.classList.add('active');
+                    setTimeout(() => {
+                        mod.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 150);
+                }
+            });
+        });
+        if (modules.length >= 2) {
+            modules[1].classList.add('active');
+        }
+
+        // ============ TABS CALENDRIER ============
+        const morningTab = document.querySelector('.calendar-tab.morning-tab');
+        const eveningTab = document.querySelector('.calendar-tab.evening-tab');
+        const morningCal = document.getElementById('morningCalendar');
+        const eveningCal = document.getElementById('eveningCalendar');
+
+        function switchCalendar(group) {
+            if (group === 'morning') {
+                morningTab.classList.add('active');
+                eveningTab.classList.remove('active');
+                morningCal.style.display = 'block';
+                eveningCal.style.display = 'none';
+            } else {
+                eveningTab.classList.add('active');
+                morningTab.classList.remove('active');
+                eveningCal.style.display = 'block';
+                morningCal.style.display = 'none';
+            }
+        }
+
+        morningTab.addEventListener('click', () => switchCalendar('morning'));
+        eveningTab.addEventListener('click', () => switchCalendar('evening'));
+
+        // ============ BOUTONS INSCRIPTION ============
+        const link = "https://forms.office.com/r/E3GmUc2gsi";
+        document.querySelectorAll('#heroBtn, #inscriptionBtn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.open(link, '_blank');
+            });
+        });
+    })();
 </script>
 </body>
 </html>
