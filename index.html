@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>NOVA Academy | Formation Bureautique Pro · Septembre</title>
+    <title>NOVA Academy | Formation Bureautique Pro · Octobre 2026</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -424,109 +424,75 @@
         .group-time { font-size: 1.1rem; font-weight: 800; }
         .group-card p { font-size: 0.78rem; color: var(--gray-500); }
 
-        /* ===== CALENDRIER ===== */
-        .calendar-tabs {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 14px;
-            flex-wrap: wrap;
-        }
-        .calendar-tab {
-            padding: 7px 18px;
-            border-radius: 20px;
-            border: 1px solid var(--gray-200);
-            background: var(--white);
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: var(--transition);
-        }
-        .calendar-tab.morning-tab.active { background: var(--blue); color: white; border-color: var(--blue); }
-        .calendar-tab.evening-tab.active { background: var(--navy); color: white; border-color: var(--navy); }
-
-        .week-accordion {
-            margin-bottom: 10px;
-            border: 1px solid var(--gray-200);
+        /* ===== ANNONCE DATE ===== */
+        .date-announcement {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
             border-radius: var(--border-radius);
-            overflow: hidden;
-            background: var(--white);
-        }
-        .week-accordion-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 18px;
-            cursor: pointer;
-            background: var(--white);
-            user-select: none;
-        }
-        .week-accordion-header h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--navy);
-            flex: 1;
-        }
-        .week-dates {
-            font-size: 0.7rem;
-            color: var(--gray-500);
-            background: var(--gray-50);
-            padding: 3px 10px;
-            border-radius: 15px;
-        }
-        .week-close-btn {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--gray-100);
-            color: var(--gray-500);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.6rem;
-            transition: var(--transition);
-            flex-shrink: 0;
-        }
-        .week-accordion.open .week-close-btn {
-            background: var(--red);
+            padding: 40px 32px;
+            text-align: center;
             color: white;
-        }
-        .week-accordion-body {
-            max-height: 0;
+            margin: 28px 0;
+            position: relative;
             overflow: hidden;
-            transition: max-height 0.4s ease;
         }
-        .week-accordion.open .week-accordion-body { max-height: 4000px; }
-        .week-accordion-body-inner { padding: 18px; border-top: 1px solid var(--gray-200); }
-
-        .calendar-days {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
+        .date-announcement::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(244,162,97,0.08);
+            border-radius: 50%;
         }
-        .calendar-day {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--border-radius);
-            padding: 12px;
+        .date-announcement::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -10%;
+            width: 250px;
+            height: 250px;
+            background: rgba(244,162,97,0.06);
+            border-radius: 50%;
         }
-        .calendar-day-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 6px;
+        .date-announcement .date-icon {
+            font-size: 2.5rem;
+            color: var(--sal);
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
         }
-        .calendar-day-name { font-weight: 700; font-size: 0.78rem; color: var(--navy); }
-        .calendar-day-date { font-size: 0.65rem; color: var(--gray-500); }
-        .calendar-session { display: flex; gap: 6px; align-items: flex-start; padding: 5px 0; }
-        .calendar-session-icon { font-size: 0.7rem; }
-        .calendar-session-label { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; }
-        .calendar-session-label.morning { color: var(--blue); }
-        .calendar-session-label.evening { color: var(--navy); }
-        .calendar-session-text { font-size: 0.72rem; color: var(--gray-700); }
-        .calendar-session-time { font-size: 0.6rem; color: var(--gray-500); white-space: nowrap; }
+        .date-announcement h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .date-announcement .date-highlight {
+            color: var(--sal);
+        }
+        .date-announcement p {
+            font-size: 1rem;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .date-announcement .date-badge {
+            display: inline-block;
+            background: var(--sal);
+            color: var(--navy);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
 
         /* ===== MODULES ===== */
         .module {
@@ -686,7 +652,7 @@
             .info-grid { grid-template-columns: 1fr 1fr; }
             .group-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
-            .calendar-days { grid-template-columns: 1fr; }
+            .date-announcement h2 { font-size: 1.5rem; }
             .footer { flex-direction: column; text-align: center; }
         }
 
@@ -695,6 +661,8 @@
             .hero-buttons { flex-direction: column; }
             .btn-primary, .btn-outline { width: 100%; justify-content: center; }
             .section-title { font-size: 1.2rem; }
+            .date-announcement { padding: 28px 20px; }
+            .date-announcement h2 { font-size: 1.3rem; }
         }
     </style>
 </head>
@@ -741,7 +709,7 @@
 <header class="hero" id="heroSection">
     <div class="container hero-content">
         <div class="hero-text">
-            <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(244,162,97,0.15);border:1px solid rgba(244,162,97,0.3);padding:4px 14px;border-radius:4px;font-size:0.65rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;color:#fdf0e6;"><i class="fas fa-star" style="color:var(--sal);"></i> Formation pratique</div>
+            <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(244,162,97,0.15);border:1px solid rgba(244,162,97,0.3);padding:4px 14px;border-radius:4px;font-size:0.65rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;color:#fdf0e6;"><i class="fas fa-star" style="color:var(--sal);"></i> Formation pratique · Nouvelle session</div>
             <h1>Bureautique <span class="highlight">Professionnelle</span></h1>
             <p class="hero-subtitle">Maîtrisez Microsoft Word, Excel et PowerPoint. Deux groupes distincts pour s'adapter à votre emploi du temps.</p>
             <div class="hero-buttons">
@@ -750,12 +718,12 @@
             </div>
         </div>
         <div class="hero-card">
-            <div class="stat-row"><span class="stat-icon"><i class="far fa-calendar-alt"></i></span> <strong>1er – 19 Septembre 2025</strong></div>
+            <div class="stat-row"><span class="stat-icon"><i class="far fa-calendar-alt"></i></span> <strong>Début : 15 Octobre 2026</strong></div>
             <div class="stat-row"><span class="stat-icon"><i class="fas fa-sun"></i></span> <strong>Groupe Matin</strong> 08h00 – 11h00</div>
             <div class="stat-row"><span class="stat-icon"><i class="fas fa-moon"></i></span> <strong>Groupe Soir</strong> 14h30 – 17h00</div>
             <div class="stat-row"><span class="stat-icon"><i class="fas fa-hourglass-half"></i></span> <strong>3 semaines</strong> de formation intensive</div>
             <div class="stat-row"><span class="stat-icon"><i class="fas fa-map-marker-alt"></i></span> <strong>Korhogo, Kassirimé</strong></div>
-            <span class="urgent-badge"><i class="fas fa-exclamation-circle"></i> Places limitées</span>
+            <span class="urgent-badge"><i class="fas fa-exclamation-circle"></i> Inscriptions ouvertes</span>
         </div>
     </div>
 </header>
@@ -787,8 +755,8 @@
     <div class="alert-announcement">
         <div class="alert-icon"><i class="fas fa-bullhorn"></i></div>
         <div>
-            <h3>Reprise des formations — NOVA ACADEMY</h3>
-            <p>Les personnes déjà inscrites ou intéressées sont invitées à <strong>passer au centre NOVA Academy à Kassirimé</strong> afin de finaliser leur inscription.</p>
+            <h3>Inscriptions ouvertes — NOVA ACADEMY</h3>
+            <p>Les inscriptions pour la nouvelle session du <strong>15 octobre 2026</strong> sont ouvertes. Les personnes intéressées sont invitées à <strong>passer au centre NOVA Academy à Kassirimé</strong> afin de finaliser leur inscription.</p>
         </div>
     </div>
 
@@ -798,7 +766,7 @@
         <div class="info-card">
             <div class="card-icon"><i class="far fa-calendar-alt"></i></div>
             <h3>Début des cours</h3>
-            <p>1er Septembre 2025</p>
+            <p>15 Octobre 2026</p>
         </div>
         <div class="info-card">
             <div class="card-icon"><i class="fas fa-tag"></i></div>
@@ -837,122 +805,13 @@
         </div>
     </div>
 
-    <!-- CALENDRIER -->
-    <h2 class="section-title" id="calendrier">Calendrier détaillé</h2>
-    <div class="calendar-section" id="calendarSection">
-        <div class="calendar-tabs">
-            <button class="calendar-tab morning-tab active" data-group="morning" id="tabMorning"><i class="fas fa-sun"></i> Groupe Matin</button>
-            <button class="calendar-tab evening-tab" data-group="evening" id="tabEvening"><i class="fas fa-moon"></i> Groupe Soir</button>
-        </div>
-
-        <div id="morningCalendar">
-            <div class="week-accordion" id="week1Morning">
-                <div class="week-accordion-header">
-                    <h3>Semaine 1</h3>
-                    <span class="week-dates">1er – 6 septembre</span>
-                    <span class="week-close-btn"><i class="fas fa-times"></i></span>
-                </div>
-                <div class="week-accordion-body">
-                    <div class="week-accordion-body-inner">
-                        <div class="calendar-days">
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Lundi</span><span class="calendar-day-date">1er septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Accueil et initiation</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">2 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Bases et structuration</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mercredi</span><span class="calendar-day-date">3 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Mise en forme</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Jeudi</span><span class="calendar-day-date">4 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Automatisation</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">5 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Word — Références et finalisation</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">6 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Mini-projet Word + Révision</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="week-accordion" id="week2Morning">
-                <div class="week-accordion-header">
-                    <h3>Semaine 2</h3>
-                    <span class="week-dates">8 – 13 septembre</span>
-                    <span class="week-close-btn"><i class="fas fa-times"></i></span>
-                </div>
-                <div class="week-accordion-body">
-                    <div class="week-accordion-body-inner">
-                        <div class="calendar-days">
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Lundi</span><span class="calendar-day-date">8 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Excel — Bases</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">9 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Excel — Formules et fonctions</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mercredi</span><span class="calendar-day-date">10 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Excel — Analyse et graphiques</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Jeudi</span><span class="calendar-day-date">11 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Mini-projet Excel</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">12 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">PowerPoint — Création</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">13 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">PowerPoint — Design et animations</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="week-accordion" id="week3Morning">
-                <div class="week-accordion-header">
-                    <h3>Semaine 3</h3>
-                    <span class="week-dates">15 – 19 septembre</span>
-                    <span class="week-close-btn"><i class="fas fa-times"></i></span>
-                </div>
-                <div class="week-accordion-body">
-                    <div class="week-accordion-body-inner">
-                        <div class="calendar-days">
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Lundi</span><span class="calendar-day-date">15 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Projet final — Word</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">16 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Projet final — Excel</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mercredi</span><span class="calendar-day-date">17 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Projet final — PowerPoint</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Jeudi</span><span class="calendar-day-date">18 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Évaluation finale</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">19 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">☀️</span><div><div class="calendar-session-label morning">Matin</div><div class="calendar-session-text">Feedback, attestations, clôture</div></div><span class="calendar-session-time">8h – 11h</span></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="eveningCalendar" style="display:none;">
-            <div class="week-accordion" id="week1Evening">
-                <div class="week-accordion-header">
-                    <h3>Semaine 1</h3>
-                    <span class="week-dates">1er – 6 septembre</span>
-                    <span class="week-close-btn"><i class="fas fa-times"></i></span>
-                </div>
-                <div class="week-accordion-body">
-                    <div class="week-accordion-body-inner">
-                        <div class="calendar-days">
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">2 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Accueil et initiation</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">5 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Word — Bases et mise en forme</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">6 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Word — Approfondissement</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="week-accordion" id="week2Evening">
-                <div class="week-accordion-header">
-                    <h3>Semaine 2</h3>
-                    <span class="week-dates">8 – 13 septembre</span>
-                    <span class="week-close-btn"><i class="fas fa-times"></i></span>
-                </div>
-                <div class="week-accordion-body">
-                    <div class="week-accordion-body-inner">
-                        <div class="calendar-days">
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">9 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Excel — Bases et formules</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">12 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Excel — Analyse et graphiques</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Samedi</span><span class="calendar-day-date">13 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">PowerPoint — Création et design</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="week-accordion" id="week3Evening">
-                <div class="week-accordion-header">
-                    <h3>Semaine 3</h3>
-                    <span class="week-dates">15 – 19 septembre</span>
-                    <span class="week-close-btn"><i class="fas fa-times"></i></span>
-                </div>
-                <div class="week-accordion-body">
-                    <div class="week-accordion-body-inner">
-                        <div class="calendar-days">
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Mardi</span><span class="calendar-day-date">16 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Projet final — Synthèse</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
-                            <div class="calendar-day"><div class="calendar-day-header"><span class="calendar-day-name">Vendredi</span><span class="calendar-day-date">19 septembre</span></div><div class="calendar-session"><span class="calendar-session-icon">🌆</span><div><div class="calendar-session-label evening">Soir</div><div class="calendar-session-text">Évaluation finale, attestations, clôture</div></div><span class="calendar-session-time">14h30 – 17h</span></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- CALENDRIER / DATE UNIQUE -->
+    <h2 class="section-title" id="calendrier">Calendrier</h2>
+    <div class="date-announcement" id="calendarSection">
+        <div class="date-icon"><i class="fas fa-calendar-check"></i></div>
+        <h2>Début de la formation : <span class="date-highlight">15 Octobre 2026</span></h2>
+        <p>Une nouvelle session de formation en bureautique professionnelle débute le <strong>15 octobre 2026</strong>. Les inscriptions sont d'ores et déjà ouvertes.</p>
+        <div class="date-badge"><i class="fas fa-hourglass-start"></i> Inscriptions en cours</div>
     </div>
 
     <!-- PROGRAMME -->
@@ -1076,7 +935,7 @@
     </div>
 
     <div style="background:var(--navy);padding:14px 20px;text-align:center;color:white;font-weight:500;border-radius:4px;font-size:0.8rem;">
-        <strong>Places limitées</strong> — Pensez à finaliser votre inscription rapidement.
+        <strong>Places limitées</strong> — Pensez à finaliser votre inscription rapidement. Début des cours : <strong>15 octobre 2026</strong>.
     </div>
 </main>
 
@@ -1164,16 +1023,7 @@
             if (calendarSection) {
                 const calRect = calendarSection.getBoundingClientRect();
                 if (calRect.top < viewportHeight * 0.7 && calRect.bottom > 0) {
-                    const openAccordion = document.querySelector('.week-accordion.open');
-                    if (openAccordion) {
-                        const closeBtn = openAccordion.querySelector('.week-close-btn');
-                        signalElement(closeBtn, signalClasses.red);
-                    } else {
-                        const firstClosedAccordion = document.querySelector('.week-accordion:not(.open)');
-                        if (firstClosedAccordion) {
-                            signalElement(firstClosedAccordion.querySelector('.week-accordion-header'), signalClasses.blue);
-                        }
-                    }
+                    signalElement(calendarSection.querySelector('.date-badge'), signalClasses.blue);
                     return;
                 }
             }
@@ -1209,19 +1059,19 @@
         }
         
         function autoToggleAccordions() {
-            const accordions = document.querySelectorAll('.week-accordion, .module');
+            const modules = document.querySelectorAll('.module');
             const viewportHeight = window.innerHeight;
             
-            accordions.forEach(acc => {
-                const rect = acc.getBoundingClientRect();
+            modules.forEach(mod => {
+                const rect = mod.getBoundingClientRect();
                 const centerY = rect.top + rect.height / 2;
                 const isInReadingZone = centerY > viewportHeight * 0.3 && centerY < viewportHeight * 0.7;
                 
-                if (isInReadingZone && !acc.classList.contains('open')) {
-                    acc.classList.add('open');
+                if (isInReadingZone && !mod.classList.contains('open')) {
+                    mod.classList.add('open');
                 } else if (rect.top > viewportHeight || rect.bottom < 0) {
-                    if (acc.classList.contains('open')) {
-                        acc.classList.remove('open');
+                    if (mod.classList.contains('open')) {
+                        mod.classList.remove('open');
                     }
                 }
             });
@@ -1236,41 +1086,12 @@
             }, 200);
         }, { passive: true });
         
-        document.querySelectorAll('.week-accordion-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const accordion = header.closest('.week-accordion');
-                accordion.classList.toggle('open');
-                setTimeout(determineContextualSignal, 100);
-            });
-        });
-        
         document.querySelectorAll('.module-header').forEach(header => {
             header.addEventListener('click', () => {
                 const module = header.closest('.module');
                 module.classList.toggle('open');
                 setTimeout(determineContextualSignal, 100);
             });
-        });
-        
-        const morningTab = document.getElementById('tabMorning');
-        const eveningTab = document.getElementById('tabEvening');
-        const morningCal = document.getElementById('morningCalendar');
-        const eveningCal = document.getElementById('eveningCalendar');
-        
-        morningTab.addEventListener('click', () => {
-            morningTab.classList.add('active');
-            eveningTab.classList.remove('active');
-            morningCal.style.display = 'block';
-            eveningCal.style.display = 'none';
-            setTimeout(determineContextualSignal, 100);
-        });
-        
-        eveningTab.addEventListener('click', () => {
-            eveningTab.classList.add('active');
-            morningTab.classList.remove('active');
-            eveningCal.style.display = 'block';
-            morningCal.style.display = 'none';
-            setTimeout(determineContextualSignal, 100);
         });
         
         const link = "https://forms.office.com/r/E3GmUc2gsi";
